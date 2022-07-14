@@ -17,10 +17,15 @@ export const GlobalStyle = createGlobalStyle`
     display: grid;
     place-items: center;
     overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
   }
 
   * {
     box-sizing: border-box;
+    --primary-purple:#6732ff;
+    --primary-mint: #62fee2;
   }
 
   a {
