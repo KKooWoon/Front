@@ -1,3 +1,4 @@
+import LoginPage from '@pages/login';
 import GlobalLayout from '@pages/_layout';
 import React from 'react';
 
@@ -13,7 +14,8 @@ const App = () => {
   return (
     <Routes>
       <Route element={<GlobalLayout />}>
-        <Route path='/' element={<Main/>} />
+        <Route index element={<LoginPage />}/>
+        <Route path='/main' element={<Main/>} />
         <Route path='upload' element={<Upload />} />
         <Route path='race' element={<Race />} />
         <Route path='profile' element={<Profile />}/>
