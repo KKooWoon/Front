@@ -5,6 +5,8 @@ const useLayout = (): pageLayout => {
   const { pathname } = useLocation();
   const layout: pageLayout = { header: false, noNav: false, hasBack: false };
   if (pathname === '/') {
+    return {...layout, noNav:true};
+  } else if (pathname === '/main') {
     return { ...layout, header: true };
   } else if (pathname === '/profile') {
     return { ...layout, header: true, noNav: true };
