@@ -28,7 +28,7 @@ export const LayoutNavbar = styled.nav`
   max-width: 480px;
   width: 100%;
   bottom: 0;
-  height: 70px;
+  height: 67px;
   background-color: var(--gray-00);
   & ul {
     padding: 11px 26px;
