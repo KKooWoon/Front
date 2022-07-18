@@ -17,7 +17,7 @@ const AppLayout = ({ children, header, noNav, hasBack }: Props) => {
     <LayoutWrapper>
       {header && <Header />}
       {hasBack && <BackButton />}
-      <main style={{ height: '100%', paddingTop: header && '60px', paddingBottom: !noNav ? '60px' : '0' }}>{children}</main>
+      <main style={{ height: '100%', paddingTop: header && '67px', paddingBottom: !noNav ? '67px' : '0' }}>{children}</main>
       {!noNav && <NavBar />}
     </LayoutWrapper>
   );
