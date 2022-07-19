@@ -48,6 +48,7 @@ export const NavBarItem = styled.div`
     text-align: center;
     font-weight: 400;
     font-size: 11px;
+    color:#676767;
   }
 `;
 
