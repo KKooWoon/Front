@@ -4,6 +4,9 @@ import React from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
+import 'swiper/css';
+import "swiper/css/navigation";
+
 const Main = React.lazy(() => import('@pages/main'));
 const Upload = React.lazy(() => import('@pages/upload'));
 const Race = React.lazy(() => import('@pages/race'));

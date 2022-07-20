@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
     --gray-00:#f9f9f9;
     --black:#101010;
     --error:#ff0000;
-    --bg:#e4e4e4;
+    --bg:#f9f9f9;
     --bg-linear01: linear-gradient(132.6deg, #E2DCFA 37.18%, #F0EDFA 73.49%, #F2EFFA 98.19%);
     --bg-linear02:linear-gradient(180deg, rgba(103, 50, 255, 0.12) 0%, rgba(235, 235, 235, 0) 190.21%);
   }

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   height: 295px;
   padding: 12px 0px;
   background: #e5e0fa;
-  z-index: -2;
+  z-index:0;
 `;
 
 export const Balloon = styled.div`
