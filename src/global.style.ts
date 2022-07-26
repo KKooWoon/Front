@@ -60,12 +60,17 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
+    font-family:'SpoqaHanSansNeo';
   }
 
   ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  }
+
+  hr {
+    border: 0.5px solid #D4D2D9;
   }
   @font-face {
     font-family: 'SpoqaHanSansNeo';

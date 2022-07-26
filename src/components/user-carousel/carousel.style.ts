@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
 `;
 
 export const SwiperWrapper = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   margin-top: 12px;
   display: flex;

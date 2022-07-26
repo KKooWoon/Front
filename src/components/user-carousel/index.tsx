@@ -10,10 +10,11 @@ const UserCarousel = () => {
   const [swiper, setSwiper] = useState<any>();
   const [reachingEnd, setReachingEnd] = useState<boolean>(false);
   const [reachingFirst, setReachingFirst] = useState<boolean>(true);
+  const screenSize = screen.width; 
   return (
     <Wrapper>
       <h2>운동 현황보기</h2>
-      <SwiperWrapper>
+      <SwiperWrapper style={{maxWidth:screenSize}}>
         <button onClick={() => swiper?.slidePrev()} disabled={reachingFirst}>
           <LeftArrow stroke={reachingFirst ? '#D4D2D9' : '#6732FF'} />
         </button>
