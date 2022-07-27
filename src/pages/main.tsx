@@ -1,5 +1,5 @@
 import MainProfile from '@components/main-profile';
-import RaceList from '@components/RaceList';
+import RaceList from '@components/race-list';
 import UserCarousel from '@components/user-carousel';
 import WorkOutList from '@components/WorkoutList';
 import React from 'react';
@@ -8,8 +8,11 @@ import styled from 'styled-components';
 const MainPage = () => {
   return (
     <Wrapper>
+      {/*MainProfile 에서는 MyProfile 정보만 필요 */}
       <MainProfile />
+      {/*UserCarousel 에서는 selected Item 변경, MyProfileData(fllowerList) 필요*/}
       <UserCarousel />
+      {/*RaceList에서도 Selected Item 필요, 레이스 클릭 시 WorkOutList 바꿔서 보여 줌 */}
       <UserInfoWrapper>
         <RaceList />
       </UserInfoWrapper>

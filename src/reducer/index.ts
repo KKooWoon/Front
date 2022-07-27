@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import layoutSlice from './layout';
+import onBoadingSlice from './onboading';
 
 const rootReducer = combineReducers({
-  layout: layoutSlice.reducer,
+  onboading:onBoadingSlice.reducer
 });
 
 export default rootReducer;

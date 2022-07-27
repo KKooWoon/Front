@@ -12,13 +12,15 @@ const Upload = React.lazy(() => import('@pages/upload'));
 const Race = React.lazy(() => import('@pages/race'));
 const Profile = React.lazy(() => import('@pages/profile'));
 const ProfileDetail = React.lazy(()=> import('@pages/detail'));
+const UserInfo = React.lazy(()=> import('@pages/user-info'));
 
 const App = () => {
   return (
     <Routes>
       <Route element={<GlobalLayout />}>
         <Route index element={<LoginPage />}/>
-        <Route path='/main' element={<Main/>} />
+        <Route path='user-info' element={<UserInfo/>}/>
+        <Route path='main' element={<Main/>} />
         <Route path='upload' element={<Upload />} />
         <Route path='race' element={<Race />} />
         <Route path='profile' element={<Profile />}/>

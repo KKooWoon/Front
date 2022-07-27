@@ -1,9 +1,9 @@
-import ImageSlider from '@components/ImageSlider/inedx';
+import ImageSlider from '@components/image-slider/inedx';
 import { raceType } from '@typings/race';
 import { RaceListDummy } from 'dummy';
 import React from 'react';
 import RaceItem from './race-item';
-import { NoResult, RaceButton, Wrapper } from './race-list.style';
+import { NoResult, CustomButton, Wrapper } from './race-list.style';
 
 const RaceList = () => {
   const isData = true;
@@ -19,9 +19,9 @@ const RaceList = () => {
       ) : (
         <NoResult>참여 중인 레이스가 없습니다.</NoResult>
       )}
-      <RaceButton>
+      <CustomButton>
         {RaceList.length === 0 ? <span>레이스 참여 하러가기</span> : <span>이 레이스에 운동 인증하기</span>}
-      </RaceButton>
+      </CustomButton>
     </Wrapper>
   );
 };

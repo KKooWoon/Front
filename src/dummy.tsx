@@ -3,6 +3,11 @@ import { raceType } from '@typings/race';
 
 export const userDummy = [
   {
+    id: 0,
+    nickname: '나',
+    imageUrl: defaultImage,
+  },
+  {
     id: 1,
     nickname: 'user1',
     imageUrl: defaultImage,

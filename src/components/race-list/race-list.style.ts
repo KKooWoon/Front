@@ -23,7 +23,7 @@ export const ItemWrapper = styled.div`
   
 `
 
-export const RaceButton = styled.button`
+export const CustomButton = styled.button`
   border-radius:20px;
   background-color:var(--purple-sub01);
   color:var(--primary-purple);

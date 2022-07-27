@@ -1,4 +1,4 @@
-import { NoResult, Wrapper } from '@components/RaceList/race-list.style';
+import { NoResult, Wrapper } from '@components/race-list/race-list.style';
 import React from 'react';
 
 const WorkOutList = () => {
