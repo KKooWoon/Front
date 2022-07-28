@@ -11,15 +11,15 @@ const initialState: OnBoading = {
     muscle: 0,
   },
   interest: [],
-  isActive:true,
+  isActive:false,
 };
 
 const onBoadingSlice = createSlice({
   name:'onBoading',
   initialState,
   reducers:{
-    toggleActive(state,action) {
-      state.isActive = !state.isActive;
+    setActive(state,action) {
+      state.isActive = action.payload;
     },
     setNickname(state,action) {
       state.nickname = action.payload
