@@ -23,6 +23,7 @@ const Step4 = () => {
       dispatch(onBoadingSlice.actions.setActive(false));
     }
   }, [interest]);
+  
   return (
     <KeyWordsWrapper onClick={handler}>
       <Container>

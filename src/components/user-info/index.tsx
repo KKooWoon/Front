@@ -12,7 +12,7 @@ import onBoadingSlice from 'reducer/onboading';
 const UserInfo = () => {
   const userInfo = USERINFO;
   const navigator = useNavigate();
-  const [nowStep, setNowStep] = useState(3);
+  const [nowStep, setNowStep] = useState(0);
 
   const dispatch = useAppDispatch();
   const isActive = useAppSelector(state => state.onboading.isActive);

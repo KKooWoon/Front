@@ -4,13 +4,12 @@ import onBoadingSlice from 'reducer/onboading';
 import { InputWrapper, NicknameInput } from './user-info.style';
 
 const Step1 = () => {
-  const [nickname, setNickname] = useState('');
   const isActive = useAppSelector(state => state.onboading.isActive);
+  const nickname = useAppSelector(state=> state.onboading.nickname);
   const dispatch = useAppDispatch();
 
   const onChangeNickname = useCallback(
     (e:ChangeEvent<HTMLInputElement>) => {
-      setNickname(e.target.value);
       dispatch(onBoadingSlice.actions.setNickname(e.target.value));
     },
     [nickname]
