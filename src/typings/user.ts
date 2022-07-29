@@ -13,10 +13,10 @@ export type OnBoading ={
   nickname:string;
   age:number;
   body_spec:{
-    height:number;
-    weight:number;
-    fat:number;
-    muscle:number;
+    height:number | string;
+    weight:number | string;
+    fat?:number | string;
+    muscle?:number | string;
   };
   interest:Array<string>;
   isActive:boolean;

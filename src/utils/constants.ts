@@ -16,3 +16,13 @@ export const USERINFO = [
     subtitle: null,
   },
 ];
+
+export const KEYWORDS = [
+  "다이어트",
+  "바디프로필",
+  "코어근육",
+  "체력증진",
+  "몸가꾸기",
+  "근육늘리기",
+  "몸짱되기"
+]

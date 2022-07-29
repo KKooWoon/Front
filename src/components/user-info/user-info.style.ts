@@ -40,9 +40,12 @@ export const ButtonSection = styled.div`
 export const ContentsWrapper = styled.div`
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -190%);
+  top: 244px;
+  transform: translate(-50%, 0%);
   width: 90%;
+  &.wide {
+    width:98%;
+  }
 `;
 
 export const NaviWrapper = styled.section`
@@ -110,8 +113,8 @@ export const SelectBox = styled.div`
   border: 2px solid var(--primary-purple);
   border-radius: 20px;
   padding: 15px 0px 15px 17px;
-  .isGrey{
-    color:var(--gray-02);
+  .isGrey {
+    color: var(--gray-02);
   }
 `;
 export const SelectBoxWrapper = styled.div`
@@ -141,3 +144,50 @@ export const SelectList = styled.ul`
   }
   animation: ${slideBottom} 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
+
+export const InputSection = styled.section`
+  & h3 {
+    font-weight: 400;
+    font-size: 16px;
+    color: #817f85;
+    margin-bottom: 8px;
+  }
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    & input {
+      width: 100%;
+      height: 50px;
+      border-radius: 20px;
+      border: 2px solid #6732ff;
+      padding-left: 12px;
+      :focus {
+        outline: none;
+      }
+      font-weight: 700;
+      font-size: 18px;
+    }
+  }
+`;
+
+export const KeywordItem = styled.span`
+  display:inline-block;
+  padding: 8px 14px;
+  font-weight:500;
+  font-size:18px;
+  border-radius:20px;
+  border:2px solid var(--primary-purple);
+  color:var(--primary-purple);
+  &.active {
+    background-color:var(--primary-purple);
+    color: white;
+  }
+`
+
+export const Container = styled.div`
+  display:flex;
+  gap: 10px;
+  justify-content:center;
+  margin-top:12px;
+`

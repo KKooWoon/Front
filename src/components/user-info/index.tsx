@@ -12,7 +12,7 @@ import onBoadingSlice from 'reducer/onboading';
 const UserInfo = () => {
   const userInfo = USERINFO;
   const navigator = useNavigate();
-  const [nowStep, setNowStep] = useState(0);
+  const [nowStep, setNowStep] = useState(3);
 
   const dispatch = useAppDispatch();
   const isActive = useAppSelector(state => state.onboading.isActive);
@@ -41,7 +41,7 @@ const UserInfo = () => {
     <LayoutWrapper>
       <pre>{userInfo[nowStep].title}</pre>
       {userInfo[nowStep].subtitle && <pre>{userInfo[nowStep].subtitle}</pre>}
-      <ContentsWrapper>
+      <ContentsWrapper className={nowStep ===3 ? 'wide':''}>
         <Contents nowStep={nowStep} />
       </ContentsWrapper>
       <ButtonSection>
