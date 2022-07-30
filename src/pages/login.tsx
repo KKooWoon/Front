@@ -10,7 +10,7 @@ const LoginPage = () => {
   useEffect(()=>{
     setTimeout(()=>{
       setIsSplash(false);
-    },1800);
+    },2000);
   },[])
   if(isSplash) return <Splash />
   return (
