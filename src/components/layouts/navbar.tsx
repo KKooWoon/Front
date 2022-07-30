@@ -3,7 +3,7 @@ import { LayoutNavbar, NavBarItem } from './layout.style';
 import {ReactComponent as HomeIcon} from '@assets/icons/home.svg';
 import {ReactComponent as ProfileIcon} from '@assets/icons/profile.svg';
 import {ReactComponent as RaceIcon} from '@assets/icons/race.svg';
-import {ReactComponent as UploadIcon} from '@assets/icons/upload.svg';
+import { ReactComponent as CalendarIcon } from '@assets/icons/calendar.svg';
 import { Link } from 'react-router-dom';
 const NavBar = () =>{
 
@@ -14,9 +14,9 @@ const NavBar = () =>{
       text: "홈화면"
     },
     {
-      path:"/upload",
-      icon: <UploadIcon />,
-      text: "등록"
+      path:"/calendar",
+      icon: <CalendarIcon />,
+      text: "캘린더"
     },
     {
       path:"/race",
