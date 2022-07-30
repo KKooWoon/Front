@@ -10,6 +10,8 @@ const useLayout = (): pageLayout => {
     return layout;
   } else if (pathname === '/profile') {
     return { ...layout, header: true, noNav: true, hasBack:true};
+  } else if (pathname ==='/user-info'){
+    return {...layout, noNav:true}
   }
   return layout;
 };

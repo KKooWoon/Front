@@ -24,8 +24,8 @@ export const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
-    --primary-purple:#6732ff;
-    --primary-mint: #62fee2;
+    --primary-purple:#6732ff; /* main1 */
+    --primary-mint: #62fee2; /* main2 */
     --purple-sub01:#f1edff;
     --purple-sub02:#ac8eff;
     --gray-01:#f3f2f4;
@@ -35,7 +35,10 @@ export const GlobalStyle = createGlobalStyle`
     --gray-00:#f9f9f9;
     --black:#101010;
     --error:#ff0000;
-    --bg:#e4e4e4;
+    --bg:#f9f9f9;
+    --bg-linear01: linear-gradient(132.6deg, #E2DCFA 37.18%, #F0EDFA 73.49%, #F2EFFA 98.19%);
+    --bg-linear02:linear-gradient(180deg, rgba(103, 50, 255, 0.12) 0%, rgba(235, 235, 235, 0) 190.21%);
+    --bg-linear03:linear-gradient(180deg, rgba(227, 227, 255, 0.6) 0%, rgba(227, 227, 255, 0) 112.34%);
   }
 
   a {
@@ -58,12 +61,22 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
+    font-family:'SpoqaHanSansNeo';
+  }
+
+  pre{
+    margin:0;
+    font-family:'SpoqaHanSansNeo';
   }
 
   ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  }
+
+  hr {
+    border: 0.5px solid #D4D2D9;
   }
   @font-face {
     font-family: 'SpoqaHanSansNeo';
