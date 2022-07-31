@@ -20,4 +20,5 @@ export type OnBoading ={
   };
   interest:Array<string>;
   isActive:boolean;
+  inputFocus:boolean;
 }

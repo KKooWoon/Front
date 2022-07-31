@@ -1,9 +1,18 @@
 import LoginSection from '@components/logIn-section';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import character from '@assets/images/character.png';
 import styled from 'styled-components';
+import Splash from '@components/splash';
 
 const LoginPage = () => {
+  const [isSplash , setIsSplash] = useState(true);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setIsSplash(false);
+    },2000);
+  },[])
+  if(isSplash) return <Splash />
   return (
     <Wrapper>
       <ImageSection>

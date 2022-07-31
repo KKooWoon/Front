@@ -16,6 +16,7 @@ const UserInfo = () => {
 
   const dispatch = useAppDispatch();
   const isActive = useAppSelector(state => state.onboading.isActive);
+  const inputFocus = useAppSelector(state => state.onboading.inputFocus);
 
   const NextStepHandler = useCallback(() => {
     setNowStep(prev => prev + 1);
@@ -41,15 +42,17 @@ const UserInfo = () => {
     <LayoutWrapper>
       <pre>{userInfo[nowStep].title}</pre>
       {userInfo[nowStep].subtitle && <pre>{userInfo[nowStep].subtitle}</pre>}
-      <ContentsWrapper className={nowStep ===3 ? 'wide':''}>
+      <ContentsWrapper className={nowStep === 3 ? 'wide' : ''}>
         <Contents nowStep={nowStep} />
       </ContentsWrapper>
-      <ButtonSection>
-        <Navigator nowStep={nowStep} />
-        <NextButton onClick={NextStepHandler} disabled={!isActive}>
-          다음으로
-        </NextButton>
-      </ButtonSection>
+      {!inputFocus && (
+        <ButtonSection>
+          <Navigator nowStep={nowStep} />
+          <NextButton onClick={NextStepHandler} disabled={!isActive}>
+            다음으로
+          </NextButton>
+        </ButtonSection>
+      )}
     </LayoutWrapper>
   );
 };

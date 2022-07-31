@@ -12,6 +12,7 @@ const initialState: OnBoading = {
   },
   interest: [],
   isActive: false,
+  inputFocus: false,
 };
 
 const onBoadingSlice = createSlice({
@@ -51,6 +52,9 @@ const onBoadingSlice = createSlice({
     setMuscle(state, action) {
       state.body_spec.muscle = action.payload;
     },
+    setFocus(state,action){
+      state.inputFocus = action.payload;
+    }
   },
 });
 

@@ -32,7 +32,7 @@ export const NextButton = styled.button`
 export const ButtonSection = styled.div`
   width: 100%;
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
 `;

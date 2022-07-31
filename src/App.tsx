@@ -8,7 +8,7 @@ import 'swiper/css';
 import "swiper/css/navigation";
 
 const Main = React.lazy(() => import('@pages/main'));
-const Upload = React.lazy(() => import('@pages/upload'));
+const Calendar = React.lazy(() => import('@pages/calendar'));
 const Race = React.lazy(() => import('@pages/race'));
 const Profile = React.lazy(() => import('@pages/profile'));
 const ProfileDetail = React.lazy(()=> import('@pages/detail'));
@@ -21,7 +21,7 @@ const App = () => {
         <Route index element={<LoginPage />}/>
         <Route path='user-info' element={<UserInfo/>}/>
         <Route path='main' element={<Main/>} />
-        <Route path='upload' element={<Upload />} />
+        <Route path='calendar' element={<Calendar />} />
         <Route path='race' element={<Race />} />
         <Route path='profile' element={<Profile />}/>
         <Route path='profile/:id' element={<ProfileDetail />} />

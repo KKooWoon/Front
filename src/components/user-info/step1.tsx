@@ -5,11 +5,11 @@ import { InputWrapper, NicknameInput } from './user-info.style';
 
 const Step1 = () => {
   const isActive = useAppSelector(state => state.onboading.isActive);
-  const nickname = useAppSelector(state=> state.onboading.nickname);
+  const nickname = useAppSelector(state => state.onboading.nickname);
   const dispatch = useAppDispatch();
 
   const onChangeNickname = useCallback(
-    (e:ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       dispatch(onBoadingSlice.actions.setNickname(e.target.value));
     },
     [nickname]
@@ -23,7 +23,13 @@ const Step1 = () => {
   }, [nickname]);
   return (
     <InputWrapper>
-      <NicknameInput value={nickname} onChange={onChangeNickname} maxLength={25} />
+      <NicknameInput
+        onFocus={() => dispatch(onBoadingSlice.actions.setFocus(true))}
+        onBlur={() => dispatch(onBoadingSlice.actions.setFocus(false))}
+        value={nickname}
+        onChange={onChangeNickname}
+        maxLength={25}
+      />
       <span>{nickname.length} / 25</span>
     </InputWrapper>
   );
