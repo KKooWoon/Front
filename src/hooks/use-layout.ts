@@ -5,13 +5,15 @@ const useLayout = (): pageLayout => {
   const { pathname } = useLocation();
   const layout: pageLayout = { header: false, noNav: false, hasBack: false };
   if (pathname === '/') {
-    return {...layout, noNav:true};
+    return { ...layout, noNav: true };
   } else if (pathname === '/main') {
     return layout;
   } else if (pathname === '/profile') {
-    return { ...layout, header: true, noNav: true, hasBack:true};
-  } else if (pathname ==='/user-info'){
-    return {...layout, noNav:true}
+    return { ...layout, header: true, noNav: true, hasBack: true };
+  } else if (pathname === '/user-info') {
+    return { ...layout, noNav: true };
+  } else if (pathname === '/register') {
+    return { ...layout, noNav: true };
   }
   return layout;
 };
