@@ -1,32 +1,13 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #f9f9f9;
-  padding-top: 46px;
-  z-index: 0;
-  overflow-y: scroll hidden;
-  font-family: 'SpoqaHanSansNeo';
-  & span {
-    font-weight: 500;
-    font-size: 16px;
-    color: #101010;
-    margin-left: 20px;
-  }
-`;
-
 export const RegisterWrapper = styled.div`
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  position: relative;
   width: 100%;
   height: 100%;
   background: #ffffff;
   margin-top: 28px;
   padding: 18px 20px;
-  z-index: 0;
 
   & title {
     font-weight: 700;
@@ -52,9 +33,11 @@ export const RegisterWrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
+  align-items: center;
   margin-top: 18px;
   margin-bottom: 18px;
   & button {
+    margin: 0px;
     width: 16px;
     height: 16px;
     background: #ffffff;
@@ -62,11 +45,12 @@ export const ButtonWrapper = styled.div`
     border-radius: 4px;
   }
   & span {
+    margin-left: 6px;
+    margin-right: 18px;
+    font-family: 'SpoqaHanSansNeo'
     font-weight: 400;
     font-size: 16px;
     color: #101010;
-    margin-left: 6px;
-    margin-right: 18px;
   }
 `;
 
