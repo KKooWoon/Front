@@ -18,7 +18,7 @@ export type OnBoading ={
     fat?:number | string;
     muscle?:number | string;
   };
-  interest:Array<string>;
+  interest:string;
   isActive:boolean;
   inputFocus:boolean;
 }

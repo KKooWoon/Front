@@ -15,6 +15,7 @@ export const NoResult = styled.div`
 `;
 
 export const ItemWrapper = styled.div`
+  position:relative;
   width: 138px;
   height: 103px;
   background-color: #ffffff;

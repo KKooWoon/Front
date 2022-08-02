@@ -10,7 +10,7 @@ const initialState: OnBoading = {
     fat: '',
     muscle: '',
   },
-  interest: [],
+  interest: '',
   isActive: false,
   inputFocus: false,
 };
@@ -29,16 +29,17 @@ const onBoadingSlice = createSlice({
       state.age = action.payload;
     },
     setInterest(state, action) {
-      if (state.interest.includes(action.payload)) {
-        state.interest = state.interest.filter(v => v !== action.payload);
-      } else {
-        if (state.interest.length >= 3) {
-          state.interest.shift();
-          state.interest = state.interest.concat(action.payload);
-        } else {
-          state.interest = state.interest.concat(action.payload);
-        }
-      }
+      state.interest = action.payload;
+      // if (state.interest.includes(action.payload)) {
+      //   state.interest = state.interest.filter(v => v !== action.payload);
+      // } else {
+      //   if (state.interest.length >= 3) {
+      //     state.interest.shift();
+      //     state.interest = state.interest.concat(action.payload);
+      //   } else {
+      //     state.interest = state.interest.concat(action.payload);
+      //   }
+      // }
     },
     setHeight(state, action) {
       state.body_spec.height = action.payload;

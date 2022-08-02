@@ -9,7 +9,7 @@ const useLayout = (): pageLayout => {
   } else if (pathname === '/main') {
     return layout;
   } else if (pathname === '/profile') {
-    return { ...layout, header: true, noNav: true, hasBack: true };
+    return { ...layout, header: {title:"마이페이지"}, noNav: true, hasBack: true };
   } else if (pathname === '/user-info') {
     return { ...layout, noNav: true };
   } else if (pathname === '/register') {
