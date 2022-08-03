@@ -10,7 +10,7 @@ export const LayoutHeader = styled.header`
   max-width: 480px;
   top: 0;
   width: 100%;
-  height: 60px;
+  height: 67px;
   border-bottom: 1px solid var(--gray-02);
   display: flex;
   justify-content: center;
@@ -57,7 +57,7 @@ export const BackButtonWrapper = styled.div`
   width: 16px;
   height: 7px;
   position: fixed;
-  top: 20px;
+  top: 22px;
   left: 16px;
   z-index: 1001;
   cursor: pointer;
