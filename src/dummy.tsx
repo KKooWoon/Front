@@ -79,7 +79,7 @@ export const MyInfo :User = {
   follower_list:[{id:2}, {id:3}, {id:4}],
   following_list:[{id:6}, {id:7}, {id:8}],
   interest:'다이어트',
-  status_message:'오늘부터 식단 시작',
+  status_message:'오늘부터 식단 시작 가나다라마바사아자차카타파하 가나다라마바사알아자',
   exp:50,
   profile_img:null,
 }
