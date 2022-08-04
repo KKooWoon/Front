@@ -14,6 +14,8 @@ const useLayout = (): pageLayout => {
     return { ...layout, noNav: true };
   } else if (pathname === '/register') {
     return { ...layout, noNav: true };
+  } else if (pathname === '/exercise-detail') {
+    return { ...layout, header: true, noNav: true, hasBack: true };
   }
   return layout;
 };

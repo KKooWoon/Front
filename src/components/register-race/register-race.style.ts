@@ -23,14 +23,12 @@ export const ItemWrapper = styled.div`
   font-family: 'SpoqaHanSansNeo';
   color: #6732ff;
   & h1 {
-    position: absolute;
-    padding-top: 39px;
+    padding-top: 13px;
     padding-left: 12px;
     font-weight: 700;
     font-size: 18px;
   }
   & p {
-    position: absolute;
     padding-top: 8px;
     padding-left: 91px;
     font-weight: 500;
@@ -39,13 +37,13 @@ export const ItemWrapper = styled.div`
 `;
 
 export const HashTag = styled.div`
-  position: absolute;
+  width: 80px;
   background-color: #6732ff;
   color: #ffffff;
   font-weight: 500;
   font-size: 14px;
   margin-left: 11px;
-  margin-top: 68px;
+  margin-top: 6px;
   border-radius: 43px;
   padding: 2px 8px;
 `;
