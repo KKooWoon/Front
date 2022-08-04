@@ -5,8 +5,14 @@ export type User= {
   weight:number;
   height:number;
   exp:number;
-  bodyfat_pct:number;
-  skeletal_muscle_mass:number;
+  bodyfat_pct?:number;
+  skeletal_muscle_mass?:number;
+  interest:string;
+  status_message?:string;
+  level:number;
+  follower_list:Array<{id: number}>;
+  following_list:Array<{id: number}>;
+  profile_img:string|null;
 }
 
 export type OnBoading ={
@@ -18,7 +24,7 @@ export type OnBoading ={
     fat?:number | string;
     muscle?:number | string;
   };
-  interest:Array<string>;
+  interest:string;
   isActive:boolean;
   inputFocus:boolean;
 }
