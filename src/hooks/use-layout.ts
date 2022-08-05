@@ -19,6 +19,8 @@ const useLayout = (): pageLayout => {
     return { ...layout, noNav: true };
   } else if (pathname === '/register') {
     return { ...layout, noNav: true };
+  } else if (pathname === '/exercise-detail') {
+    return { ...layout, header: true, noNav: true, hasBack: true };
   }else if (pathname === '/search'){
     return {...layout, noNav:true , header:{title: "친구 찾기"}, hasBack:true}
   }
