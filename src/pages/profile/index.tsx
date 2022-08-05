@@ -43,7 +43,7 @@ const ProfilePage = () => {
       <SlideSection>
         <h2>최근 운동 기록</h2>
         <h2>참영 중인 챌린지</h2>
-        <RaceList />
+        <RaceList data={RaceData} height={115} />
       </SlideSection>
     </PageWrapper>
   );

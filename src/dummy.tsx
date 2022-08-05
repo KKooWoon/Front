@@ -2,56 +2,56 @@ import { raceType } from '@typings/race';
 import { User } from '@typings/user';
 import WorkoutSample from '@assets/images/workout-sample.png';
 
-export const userDummy = [
-  {
-    id: 0,
-    nickname: '나',
-    imageUrl: null,
-  },
+export const userDummy:Array<Partial<User>> = [
   {
     id: 1,
-    nickname: 'user1',
-    imageUrl: null,
+    nick_name: '나',
+    profile_img: null,
   },
   {
     id: 2,
-    nickname: 'user2',
-    imageUrl: null,
+    nick_name: 'user1',
+    profile_img: null,
   },
   {
     id: 3,
-    nickname: 'user3',
-    imageUrl: null,
+    nick_name: 'user2',
+    profile_img: null,
   },
   {
     id: 4,
-    nickname: 'user4',
-    imageUrl: null,
+    nick_name: 'user3',
+    profile_img: null,
   },
   {
     id: 5,
-    nickname: 'user5',
-    imageUrl: null,
+    nick_name: 'user4',
+    profile_img: null,
   },
   {
     id: 6,
-    nickname: 'user6',
-    imageUrl: null,
+    nick_name: 'user5',
+    profile_img: null,
   },
   {
     id: 7,
-    nickname: 'user7',
-    imageUrl: null,
+    nick_name: 'user6',
+    profile_img: null,
   },
   {
     id: 8,
-    nickname: 'user8',
-    imageUrl: null,
+    nick_name: 'user7',
+    profile_img: null,
   },
   {
     id: 9,
-    nickname: 'user9',
-    imageUrl: null,
+    nick_name: 'user8',
+    profile_img: null,
+  },
+  {
+    id: 10, 
+    nick_name: 'user9',
+    profile_img: null,
   },
 ];
 

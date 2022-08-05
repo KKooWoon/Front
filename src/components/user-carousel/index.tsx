@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { SwiperWrapper, Wrapper } from './carousel.style';
-import { userDummy } from 'dummy';
 import CarouselItem from './carousel-item';
 import { ReactComponent as RightArrow } from '@assets/icons/right-arrow.svg';
 import { ReactComponent as LeftArrow } from '@assets/icons/left-arrow.svg';
-const UserCarousel = () => {
-  const userData = userDummy;
+import { User } from '@typings/user';
+interface Props {
+  data:Array<Partial<User>>;
+  now?:number;
+  setNow?:Dispatch<SetStateAction<number>>;
+}
+const UserCarousel = ({data, now ,setNow}:Props) => {
   const [swiper, setSwiper] = useState<any>();
   const [reachingEnd, setReachingEnd] = useState<boolean>(false);
   const [reachingFirst, setReachingFirst] = useState<boolean>(true);
@@ -27,9 +31,9 @@ const UserCarousel = () => {
             e.isBeginning ? setReachingFirst(true) : setReachingFirst(false);
           }}
         >
-          {userData.map(v => (
-            <SwiperSlide key={v.id}>
-              <CarouselItem nickname={v.nickname} url={v.imageUrl} />
+          {data.map(v => (
+            <SwiperSlide key={v.id} onClick={()=>setNow && setNow(v.id as number)}>
+              <CarouselItem nickname={v.nick_name as string} url={v.profile_img as string | null} isActive={now === v.id as number} />
             </SwiperSlide>
           ))}
         </Swiper>
