@@ -15,6 +15,7 @@ const ProfileDetail = React.lazy(() => import('@pages/detail'));
 const UserInfo = React.lazy(() => import('@pages/user-info'));
 const Register = React.lazy(() => import('@pages/register'));
 const ExerciseDetail = React.lazy(() => import('@pages/exercise-detail'));
+const Search = React.lazy(()=> import ('@pages/search'));
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='profile/:id' element={<ProfileDetail />} />
         <Route path='register' element={<Register />} />
         <Route path='exercise-detail' element={<ExerciseDetail />} />
+        <Route path='search' element={<Search />}/>
       </Route>
     </Routes>
   );

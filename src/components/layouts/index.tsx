@@ -15,7 +15,7 @@ interface Props {
 const AppLayout = ({ children, header, noNav, hasBack }: Props) => {
   return (
     <LayoutWrapper>
-      {header && <Header />}
+      {header && <Header title={header.title} />}
       {hasBack && <BackButton />}
       <main style={{ height: '100%', paddingTop: header && '67px', paddingBottom: !noNav ? '67px' : '0' }}>{children}</main>
       {!noNav && <NavBar />}
