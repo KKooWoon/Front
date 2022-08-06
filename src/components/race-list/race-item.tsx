@@ -1,6 +1,6 @@
 import { raceType } from '@typings/race';
 import React, { useState } from 'react';
-import { ItemWrapper, ProfileWrapper, RegisterWrapper } from './race-list.style';
+import { ItemWrapper, ProfileWrapper, DetailWrapper } from './race-list.style';
 
 const RaceItem = ({
   item,
@@ -9,24 +9,24 @@ const RaceItem = ({
 }: {
   item: raceType;
   isActive?: boolean;
-  styleType: 'main' | 'register' | 'profile';
+  styleType: 'main' | 'detail' | 'profile';
 }) => {
-  if (styleType === 'register') {
+  if (styleType === 'detail') {
     return (
-      <RegisterWrapper active={isActive}>
+      <DetailWrapper active={isActive}>
         <p>D-{item.Dday}</p>
         <h3>{item.raceName}</h3>
         <div>#{item.hashTag}</div>
-      </RegisterWrapper>
+      </DetailWrapper>
     );
-  }else if(styleType === 'profile'){
+  } else if (styleType === 'profile') {
     return (
       <ProfileWrapper>
         <p>D-{item.Dday}</p>
         <h3>{item.raceName}</h3>
         <div>#{item.hashTag}</div>
       </ProfileWrapper>
-    )
+    );
   }
 
   return (

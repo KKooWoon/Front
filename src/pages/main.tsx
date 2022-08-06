@@ -28,9 +28,9 @@ const MainPage = () => {
       {/*RaceList에서도 Selected Item 필요, 레이스 클릭 시 WorkOutList 바꿔서 보여 줌 */}
       <UserInfoWrapper>
         <div>now Slected Carousel Id: {carouselSelected}</div>
-        <RaceList data={RaceData} height={115} styleType='profile'/>
-        <RaceList data={RaceData} height={115} now={raceSelected} setNow={setRaceSelected} styleType='main'/>
-        <RaceList data={RaceData} height={115} now={raceSelected} setNow={setRaceSelected} styleType='register'/>
+        <RaceList data={RaceData} height={115} styleType='profile' />
+        <RaceList data={RaceData} height={115} now={raceSelected} setNow={setRaceSelected} styleType='main' />
+        <RaceList data={RaceData} height={115} now={raceSelected} setNow={setRaceSelected} styleType='detail' />
         <CustomButton>
           {RaceData.length === 0 ? <span>레이스 참여 하러가기</span> : <span>이 레이스에 운동 인증하기</span>}
         </CustomButton>
