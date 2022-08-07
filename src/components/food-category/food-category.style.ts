@@ -2,14 +2,37 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
+  margin-top: 50px;
+  & h1 {
+    font-family: 'SpoqaHanSansNeo';
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #101010;
+  }
+`;
+
+export const FoodInput = styled.input`
+  font-family: 'SpoqaHanSansNeo';
+  font-weight: 400;
+  font-size: 16px;
+  outline: none;
+  display: flex;
+  color: #101010;
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 50px;
+  border: none;
+  border-bottom: 2px solid #6732ff;
+  padding-bottom: 14px;
 `;
 
 export const SelectWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 50px;
-  & p {
-    margin-right: 32px;
+  margin-top: 18px;
+  & h1 {
     font-family: 'SpoqaHanSansNeo';
     font-weight: 400;
     font-size: 16px;
@@ -17,17 +40,16 @@ export const SelectWrapper = styled.div`
     align-items: center;
     color: #101010;
   }
-  & select {
+  & input {
+    margin-left: 19px;
+    padding-left: 17px;
     font-family: 'SpoqaHanSansNeo';
     font-weight: 400;
     font-size: 16px;
-    text-align-last: center;
-    color: #d4d2d9;
-    width: 250px;
+    width: 286px;
     height: 50px;
-    border: 1px solid #d4d2d9;
+    border: 2px solid #6732ff;
     border-radius: 20px;
-    background-color: #ffffff;
   }
 `;
 
@@ -35,26 +57,27 @@ export const SetInputWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 22px;
-  & h3 {
-    margin-right: 23px;
+  & h1 {
     font-family: 'SpoqaHanSansNeo';
     font-weight: 500;
     font-size: 16px;
+    display: flex;
+    align-items: center;
     color: #101010;
   }
   & input {
-    margin-right: 8px;
+    margin: 0px 8px 0px 12px;
     font-family: 'SpoqaHanSansNeo';
     font-weight: 400;
     font-size: 16px;
-    width: 98px;
+    width: 88px;
     height: 50px;
     border: 1px solid #d4d2d9;
     border-radius: 20px;
     text-align: center;
   }
   & p {
-    margin-right: 27px;
+    margin-right: 18px;
     font-family: 'SpoqaHanSansNeo';
     font-weight: 500;
     font-size: 16px;
@@ -80,7 +103,6 @@ export const ButtonWrapper = styled.div`
     color: #6732ff;
     text-align: center;
   }
-
   button + button {
     margin-left: 19px;
   }

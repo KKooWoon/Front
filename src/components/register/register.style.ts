@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
+  border-radius: 20px 20px 0px 0px;
   width: 100%;
-  height: 100%;
+  height: 90%;
   background: #ffffff;
   margin-top: 28px;
   padding: 21px 20px;
@@ -38,5 +38,8 @@ export const ButtonWrapper = styled.div`
     background-color: #ffffff;
     border: 2px solid #6732ff;
     border-radius: 4px;
+    :focus {
+      background-color: #6732ff;
+    }
   }
 `;

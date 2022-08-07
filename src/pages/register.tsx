@@ -7,6 +7,7 @@ const RegisterPage = () => {
     <Wrapper>
       <span>챌린지에서 진행할 운동을 등록해보세요.</span>
       <Register />
+      <RegisterBtn>등록하기</RegisterBtn>
     </Wrapper>
   );
 };
@@ -24,6 +25,18 @@ const Wrapper = styled.div`
     color: #101010;
     margin-left: 20px;
   }
+`;
+
+export const RegisterBtn = styled.button`
+  width: 100%;
+  height: 93px;
+  background-color: #d4d2d9;
+  font-family: 'SpoqaHanSansNeo';
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+  padding-top: 19px;
+  padding-bottom: 51px;
 `;
 
 export default RegisterPage;

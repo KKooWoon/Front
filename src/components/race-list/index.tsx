@@ -9,19 +9,18 @@ interface Props {
   height: number;
   now?: number;
   setNow?: Dispatch<SetStateAction<number>>;
-  styleType?: 'main' | 'register' | 'profile'; 
-  itemWidth?:number;
+  styleType?: 'main' | 'detail' | 'profile';
+  itemWidth?: number;
 }
 
-const RaceList = ({ data, height, now, setNow, styleType='main' }: Props) => {
-  
+const RaceList = ({ data, height, now, setNow, styleType = 'main' }: Props) => {
   return (
     <Wrapper>
       {data.length !== 0 ? (
         <ImageSlider SliderHeight={height}>
           {data.map((v, i) => (
-            <div key={i} onClick={()=>setNow && setNow(v.raceId)}>
-              <RaceItem  item={v} isActive={now === v.raceId} styleType={styleType} />
+            <div key={i} onClick={() => setNow && setNow(v.raceId)}>
+              <RaceItem item={v} isActive={now === v.raceId} styleType={styleType} />
             </div>
           ))}
         </ImageSlider>

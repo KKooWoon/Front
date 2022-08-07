@@ -8,10 +8,9 @@ export const SelectWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 50px;
-  & p {
-    margin-right: 32px;
+  & h1 {
     font-family: 'SpoqaHanSansNeo';
-    font-weight: 400;
+    font-weight: 500;
     font-size: 16px;
     display: flex;
     align-items: center;
@@ -23,6 +22,7 @@ export const SelectWrapper = styled.div`
     font-size: 16px;
     text-align-last: center;
     color: #d4d2d9;
+    margin-left: 32px;
     width: 250px;
     height: 50px;
     border: 1px solid #d4d2d9;
@@ -35,15 +35,18 @@ export const SetInputWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 22px;
-  & h3 {
-    margin-right: 23px;
+  margin-bottom: 50px;
+  & h1 {
+    margin-right: 16px;
     font-family: 'SpoqaHanSansNeo';
     font-weight: 500;
     font-size: 16px;
+    display: flex;
+    align-items: center;
     color: #101010;
   }
   & input {
-    margin-right: 8px;
+    margin-left: 16px;
     font-family: 'SpoqaHanSansNeo';
     font-weight: 400;
     font-size: 16px;
@@ -54,34 +57,12 @@ export const SetInputWrapper = styled.div`
     text-align: center;
   }
   & p {
-    margin-right: 27px;
+    margin-left: 8px;
     font-family: 'SpoqaHanSansNeo';
     font-weight: 500;
     font-size: 16px;
     display: flex;
     align-items: center;
     color: #101010;
-  }
-`;
-
-export const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 18px;
-  margin-bottom: 50px;
-  & button {
-    background: #f1edff;
-    border-radius: 20px;
-    width: 50%;
-    height: 54px;
-    font-family: 'SpoqaHanSansNeo';
-    font-weight: 500;
-    font-size: 16px;
-    color: #6732ff;
-    text-align: center;
-  }
-
-  button + button {
-    margin-left: 19px;
   }
 `;

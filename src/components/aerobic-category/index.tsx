@@ -1,11 +1,11 @@
 import React from 'react';
-import { ButtonWrapper, SelectWrapper, SetInputWrapper, Wrapper } from './weight-category.style';
+import { SelectWrapper, SetInputWrapper, Wrapper } from './aerobic-category.style';
 
 const Weight = () => {
   return (
     <Wrapper>
       <SelectWrapper>
-        <p>종류</p>
+        <h1>종류</h1>
         <select required>
           <option value='' disabled selected hidden>
             선택
@@ -17,16 +17,12 @@ const Weight = () => {
         </select>
       </SelectWrapper>
       <SetInputWrapper>
-        <h3>1세트</h3>
-        <input placeholder='중량' />
-        <p>kg</p>
-        <input placeholder='개수' />
-        <p>개</p>
+        <h1>시간</h1>
+        <input />
+        <p>시간</p>
+        <input />
+        <p>분</p>
       </SetInputWrapper>
-      <ButtonWrapper>
-        <button>삭제하기</button>
-        <button>복제하기</button>
-      </ButtonWrapper>
     </Wrapper>
   );
 };

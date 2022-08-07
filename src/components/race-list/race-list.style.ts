@@ -51,34 +51,34 @@ export const CustomButton = styled.button`
   padding: 18px 0px;
   font-weight: 500;
   font-size: 16px;
-  margin-top:16px;
+  margin-top: 16px;
 `;
 
-
-export const RegisterWrapper = styled.div<{ active?: boolean }>`
+export const DetailWrapper = styled.div<{ active?: boolean }>`
+  margin-top: 18px;
   display: inline-block;
   padding: 8px 12px 12px 12px;
   width: 138px;
   background-color: #fff;
-  border: 2px solid ${props=> props.active ? 'var(--primary-purple)': 'var(--gray-02)'};
+  border: 2px solid ${props => (props.active ? 'var(--primary-purple)' : 'var(--gray-02)')};
   border-radius: 20px;
   & p {
     font-size: 12px;
     font-weight: 500;
-    color: ${props => props.active ? 'var(--primary-purple)': 'var(--gray-02)'};
+    color: ${props => (props.active ? 'var(--primary-purple)' : 'var(--gray-02)')};
     text-align: right;
     padding-bottom: 13px;
   }
   & h3 {
     font-weight: 700;
     font-size: 18px;
-    color: ${props => props.active ? 'var(--primary-purple)': 'var(--gray-02)'};
+    color: ${props => (props.active ? 'var(--primary-purple)' : 'var(--gray-02)')};
     padding-bottom: 6px;
   }
   & div {
     display: inline-block;
     padding: 4px 8px;
-    background-color: ${props => props.active ? 'var(--primary-purple)': 'var(--gray-02)'};
+    background-color: ${props => (props.active ? 'var(--primary-purple)' : 'var(--gray-02)')};
     border-radius: 43px;
     color: #fff;
     font-size: 14px;
@@ -90,12 +90,12 @@ export const ProfileWrapper = styled.div`
   display: inline-block;
   padding: 8px 12px 12px 12px;
   width: 178px;
-  background-color:var(--purple-sub01);
+  background-color: var(--purple-sub01);
   border-radius: 20px;
   & p {
     font-size: 16px;
     font-weight: 500;
-    color: #AC8EFF;
+    color: #ac8eff;
     text-align: right;
     padding-bottom: 13px;
   }
@@ -108,7 +108,7 @@ export const ProfileWrapper = styled.div`
   & div {
     display: inline-block;
     padding: 4px 8px;
-    background-color: #AC8EFF;
+    background-color: #ac8eff;
     border-radius: 43px;
     color: white;
     font-size: 14px;
