@@ -1,6 +1,7 @@
 import { raceType } from '@typings/race';
 import { User } from '@typings/user';
 import WorkoutSample from '@assets/images/workout-sample.png';
+import { WorkOut } from '@typings/workout';
 
 export const userDummy:Array<Partial<User>> = [
   {
@@ -62,11 +63,11 @@ export const RaceListDummy:Array<raceType> = [
   { raceId: 4, raceName: '레이스D', Dday: 134, hashTag: '다이어트' },
   { raceId: 5, raceName: '레이스E', Dday: 134, hashTag: '다이어트' },
 ];
-export const WorkOutListDummy = [
-  {workOutId: 1, message: "운동 완료", createdAt:'2022.07.10',img_Url:WorkoutSample},
-  {workOutId: 1, message: "운동 완료", createdAt:'2022.07.10',img_Url:WorkoutSample},
-  {workOutId: 1, message: "운동 완료", createdAt:'2022.07.10',img_Url:WorkoutSample},
-  {workOutId: 1, message: "운동 완료", createdAt:'2022.07.10',img_Url:WorkoutSample},
+export const WorkOutListDummy: Array<WorkOut> = [
+  {workOutId: 1, message: "운동 완료 동해물과 백두산이 마르고 닳도록", nick_name:'사용자1',img_Url:WorkoutSample},
+  {workOutId: 1, message: "운동 완료 동해물과 백두산이 마르고 닳도록", nick_name:'사용자2',img_Url:WorkoutSample},
+  {workOutId: 1, message: "운동 완료 동해물과 백두산이 마르고 닳도록", nick_name:'사용자3',img_Url:WorkoutSample},
+  {workOutId: 1, message: "운동 완료 동해물과 백두산이 마르고 닳도록", nick_name:'사용자4',img_Url:WorkoutSample},
 ]
 
 export const MyInfo :User = {

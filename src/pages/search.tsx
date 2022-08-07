@@ -1,8 +1,11 @@
+import SearchBar from '@components/search-bar';
 import React from 'react';
 
 const SearchPage = () => {
   return (
-    <div>유저 서치 페이지</div>
+    <div style={{padding:"30px 20px"}}>
+      <SearchBar />
+    </div>
   )
 }
 
