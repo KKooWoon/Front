@@ -7,3 +7,7 @@ export type pageLayout = {
   noNav?:boolean,
   hasBack?:boolean,
 }
+
+export type tabLayout = {
+  item: string;
+}

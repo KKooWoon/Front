@@ -25,7 +25,7 @@ const ProfilePage = () => {
           message={UserData.status_message}
           tag={UserData.interest}
         />
-        <GridWrapper>
+        <GridWrapper onClick={()=> navigate('/follow')}>
           <h3>캐릭터</h3>
           <h3>팔로워</h3>
           <h3>팔로잉</h3>

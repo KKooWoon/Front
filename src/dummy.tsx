@@ -3,6 +3,7 @@ import { User } from '@typings/user';
 import WorkoutSample from '@assets/images/workout-sample.png';
 import { WorkOut } from '@typings/workout';
 import { resultType } from '@typings/search';
+import { follow } from '@typings/follow';
 
 export const userDummy:Array<Partial<User>> = [
   {
@@ -103,4 +104,25 @@ export const userSearch:Array<resultType>=[
     nickName:'사용자3',
     isFollow:false,
   }
+];
+
+export const FollowerList:Array<follow> = [
+  {
+    id:1,
+    description:'오늘은 어깨 운동 하는 날 동해물과 백두산이 마르고 닳도록',
+    profileImageUrl:null,
+    nickName:'user1'
+  },
+  {
+    id:3,
+    description:'오늘은 어깨 운동 하는 날 동해물과 백두산이 마르고 닳도록',
+    profileImageUrl:null,
+    nickName:'user2'
+  },
+  {
+    id:2,
+    description:'오늘은 어깨 운동 하는 날 동해물과 백두산이 마르고 닳도록',
+    profileImageUrl:null,
+    nickName:'user3'
+  },
 ]

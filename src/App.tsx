@@ -16,6 +16,7 @@ const UserInfo = React.lazy(() => import('@pages/user-info'));
 const Register = React.lazy(() => import('@pages/register'));
 const ExerciseDetail = React.lazy(() => import('@pages/exercise-detail'));
 const Search = React.lazy(()=> import ('@pages/search'));
+const FollowList = React.lazy(()=> import('@pages/follow'));
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='register' element={<Register />} />
         <Route path='exercise-detail' element={<ExerciseDetail />} />
         <Route path='search' element={<Search />}/>
+        <Route path='follow' element={<FollowList />} />
       </Route>
     </Routes>
   );

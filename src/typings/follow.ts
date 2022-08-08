@@ -1,7 +1,6 @@
 export type follow = {
   id: number;
-  sourceNickname: string;
-  targetNickname: string;
-  profileImageUrl: string;
+  nickName:string;
+  profileImageUrl: string | null;
   description: string;
 };

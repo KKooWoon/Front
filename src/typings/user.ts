@@ -28,3 +28,9 @@ export type OnBoading ={
   isActive:boolean;
   inputFocus:boolean;
 }
+
+export type raceUser = {
+  profileImageUrl:string |null;
+  nickName:string;
+  description:string|null;
+}
