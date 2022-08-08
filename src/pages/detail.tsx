@@ -1,4 +1,4 @@
-import FollowButton from '@components/follow-button/inex';
+import FollowButton from '@components/follow-button';
 import { BodySpec, MyProfile } from '@components/profile';
 import RaceList from '@components/race-list';
 import PreviewWorkOut from '@components/workout-list/workout-preview';
@@ -12,7 +12,7 @@ const ProfileDetail = () => {
   const RaceData = RaceListDummy;
   const WorkOutData = WorkOutListDummy;
 
-  /* 팔로우 상태를 어떻게 알아낼지 논의 해봐야함 */
+  /* UserData에 isFollow 속성 들어 있도록 수정 해야함*/
   const [isFollow, setIsFollow] = useState(false);
   const followHandler = useCallback(() => {
     setIsFollow(prev => !prev);
@@ -35,6 +35,7 @@ const ProfileDetail = () => {
           weight={UserData.weight}
           muscle={UserData.skeletal_muscle_mass}
         />
+        <div style={{marginTop:20}} />
         <FollowButton width='100%' padding='15px 0px' isFollow={isFollow} onClickHandler={followHandler} />
       </UserInfoSection>
       <SlideSection>

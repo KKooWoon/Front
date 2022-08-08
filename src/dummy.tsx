@@ -2,6 +2,7 @@ import { raceType } from '@typings/race';
 import { User } from '@typings/user';
 import WorkoutSample from '@assets/images/workout-sample.png';
 import { WorkOut } from '@typings/workout';
+import { resultType } from '@typings/search';
 
 export const userDummy:Array<Partial<User>> = [
   {
@@ -84,3 +85,22 @@ export const MyInfo :User = {
   exp:50,
   profile_img:null,
 }
+
+
+export const userSearch:Array<resultType>=[
+  {
+    profileImg:null,
+    nickName:'사용자1',
+    isFollow:true,
+  },
+  {
+    profileImg:null,
+    nickName:'사용자2',
+    isFollow:true,
+  },
+  {
+    profileImg:null,
+    nickName:'사용자3',
+    isFollow:false,
+  }
+]
