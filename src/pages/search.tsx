@@ -6,13 +6,15 @@ import { userSearch } from 'dummy';
 import React, { useCallback, useState } from 'react';
 
 const SearchPage = () => {
-  const [searchValue, onChangeSearchValue] = useInput('');
+  const [searchValue, onChangeSearchValue, setSearchValue] = useInput('');
   const [searchResult, setSearchResult] = useState<null | Array<resultType>>(null);
   const searchHandler = useCallback(() => {
+    console.log(searchValue, ' 로 친구 찾기');
     /* 서치 아이콘 누르면 searchResult 불러옴 */
     const result = userSearch;
     setSearchResult(result);
-  }, []);
+    setSearchValue('');
+  }, [searchValue]);
   return (
     <div style={{ padding: '30px 20px' }}>
       <SearchBar
