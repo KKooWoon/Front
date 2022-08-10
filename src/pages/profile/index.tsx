@@ -6,6 +6,7 @@ import { MyInfo, RaceListDummy, WorkOutListDummy } from 'dummy';
 import { GridWrapper, PageWrapper, SlideSection, UserInfoSection } from './profile.style';
 import { BodySpec, MyProfile } from '@components/profile';
 import RaceList from '@components/race-list';
+import { PreViewWorkOut } from '@components/workout-list';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const ProfilePage = () => {
           message={UserData.status_message}
           tag={UserData.interest}
         />
-        <GridWrapper>
+        <GridWrapper onClick={()=> navigate('/follow')}>
           <h3>캐릭터</h3>
           <h3>팔로워</h3>
           <h3>팔로잉</h3>
@@ -42,8 +43,9 @@ const ProfilePage = () => {
       </UserInfoSection>
       <SlideSection>
         <h2>최근 운동 기록</h2>
-        <h2>참영 중인 챌린지</h2>
-        <RaceList data={RaceData} height={115} />
+        <PreViewWorkOut data={WorkOutData} />
+        <h2 style={{marginTop:"18px"}}>참영 중인 챌린지</h2>
+        <RaceList data={RaceData} height={115} styleType='profile'/>
       </SlideSection>
     </PageWrapper>
   );

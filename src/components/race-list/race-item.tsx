@@ -1,6 +1,7 @@
 import { raceType } from '@typings/race';
 import React, { useState } from 'react';
 import { ItemWrapper, ProfileWrapper, DetailWrapper } from './race-list.style';
+import { ReactComponent as CompleteIcon } from '@assets/icons/complete.svg';
 
 const RaceItem = ({
   item,
@@ -31,6 +32,7 @@ const RaceItem = ({
 
   return (
     <ItemWrapper active={isActive}>
+      <CompleteIcon />
       <p>D-{item.Dday}</p>
       <h3>{item.raceName}</h3>
       <div>#{item.hashTag}</div>

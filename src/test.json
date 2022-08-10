@@ -1,0 +1,124 @@
+{
+  "userInfoDto": {
+      "nickname": "닉네임2",
+      "age": 31,
+      "height": 160.0,
+      "weight": 80.1,
+      "level": 3,
+      "exp": 1342,
+      "bodyFatPct": 12.4,
+      "skeletalMuscleMass": 20.0,
+      "description": "샘플 유저2",
+      "profileImageUrl": "sample2.url"
+  },
+  "workoutRecordDto": {
+      "workoutRecordId": 1,
+      "currentWeight": 0.0,
+      "recordDate": "2022-07-21",
+      "createdAt": "2022-08-07T23:34:12.541326",
+      "cardioDtoList": [
+          {
+              "cardioId": 1,
+              "name": "한강 조깅",
+              "duration": 34,
+              "calorie": 233.4
+          }
+      ],
+      "weightDtoList": [
+          {
+              "name": "랫 풀 다운",
+              "body": "등",
+              "weightSetDtoList": [
+                  {
+                      "sett": 1,
+                      "reps": 8,
+                      "setWeight": 45.5
+                  },
+                  {
+                      "sett": 2,
+                      "reps": 8,
+                      "setWeight": 45.5
+                  }
+              ]
+          },
+          {
+              "name": "벤치 프레스",
+              "body": "가슴",
+              "weightSetDtoList": [
+                  {
+                      "sett": 1,
+                      "reps": 8,
+                      "setWeight": 45.5
+                  },
+                  {
+                      "sett": 2,
+                      "reps": 8,
+                      "setWeight": 45.5
+                  },
+                  {
+                      "sett": 3,
+                      "reps": 7,
+                      "setWeight": 50.0
+                  },
+                  {
+                      "sett": 4,
+                      "reps": 5,
+                      "setWeight": 55.0
+                  }
+              ]
+          }
+      ],
+      "dietDtoList": [
+          {
+              "dietId": 1,
+              "name": "아침",
+              "foodDtoList": [
+                  {
+                      "name": "닭가슴살",
+                      "weight": 34.5,
+                      "calorie": 100.3
+                  },
+                  {
+                      "name": "프로틴 음료",
+                      "weight": 250.0,
+                      "calorie": 34.6
+                  }
+              ]
+          }
+      ],
+      "confirmed": false
+  },
+  "followingListDto": {
+      "followerList": [
+          {
+              "sourceNickname": "닉네임2",
+              "targetNickname": "닉네임1",
+              "profileImageUrl": "sample.1url",
+              "description": "샘플 유저1"
+          }
+      ]
+  },
+  "currentRaceListDto": {
+      "count": 2,
+      "currentInfoDtoList": [
+          {
+              "raceId": 1,
+              "startedAt": "2022-07-08",
+              "endedAt": "2022-08-08",
+              "memberCount": 2,
+              "name": "다이어트 레이스!22",
+              "raceCode": "AXGGTG",
+              "raceTag": "#다이어트"
+          },
+          {
+              "raceId": 2,
+              "startedAt": "2022-07-08",
+              "endedAt": "2022-08-08",
+              "memberCount": 2,
+              "name": "다이어트 레이스!11",
+              "raceCode": "RHDFFI",
+              "raceTag": "#다이어트"
+          }
+      ]
+  }
+}

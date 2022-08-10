@@ -12,7 +12,7 @@ interface Props {
 
 const MyProfile = ({ nickname, tag, message, imgUrl }: Props) => {
   return (
-    <Wrapper>
+    <Wrapper >
       <ImageWrapper>
         <ProfileImage url={imgUrl} alt='profile' />
         <div>

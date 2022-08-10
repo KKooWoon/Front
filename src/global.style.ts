@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar {
     display: none;
     }
+    -webkit-tap-highlight-color: transparent;
   }
 
   * {
@@ -74,7 +75,12 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   margin: 0;
   }
-
+  input {
+    font-family:'SpoqaHanSansNeo';
+    :focus{
+      outline:none;
+    }
+  }
   hr {
     border: 0.5px solid #D4D2D9;
   }

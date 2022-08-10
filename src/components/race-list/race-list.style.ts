@@ -16,14 +16,18 @@ export const NoResult = styled.div`
 export const ItemWrapper = styled.div<{ active?: boolean }>`
   display: inline-block;
   padding: 8px 12px 12px 12px;
-  width: 138px;
+  width: 153px;
   background-color: ${props => (props.active ? 'var(--primary-purple)' : 'var(--gray-02)')};
   border-radius: 20px;
+  position:relative;
+  & svg {
+    position:absolute;
+    transform:translate(73px, -9px)
+  }
   & p {
     font-size: 12px;
     font-weight: 500;
     color: ${props => (props.active ? 'rgba(255, 255, 255, 0.8)' : '#fff')};
-    text-align: right;
     padding-bottom: 13px;
   }
   & h3 {
