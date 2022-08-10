@@ -4,8 +4,7 @@ import { CenterInner, ModalBackground, ModalWrapper, UnderInner } from './modal.
 interface Props {
   children: ReactNode;
   show: boolean;
-  
-  position?: string;
+  position?: 'center' | 'under';
 }
 const ModalLayout = ({ children, show, position = 'center' }: Props) => {
   return show ? (

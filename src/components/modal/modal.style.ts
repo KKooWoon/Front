@@ -1,5 +1,25 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
+const slideTop = keyframes`
+0% {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+const scaleCenter = keyframes` 
+  0% {
+    transform: scaleY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+`;
 export const ModalWrapper = styled.div`
   position: fixed;
   z-index: 10005;
@@ -27,12 +47,67 @@ export const ModalBackground = styled.div<{ position: string }>`
           flex-direction: column-reverse;
         `}
 `;
+export const UnderInner = styled.div`
+  background-color: #fff;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  animation: ${slideTop} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  .menu {
+    padding: 22px 20px;
+    position: relative;
+    & svg {
+      position: absolute;
+      right: 20px;
+    }
+    & section {
+      padding-top: 20px;
+      .item {
+        padding: 28px 0px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--black);
+      }
+      .item + .item {
+        border-top: 0.5px solid var(--gray-02);
+      }
+    }
+  }
+  .select {
+    position: relative;
+    padding: 22px 20px;
+    & section {
+      padding-top: 20px;
+    }
+    & svg {
+      position: absolute;
+      right: 20px;
+    }
+  }
+  & button {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0px;
+    background-color: var(--primary-purple);
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+  }
+`;
+
+export const InterestWrapper = styled.div`
+  width: 100%;
+  text-align: center;
+`;
 
 export const CenterInner = styled.div`
   background-color: #fff;
   width: 85%;
   max-width: 400px;
   border-radius: 20px;
+  animation: ${scaleCenter} 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   .alert-modal {
     height: 185px;
     display: flex;
@@ -121,5 +196,3 @@ export const TwoButtonWrapper = styled.div`
     }
   }
 `;
-
-export const UnderInner = styled.div``;

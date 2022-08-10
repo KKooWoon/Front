@@ -1,8 +1,8 @@
-import { AlertModal } from '@components/modal';
+import { AlertModal, InterestModal, MenuModal } from '@components/modal';
 import RaceModal from '@components/modal/race-modal';
 import useInput from '@hooks/use-input';
 import useModal from '@hooks/use-modal';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 const CalendarPage = () => {
   const { isOpen: nickanmeModal, onClose: nicknameModalClose, setIsOpen: setNicknameModal } = useModal();
@@ -11,6 +11,27 @@ const CalendarPage = () => {
   /* 레이스 참가하는 모달 쓸때 input 필요 */
   const [raceCode, onChangeRaceCode] = useInput('');
   const { isOpen: deleteRace, onClose: deleteRaceClose, setIsOpen: setDeleteRace } = useModal();
+  const { isOpen: menuOpen, onClose: menuClose, setIsOpen: setMenuOpen } = useModal();
+  const MenuModalItems = [
+    {
+      title:'수정하기',
+      handler: () => menuClose()
+    },
+    {
+      title:'삭제하기',
+      handler: () => menuClose()
+    },
+    {
+      title:'삭제하기',
+      handler: () => menuClose()
+    }
+  ];
+  const {isOpen:interestOepn, onClose:interestClose, setIsOpen:setInterestOpen} = useModal();
+  const [goal,setGoal] = useState('');
+  const goalHandler = useCallback((v:string)=> {
+    setGoal(v);
+    interestClose();
+  },[goal])
 
   return (
     <div>
@@ -19,6 +40,9 @@ const CalendarPage = () => {
       <button onClick={() => setCodeModal(true)}>레이스 코드 모달</button>
       <button onClick={() => setRaceModal(true)}>레이스 참가 모달</button>
       <button onClick={() => setDeleteRace(true)}>레이스 삭제 모달</button>
+      <button onClick={() => setMenuOpen(true)}>메뉴 모달</button>
+      <hr/>
+      <button onClick={() => setInterestOpen(true)}>{goal? goal : '운동 목적을 선택해 주세요'}</button>
       <AlertModal
         show={nickanmeModal}
         close={nicknameModalClose}
@@ -46,6 +70,8 @@ const CalendarPage = () => {
           },
         }}
       />
+      <MenuModal show={menuOpen} close={menuClose} items={MenuModalItems} />
+      <InterestModal show={interestOepn} close={interestClose} buttonHandler={goalHandler}/>
     </div>
   );
 };
