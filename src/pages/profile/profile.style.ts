@@ -44,7 +44,6 @@ export const GridWrapper = styled.div`
     font-size:14px;
     color: var(--gray-03);
   }
-
   & span {
     font-weight:500;
     font-size:18px;
