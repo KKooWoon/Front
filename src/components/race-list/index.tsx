@@ -9,7 +9,7 @@ interface Props {
   height: number;
   now?: number;
   setNow?: Dispatch<SetStateAction<number>>;
-  styleType?: 'main' | 'detail' | 'profile';
+  styleType?: 'main' | 'detail' | 'profile' | 'myrace';
   itemWidth?: number;
 }
 

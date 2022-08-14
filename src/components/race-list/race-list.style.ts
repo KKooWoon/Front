@@ -19,10 +19,10 @@ export const ItemWrapper = styled.div<{ active?: boolean }>`
   width: 153px;
   background-color: ${props => (props.active ? 'var(--primary-purple)' : 'var(--gray-02)')};
   border-radius: 20px;
-  position:relative;
+  position: relative;
   & svg {
-    position:absolute;
-    transform:translate(73px, -9px)
+    position: absolute;
+    transform: translate(73px, -9px);
   }
   & p {
     font-size: 12px;
@@ -116,6 +116,35 @@ export const ProfileWrapper = styled.div`
     border-radius: 43px;
     color: white;
     font-size: 14px;
+    font-weight: 500;
+  }
+`;
+
+export const MyRaceWrapper = styled.div`
+  padding: 17px 12px 15px 12px;
+  width: 160px;
+  background-color: var(--purple-sub01);
+  border-radius: 20px;
+  & p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ac8eff;
+    text-align: left;
+    padding-bottom: 91px;
+  }
+  & h3 {
+    font-weight: 500;
+    font-size: 18px;
+    color: #6732ff;
+    padding-bottom: 5px;
+  }
+  & div {
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: #ac8eff;
+    border-radius: 27px;
+    color: white;
+    font-size: 16px;
     font-weight: 500;
   }
 `;

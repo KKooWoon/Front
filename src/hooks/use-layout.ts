@@ -23,9 +23,12 @@ const useLayout = (): pageLayout => {
     return { ...layout, header: { title: '운동A' }, noNav: true, hasBack: true };
   } else if (pathname === '/search') {
     return { ...layout, noNav: true, header: { title: '친구 찾기' }, hasBack: true };
-  }else if (pathname === '/follow'){
-    return {...layout, noNav:true, header:{title:'사용자 검색'}, hasBack:true};
+  } else if (pathname === '/follow') {
+    return { ...layout, noNav: true, header: { title: '사용자 검색' }, hasBack: true };
+  } else if (pathname === '/race') {
+    return { ...layout, header: { title: '레이스' } };
   }
+
   return layout;
 };
 
