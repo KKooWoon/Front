@@ -9,6 +9,7 @@ const ImageSlider = ({ children, SliderHeight }: { children: ReactNode , SliderH
         <SlideWrapper>
           <div style={{width:8}} />
           {children}
+          <div style={{width:8}} />
         </SlideWrapper>
       </div>
     </div>
