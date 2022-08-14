@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'react-calendar/dist/Calendar.css';
 
 const Main = React.lazy(() => import('@pages/main'));
 const Calendar = React.lazy(() => import('@pages/calendar'));

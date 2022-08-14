@@ -4,9 +4,13 @@ import { SlideWrapper } from './image-slider.style';
 const ImageSlider = ({ children, SliderHeight }: { children: ReactNode , SliderHeight?:number }) => {
   const screenWidth = screen.width;
   return (
-    <div style={{position:'relative', height:SliderHeight? SliderHeight:''}}>
-      <div style={{ maxWidth: screenWidth - 20, position: 'absolute' }}>
-        <SlideWrapper>{children}</SlideWrapper>
+    <div style={{position:'relative', height:SliderHeight? SliderHeight:'', transform:'translateX(-20px)'}}>
+      <div style={{ maxWidth: screenWidth, position: 'absolute' }}>
+        <SlideWrapper>
+          <div style={{width:8}} />
+          {children}
+          <div style={{width:8}} />
+        </SlideWrapper>
       </div>
     </div>
   );
