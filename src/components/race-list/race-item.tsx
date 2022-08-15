@@ -1,6 +1,6 @@
 import { raceType } from '@typings/race';
 import React, { useState } from 'react';
-import { ItemWrapper, ProfileWrapper, DetailWrapper } from './race-list.style';
+import { ItemWrapper, ProfileWrapper, DetailWrapper, MyRaceWrapper } from './race-list.style';
 import { ReactComponent as CompleteIcon } from '@assets/icons/complete.svg';
 
 const RaceItem = ({
@@ -10,7 +10,7 @@ const RaceItem = ({
 }: {
   item: raceType;
   isActive?: boolean;
-  styleType: 'main' | 'detail' | 'profile';
+  styleType: 'main' | 'detail' | 'profile' | 'myrace';
 }) => {
   if (styleType === 'detail') {
     return (
@@ -27,6 +27,14 @@ const RaceItem = ({
         <h3>{item.raceName}</h3>
         <div>#{item.hashTag}</div>
       </ProfileWrapper>
+    );
+  } else if (styleType === 'myrace') {
+    return (
+      <MyRaceWrapper>
+        <p>D-{item.Dday}</p>
+        <h3>{item.raceName}</h3>
+        <div>#{item.hashTag}</div>
+      </MyRaceWrapper>
     );
   }
 
