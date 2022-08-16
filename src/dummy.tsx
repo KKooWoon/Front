@@ -142,7 +142,7 @@ export const dummyCalendarData: Array<calendar> = [
           {
             sett: 2,
             setWeight: 12,
-            reps: 4,
+            reps: 14,
           },
           {
             sett: 1,
