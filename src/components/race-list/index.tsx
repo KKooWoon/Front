@@ -8,7 +8,7 @@ interface Props {
   data: Array<raceType>;
   height: number;
   now?: number;
-  setNow?: Dispatch<SetStateAction<number>>;
+  setNow?: (v:number) => void;
   styleType?: 'main' | 'detail' | 'profile' | 'myrace';
   itemWidth?: number;
 }
@@ -16,17 +16,13 @@ interface Props {
 const RaceList = ({ data, height, now, setNow, styleType = 'main' }: Props) => {
   return (
     <Wrapper>
-      {data.length !== 0 ? (
-        <ImageSlider SliderHeight={height}>
-          {data.map((v, i) => (
-            <div key={i} onClick={() => setNow && setNow(v.raceId)}>
-              <RaceItem item={v} isActive={now === v.raceId} styleType={styleType} />
-            </div>
-          ))}
-        </ImageSlider>
-      ) : (
-        <NoResult>참여 중인 레이스가 없습니다.</NoResult>
-      )}
+      <ImageSlider SliderHeight={height}>
+        {data.map((v, i) => (
+          <div key={i} onClick={() => setNow && setNow(v.raceId)}>
+            <RaceItem item={v} isActive={now === v.raceId} styleType={styleType} />
+          </div>
+        ))}
+      </ImageSlider>
     </Wrapper>
   );
 };

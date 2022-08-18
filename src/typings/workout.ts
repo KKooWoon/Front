@@ -7,7 +7,7 @@ export type WorkOut = {
 
 export type cardio = {
   cardioId: number;
-  calolrie?: number;
+  calorie?: number;
   duration?: number;
   name: string;
 };
@@ -23,11 +23,17 @@ export type diet = {
 };
 
 export type weight = {
-  body?:string;
-  name:string;
-  weightList:Array<{
-    reps:number;
-    setWeight:number;
-    sett:number;
-  }>
-}
+  body?: string;
+  name: string;
+  weightSetList: Array<{
+    reps: number;
+    setWeight: number;
+    sett: number;
+  }>;
+};
+
+export type WorkOutList = {
+  weightList: Array<weight>;
+  cardioList: Array<cardio>;
+  dietList: Array<diet>;
+};

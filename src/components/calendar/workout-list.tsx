@@ -11,7 +11,7 @@ const WeightItem = ({ item }: { item: weight }) => {
       <div className='tile' />
       <h2>{item.name}</h2>
       <section>
-        {item.weightList.map((v, i) => (
+        {item.weightSetList.map((v, i) => (
           <div key={i}>
             <Item>
               <h4>{v.sett}</h4>
@@ -77,6 +77,7 @@ const DietItem = ({ item }: { item: diet }) => {
   );
 };
 const DatedWorkOut = ({ data }: Props) => {
+  {/*데이터 리스트 배열형식으로 바껴야함 */}
   console.log('data : ', data);
   return (
     <ListWrapper>
