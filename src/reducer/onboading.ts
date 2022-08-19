@@ -5,14 +5,15 @@ const initialState: OnBoading = {
   nickname: '',
   age: 0,
   body_spec: {
-    height: '',
-    weight: '',
-    fat: '',
-    muscle: '',
+    height: -1,
+    weight: -1,
+    fat: -1,
+    muscle: -1,
   },
   interest: '',
   isActive: false,
   inputFocus: false,
+  kakaoId:'',
 };
 
 const onBoadingSlice = createSlice({
@@ -55,6 +56,9 @@ const onBoadingSlice = createSlice({
     },
     setFocus(state,action){
       state.inputFocus = action.payload;
+    },
+    setKakaoId(state,action) {
+      state.kakaoId = action.payload;
     }
   },
 });
