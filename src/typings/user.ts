@@ -27,6 +27,7 @@ export type OnBoading ={
   interest:string;
   isActive:boolean;
   inputFocus:boolean;
+  kakaoId:string;
 }
 
 export type raceUser = {

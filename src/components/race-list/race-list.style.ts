@@ -2,16 +2,28 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
+  & h4 {
+    font-weight:700;
+    font-size:16px;
+    color:var(--gray-04);
+    margin-bottom:12px;
+  }
 `;
 
-export const NoResult = styled.div`
+export const NoResult = styled.pre`
   font-weight: 500;
   color: var(--gray-04);
   text-align: center;
   width: 100%;
-  height: 115px;
-  line-height: 115px;
+  white-space:pre-wrap;
 `;
+export const NoResultWrapper = styled.div`
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+`
 
 export const ItemWrapper = styled.div<{ active?: boolean }>`
   display: inline-block;
@@ -148,3 +160,44 @@ export const MyRaceWrapper = styled.div`
     font-weight: 500;
   }
 `;
+
+export const WorkoutItem= styled.article<{type:'weight'|'cardio'|'diet'}>`
+  padding: 16px;
+  border-radius:15px;
+  background-color: ${props => (props.type === 'cardio' ? '#E1EFFF' : props.type === 'diet' ? '#D9E1FF' : '#DFF2E5')};
+  & .title-section {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+    & h3 {
+      font-weight:500;
+      font-size:16px;
+      color:var(--black);
+    }
+  }
+  & .list-section {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding-left:50px;
+  }
+`;
+
+export const DetailItem = styled.span`
+  display:flex;
+  justify-content:space-between;
+  & span {
+    font-size:14px;
+    font-weight:500;
+    color:var(--black);
+    & span {
+      background-color:rgba(255, 255, 255, 0.7);
+      color:var(--gray-04);
+      padding:4px 8px;
+      border-radius:27px;
+    }
+  }
+`
+
+

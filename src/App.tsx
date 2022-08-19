@@ -18,12 +18,14 @@ const Register = React.lazy(() => import('@pages/register'));
 const ExerciseDetail = React.lazy(() => import('@pages/exercise-detail'));
 const Search = React.lazy(()=> import ('@pages/search'));
 const FollowList = React.lazy(()=> import('@pages/follow'));
+const KaKaoRedirect = React.lazy(()=> import('@pages/kakao-redirect'));
 
 const App = () => {
   return (
     <Routes>
       <Route element={<GlobalLayout />}>
         <Route index element={<LoginPage />} />
+        <Route path='/oauth' element={<KaKaoRedirect />} />
         <Route path='user-info' element={<UserInfo />} />
         <Route path='main' element={<Main />} />
         <Route path='calendar' element={<Calendar />} />

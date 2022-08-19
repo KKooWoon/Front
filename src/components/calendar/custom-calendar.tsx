@@ -55,6 +55,7 @@ const CustomCalendar = () => {
       {!selectedData ? (
         <div>결과 없음</div>
       ) : (
+        
         <DatedWorkOut data={selectedData!} />
       )}
     </CalendarWrapper>

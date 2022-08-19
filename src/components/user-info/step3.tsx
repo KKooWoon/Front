@@ -47,28 +47,38 @@ const Step3 = () => {
       <InputSection>
         <h3>키</h3>
         <div>
-          <input type='number' value={bodySpec.height} onChange={onChangeHeight} />
+          <input type='number' value={bodySpec.height === -1 ? '' : bodySpec.height} onChange={onChangeHeight} />
           <span>cm</span>
         </div>
       </InputSection>
       <InputSection>
         <h3>몸무게</h3>
         <div>
-          <input type='number' value={bodySpec.weight} onChange={onChangeWeight} />
+          <input type='number' value={bodySpec.weight === -1 ? '' : bodySpec.weight} onChange={onChangeWeight} />
           <span>kg</span>
         </div>
       </InputSection>
       <InputSection>
         <h3>체지방률</h3>
         <div>
-          <input style={{ border: '1px solid #c1c1c1' }} value={bodySpec.fat} onChange={onChangeFat} />
+          <input
+            style={{ border: '1px solid #c1c1c1' }}
+            type='number'
+            value={bodySpec.fat === -1 ? '' : bodySpec.fat}
+            onChange={onChangeFat}
+          />
           <span>%</span>
         </div>
       </InputSection>
       <InputSection>
         <h3>골격근량</h3>
         <div>
-          <input style={{ border: '1px solid #c1c1c1' }} value={bodySpec.muscle} onChange={onChangeMuscle} />
+          <input
+            style={{ border: '1px solid #c1c1c1' }}
+            type='number'
+            value={bodySpec.muscle === -1 ? '' : bodySpec.muscle}
+            onChange={onChangeMuscle}
+          />
           <span>kg</span>
         </div>
       </InputSection>

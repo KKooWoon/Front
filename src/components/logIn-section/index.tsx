@@ -7,11 +7,14 @@ import { useNavigate } from 'react-router-dom';
 
 /* 로그인 성공시 user-info 페이지로 이동 */
 const LoginSection = () => {
+  console.log(process.env.REACT_APP_KAKAO_API_KEY);
+  console.log(process.env.REACT_APP_REDIRECT_URL_LOCAL);
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URL_LOCAL}&response_type=code`;
   const navigate = useNavigate();
   return (
     <div>
       <CustomButton style={{ marginBottom: 12 }}>
-        <ButtonContents onClick={()=> navigate('user-info')}>
+        <ButtonContents href={KAKAO_AUTH_URL}>
           <span>
             <KakaoIcon />
           </span>
