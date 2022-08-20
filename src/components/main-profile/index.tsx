@@ -4,12 +4,15 @@ import character from '@assets/images/character.png';
 import EXPBar from './progress';
 import { ReactComponent as ListIcon } from '@assets/icons/list.svg';
 import {ReactComponent as AlertIcon} from '@assets/icons/alert.svg';
-
+import dayjs from 'dayjs';
+interface Props {
+  
+}
 const MainProfile = () => {
   return (
     <Wrapper>
       <Balloon>
-        <h1>6월 30일</h1>
+        <h1>{`${dayjs().get('month')+1}월 ${dayjs().get('date')}일`}</h1>
         <span>다양한 레이스에 참여해 보세요!</span>
       </Balloon>
       <AlertWrapper>

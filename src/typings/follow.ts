@@ -4,3 +4,4 @@ export type follow = {
   profileImageUrl: string | null;
   description: string;
 };
+

@@ -14,6 +14,21 @@ export type User= {
   following_list:Array<{id: number}>;
   profile_img:string|null;
 }
+export type UserType= {
+  accountId:number,
+  age:number;
+  bodyFat?:number;
+  description?:string;
+  exp:number;
+  nickname:string;
+  weight:number;
+  height:number;
+  skeletalMuscleMass?:number;
+  interest:string;
+  level:number;
+  key:null|string;
+  profileImageUrl?:string|null;
+}
 
 export type OnBoading ={
   nickname:string;
