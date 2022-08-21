@@ -1,4 +1,5 @@
 import { getCalendarData } from '@apis/calendar';
+import { Spinner } from '@components/loading';
 import { calendar, calendarData } from '@typings/calendar';
 import { WorkOutList } from '@typings/workout';
 import dayjs from 'dayjs';
@@ -40,7 +41,7 @@ const CustomCalendar = ({ raceId }: Props) => {
     setNowMonth(dayjs(value).get('month')+1);
     setNowActiveStartDate(value);
   }
-  if(CalLoading || !CalData) return null;
+  if(CalLoading || !CalData) return <Spinner/>
   return (
     <CalendarWrapper>
       <Calendar

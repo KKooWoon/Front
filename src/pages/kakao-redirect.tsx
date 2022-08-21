@@ -1,4 +1,5 @@
 import { client } from '@apis/client';
+import { Spinner } from '@components/loading';
 import { UserType } from '@typings/user';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect } from 'react';
@@ -38,7 +39,7 @@ const KaKaoRedirect = () => {
     getLogin();
   }, []);
 
-  return <div>로그인 로딩 중...</div>;
+  return <Spinner/>;
 };
 
 export default KaKaoRedirect;

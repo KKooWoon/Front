@@ -15,6 +15,7 @@ import { getFollowList } from '@apis/follow';
 import { follow } from '@typings/follow';
 import { getRaceList } from '@apis/race';
 import { getWorkoutList } from '@apis/workout';
+import { Spinner } from '@components/loading';
 
 const MainPage = () => {
   const myId = localStorage.getItem('myId');
@@ -50,7 +51,7 @@ const MainPage = () => {
     setRaceSelected(v);
   };
 
-  if (infoLoading || followLoading || raceLoading || !userInfo || !followList || !raceList) return null;
+  if (infoLoading || followLoading || raceLoading || !userInfo || !followList || !raceList) return <Spinner />;
   return (
     <Wrapper>
       {/*MainProfile 에서는 MyProfile 정보만 필요 */}
