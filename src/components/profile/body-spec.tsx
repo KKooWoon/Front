@@ -22,11 +22,11 @@ const BodySpec = ({ weight, height, age, fat, muscle }: Props) => {
       <FatAndMuscle>
         <div>
           <h3>체지방률</h3>
-          <span>{fat ? fat : '00'}%</span>
+          <span>{fat !== -1? fat : '-- '}%</span>
         </div>
         <div>
           <h3>골격근량</h3>
-          <span>{muscle ? muscle : '00'}%</span>
+          <span>{muscle !== -1 ? muscle : '-- '}%</span>
         </div>
       </FatAndMuscle>
     </BodySpecWrapper>

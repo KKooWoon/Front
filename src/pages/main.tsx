@@ -54,7 +54,7 @@ const MainPage = () => {
   return (
     <Wrapper>
       {/*MainProfile 에서는 MyProfile 정보만 필요 */}
-      <MainProfile />
+      <MainProfile nickname={userInfo.nickname} level={userInfo.level} exp={userInfo.exp} />
       {/*UserCarousel 에서는 selected Item 변경, MyProfileData(fllowerList) 필요*/}
       <UserCarousel myData={userInfo!} data={followList!} now={carouselSelected} setNow={setCarouselSelected} />
       {/*RaceList에서도 Selected Item 필요, 레이스 클릭 시 WorkOutList 바꿔서 보여 줌 */}

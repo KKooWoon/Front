@@ -6,9 +6,11 @@ import { ReactComponent as ListIcon } from '@assets/icons/list.svg';
 import {ReactComponent as AlertIcon} from '@assets/icons/alert.svg';
 import dayjs from 'dayjs';
 interface Props {
-  
+  nickname:string;
+  level:number;
+  exp:number;
 }
-const MainProfile = () => {
+const MainProfile = ({nickname, level, exp}:Props) => {
   return (
     <Wrapper>
       <Balloon>
@@ -22,9 +24,9 @@ const MainProfile = () => {
         <img src={character} alt='character' />
       </ImageWrapper>
       <UserInfo>
-        <h1>LV.1</h1>
-        <EXPBar exp={50.3} />
-        <p>달리는 닉네임</p>
+        <h1>LV.{level}</h1>
+        <EXPBar exp={exp} />
+        <p>{nickname}</p>
       </UserInfo>
       <Button>
         <ListIcon />

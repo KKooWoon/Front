@@ -1,8 +1,6 @@
 import { useQuery } from 'react-query'
 import request from './client'
 
-export {}
-
 const workoutListAPI =async (accountId: number, raceId:number, date:string ) => {
   return await request({
     method:'get',

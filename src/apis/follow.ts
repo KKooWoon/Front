@@ -12,20 +12,22 @@ const followListAPI = async (id: string) => {
     },
   }).then(res => {
     if (res.followerList.length !== 0) {
-      const { description, profileImageUrl, targetId, targetNickname } = res.followerList;
-      return {
-        id: targetId,
-        nickName: targetNickname,
-        profileImageUrl,
-        description,
-      };
+      const returnArray: Array<follow> = res.followerList.map(v => {
+        const { description, profileImageUrl, targetId, targetNickname } = v;
+        return {
+          id: targetId,
+          nickName: targetNickname,
+          profileImageUrl,
+          description,
+        };
+      });
+      return returnArray;
     } else {
       return res.followerList;
     }
   });
-}
+};
 
 export const getFollowList = (id: string) => {
-  return useQuery('followList', () => followListAPI(id));
-  
+  return useQuery<Array<follow>, AxiosError>('followList', () => followListAPI(id));
 };
