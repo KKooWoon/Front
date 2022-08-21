@@ -15,7 +15,7 @@ export type cardio = {
 export type diet = {
   dietId: number;
   name: string;
-  foodList: Array<{
+  foodDtoList: Array<{
     name: string;
     calorie?: number;
     weight?: number;
@@ -25,10 +25,11 @@ export type diet = {
 export type weight = {
   body?: string;
   name: string;
-  weightSetList: Array<{
+  weightSetDtoList: Array<{
     reps: number;
     setWeight: number;
     sett: number;
+    setId?:number;
   }>;
 };
 

@@ -1,1 +1,36 @@
-export {};
+import { AxiosError } from 'axios';
+import { calendar } from '@typings/calendar';
+import { useQuery } from 'react-query';
+import request from './client';
+
+
+const allCalendarAPI = async (accountId: string, year: number, month: number) => {
+  return await request({
+    method: 'get',
+    url: '/record/month/all',
+    params: {
+      accountId,
+      year,
+      month,
+    },
+  });
+};
+const raceCalendarAPI = async (accountId: string, year: number, month: number, raceId: number) => {
+  return await request({
+    method: 'get',
+    url: '/record/month/one',
+    params: {
+      accountId,
+      year,
+      month,
+      raceId,
+    },
+  });
+};
+export const getCalendarData = (accountId: string, year: number, month: number, raceId: number | 'ALL') => {
+  if(raceId === 'ALL') {
+    return useQuery<Array<calendar>,AxiosError>(['calendar', month ,'all'],()=> allCalendarAPI(accountId, year, month));
+  }else{
+    return useQuery<Array<calendar>,AxiosError>(['calendar', month,raceId],()=> raceCalendarAPI(accountId, year, month, raceId));
+  }
+};

@@ -32,7 +32,7 @@ const ItemContainer = ({
 const WeightItem = ({ data, isMe }: { data: weight; isMe: boolean }) => {
   return (
     <ItemContainer type='weight' isMe={isMe} title={data.name}>
-      {data.weightSetList.map((v, i) => (
+      {data.weightSetDtoList.map((v, i) => (
         <DetailItem key={i}>
           <span>
             {v.sett} <span>세트</span>
@@ -52,7 +52,7 @@ const WeightItem = ({ data, isMe }: { data: weight; isMe: boolean }) => {
 const DietItem = ({ data, isMe }: { data: diet; isMe: boolean }) => {
   return (
     <ItemContainer type='diet' isMe={isMe} title={data.name}>
-      {data.foodList.map((v, i) => (
+      {data.foodDtoList.map((v, i) => (
         <DetailItem key={i}>
           <span>{v.name}</span>
           {v.weight && (
