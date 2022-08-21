@@ -5,53 +5,78 @@ import UserCarousel from '@components/user-carousel';
 import { raceType } from '@typings/race';
 import dayjs from 'dayjs';
 import { MyInfo, RaceListDummy, userDummy, WorkoutData, WorkOutListDummy } from 'dummy';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as PlusIcon } from '@assets/icons/plus.svg';
 import { DetailWorkOut } from '@components/workout-list';
+import { UserType } from '@typings/user';
+import { getMainPage, getMyInfo } from '@apis/user';
+import { getFollowList } from '@apis/follow';
+import { follow } from '@typings/follow';
+import { getRaceList } from '@apis/race';
+import { getWorkoutList } from '@apis/workout';
+import { Spinner } from '@components/loading';
 
 const MainPage = () => {
+  const myId = localStorage.getItem('myId');
+  const today = dayjs().format('YYYY-MM-DD');
+  console.log('data객체 : ', today);
+  const [carouselSelected, setCarouselSelected] = useState(parseInt(myId!));
+  const [raceSelected, setRaceSelected] = useState<number | undefined>(undefined);
+
   /* 벡엔드에서 레이스 데이터 가져옴 */
+  const { data: raceList, isLoading: raceLoading } = getRaceList(carouselSelected.toString()); // 캐러셀 selected
   const RaceData: Array<raceType> = RaceListDummy;
-  /* 벡엔드에서 user data 가져옴 */
+  /* 벡엔드에서 follow data 가져옴 */
+  const { data: followList, isLoading: followLoading } = getFollowList(myId!);
   const userData = userDummy;
   /* 벡엔드에서 my-info 가져옴 */
+  const { data: userInfo, isLoading: infoLoading } = getMyInfo(myId!);
   const myInfo = MyInfo;
-  /* workout data */
+  /* workout data -> raceselected 가 undefined가 아닐 때 가져와야함 */
+  const {data:workoutList, isLoading: workoutLoading} = getWorkoutList(carouselSelected, raceSelected!, today);
   const workOutData = WorkoutData;
+  console.log('my: ', userInfo);
+  console.log('follow : ', followList);
+  console.log('race:', raceList?.allList);
+  console.log('workout: ', workoutList);
+  useEffect(() => {
+    if (raceList && raceList?.allList.length !== 0) {
+      console.log('여기 실행');
+      setRaceSelected(raceList?.allList[0].raceId);
+    }
+  }, [carouselSelected]);
 
-  const [carouselSelected, setCarouselSelected] = useState(myInfo.id);
-  const [raceSelected, setRaceSelected] = useState<number | undefined>(
-    RaceData.length !== 0 ? RaceData[0].raceId : undefined
-  );
   const raceHandler = (v: number) => {
     setRaceSelected(v);
   };
+
+  if (infoLoading || followLoading || raceLoading || !userInfo || !followList || !raceList) return <Spinner />;
   return (
     <Wrapper>
       {/*MainProfile 에서는 MyProfile 정보만 필요 */}
-      <MainProfile />
+      <MainProfile nickname={userInfo.nickname} level={userInfo.level} exp={userInfo.exp} />
       {/*UserCarousel 에서는 selected Item 변경, MyProfileData(fllowerList) 필요*/}
-      <UserCarousel data={userData} now={carouselSelected} setNow={setCarouselSelected} />
+      <UserCarousel myData={userInfo!} data={followList!} now={carouselSelected} setNow={setCarouselSelected} />
       {/*RaceList에서도 Selected Item 필요, 레이스 클릭 시 WorkOutList 바꿔서 보여 줌 */}
       <UserInfoWrapper>
-        {RaceData.length !== 0 ? (
+        {raceList.allList.length !== 0 ? (
           <RaceList data={RaceData} height={115} now={raceSelected} setNow={raceHandler} styleType='main' />
         ) : (
           <NoResultWrapper>
             <NoResult>{`참여 중인 레이스가 없습니다.\n\n레이스탭에서 새로운 레이스를 생성하거나\n참여해 보세요`}</NoResult>
           </NoResultWrapper>
         )}
-        {RaceData.length !== 0 && carouselSelected === myInfo.id && (
+        {raceList.allList.length !== 0 && carouselSelected === myInfo.id && (
           <CustomButton>
             <span>이 레이스에 운동 인증하기</span>
           </CustomButton>
         )}
-        {RaceData.length !== 0 && (
+        {raceList.allList.length !== 0 && (
           <>
             <hr style={{ margin: '30px 0px' }} />
             <DateSection>
-              <h3>{dayjs().format('YYYY-MM-DD')}</h3>
+              <h3>{today}</h3>
               {carouselSelected === myInfo.id && (
                 <button>
                   <PlusIcon />
@@ -61,10 +86,11 @@ const MainPage = () => {
             </DateSection>
           </>
         )}
-        {RaceData.length !== 0 && 
-        <WorkOutSection>
-          <DetailWorkOut data={WorkoutData} isMe={carouselSelected === myInfo.id}/>
-        </WorkOutSection>}
+        {raceList.allList.length !== 0 && (
+          <WorkOutSection>
+            <DetailWorkOut data={WorkoutData} isMe={carouselSelected === myInfo.id} />
+          </WorkOutSection>
+        )}
       </UserInfoWrapper>
     </Wrapper>
   );

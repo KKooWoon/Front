@@ -1,9 +1,9 @@
 import { calendarData } from '@typings/calendar';
-import { cardio, diet, weight } from '@typings/workout';
+import { cardio, diet, weight, WorkOutList } from '@typings/workout';
 import React from 'react';
 import { Item, ListWrapper, WorkoutItemWrapper } from './custom-calendar.style';
 interface Props {
-  data: calendarData;
+  data: WorkOutList;
 }
 const WeightItem = ({ item }: { item: weight }) => {
   return (
@@ -11,7 +11,7 @@ const WeightItem = ({ item }: { item: weight }) => {
       <div className='tile' />
       <h2>{item.name}</h2>
       <section>
-        {item.weightSetList.map((v, i) => (
+        {item.weightSetDtoList.map((v, i) => (
           <div key={i}>
             <Item>
               <h4>{v.sett}</h4>
@@ -55,7 +55,7 @@ const DietItem = ({ item }: { item: diet }) => {
       <div className='tile' />
       <h2>{item.name}</h2>
       <section>
-        {item.foodList.map((v, i) => (
+        {item.foodDtoList.map((v, i) => (
           <div key={i}>
             <Item>
               <h4>{v.name}</h4>
@@ -77,13 +77,11 @@ const DietItem = ({ item }: { item: diet }) => {
   );
 };
 const DatedWorkOut = ({ data }: Props) => {
-  {/*데이터 리스트 배열형식으로 바껴야함 */}
-  console.log('data : ', data);
   return (
     <ListWrapper>
-      {data.weight && <WeightItem item={data.weight} />}
-      {data.cardio && <CardioItem item={data.cardio} />}
-      {data.diet && <DietItem item={data.diet} />}
+      {data.weightList.length !== 0 && data.weightList.map((v,i)=> <WeightItem key={i} item={v} />) }
+      {data.cardioList.length !== 0 && data.cardioList.map((v,i)=> <CardioItem key={i} item={v} />)}
+      {data.dietList.length !== 0 && data.dietList.map((v,i)=> <DietItem key={i} item={v} />)}
     </ListWrapper>
   );
 };

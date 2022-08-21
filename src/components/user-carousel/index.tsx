@@ -4,21 +4,24 @@ import { SwiperWrapper, Wrapper } from './carousel.style';
 import CarouselItem from './carousel-item';
 import { ReactComponent as RightArrow } from '@assets/icons/right-arrow.svg';
 import { ReactComponent as LeftArrow } from '@assets/icons/left-arrow.svg';
-import { User } from '@typings/user';
+import { User, UserType } from '@typings/user';
+import { follow } from '@typings/follow';
 interface Props {
-  data:Array<Partial<User>>;
-  now?:number;
-  setNow?:Dispatch<SetStateAction<number>>;
+  myData: UserType;
+  data: Array<follow>;
+  now?: number;
+  setNow?: Dispatch<SetStateAction<number>>;
 }
-const UserCarousel = ({data, now ,setNow}:Props) => {
+const UserCarousel = ({ data, now, setNow, myData }: Props) => {
   const [swiper, setSwiper] = useState<any>();
   const [reachingEnd, setReachingEnd] = useState<boolean>(false);
   const [reachingFirst, setReachingFirst] = useState<boolean>(true);
-  const screenSize = screen.width; 
+  const screenSize = screen.width;
+  /* 캐러셀 안에 데이터가  */
   return (
     <Wrapper>
       <h2>운동 현황보기</h2>
-      <SwiperWrapper style={{maxWidth:screenSize}}>
+      <SwiperWrapper style={{ maxWidth: screenSize }}>
         <button onClick={() => swiper?.slidePrev()} disabled={reachingFirst}>
           <LeftArrow stroke={reachingFirst ? '#D4D2D9' : '#6732FF'} />
         </button>
@@ -31,14 +34,21 @@ const UserCarousel = ({data, now ,setNow}:Props) => {
             e.isBeginning ? setReachingFirst(true) : setReachingFirst(false);
           }}
         >
+          <SwiperSlide onClick={() => setNow && setNow(myData.accountId)}>
+            <CarouselItem nickname={myData.nickname} url={null} isActive={now === myData.accountId} />
+          </SwiperSlide>
           {data.map(v => (
-            <SwiperSlide key={v.id} onClick={()=>setNow && setNow(v.id as number)}>
-              <CarouselItem nickname={v.nick_name as string} url={v.profile_img as string | null} isActive={now === v.id as number} />
+            <SwiperSlide key={v.id} onClick={() => setNow && setNow(v.id as number)}>
+              <CarouselItem nickname={v.nickName} url={v.profileImageUrl} isActive={now === (v.id as number)} />
             </SwiperSlide>
           ))}
+          {data.length < 4 &&
+            Array(4 - data.length)
+              .fill(null)
+              .map((v, i) => <SwiperSlide key={i}></SwiperSlide>)}
         </Swiper>
-        <button onClick={() => swiper?.slideNext()} disabled={reachingEnd}>
-          <RightArrow stroke={reachingEnd ? '#D4D2D9' : '#6732FF'} />
+        <button onClick={() => swiper?.slideNext()} disabled={reachingEnd || data.length < 4}>
+          <RightArrow stroke={reachingEnd || data.length < 4 ? '#D4D2D9' : '#6732FF'} />
         </button>
       </SwiperWrapper>
     </Wrapper>

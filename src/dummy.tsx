@@ -126,94 +126,126 @@ export const FollowerList: Array<follow> = [
     nickName: 'user3',
   },
 ];
-export const WorkoutData:WorkOutList= {
-  weightList:[ {
-    name: '운동A',
-    weightSetList: [
-      {
-        sett: 3,
-        setWeight: 100,
-      reps: 10,
-      },
-      {
-        sett: 2,
-        setWeight: 12,
-        reps: 14,
-      },
-      {
-        sett: 1,
-        setWeight: 12,
-        reps: 12,
-      },
-    ],
-  }],
-  cardioList:[{
-    name: '운동B',
-    cardioId: 1,
-    duration: 2,
-  }],
-  dietList:[{
-    dietId: 1,
-    name: '식단A',
-    foodList: [
-      {
-        name: '연어샐러드',
-        calorie: 1000,
-        weight: 100,
-      },
-      {
-        name: '닭가슴살',
-        calorie: 1000,
-        weight: 100,
-      },
-    ],
-  }],
+export const WorkoutData: WorkOutList = {
+  weightList: [
+    {
+      name: '운동A',
+      weightSetDtoList: [
+        {
+          sett: 3,
+          setWeight: 100,
+          reps: 10,
+        },
+        {
+          sett: 2,
+          setWeight: 12,
+          reps: 14,
+        },
+        {
+          sett: 1,
+          setWeight: 12,
+          reps: 12,
+        },
+      ],
+    },
+  ],
+  cardioList: [
+    {
+      name: '운동B',
+      cardioId: 1,
+      duration: 2,
+    },
+  ],
+  dietList: [
+    {
+      dietId: 1,
+      name: '식단A',
+      foodDtoList: [
+        {
+          name: '연어샐러드',
+          calorie: 1000,
+          weight: 100,
+        },
+        {
+          name: '닭가슴살',
+          calorie: 1000,
+          weight: 100,
+        },
+      ],
+    },
+  ],
 };
 export const dummyCalendarData: Array<calendar> = [
   {
     date: '2022-07-01',
     data: {
-      weight: {
-        name: '운동A',
-        weightSetList: [
-          {
-            sett: 3,
-            setWeight: 100,
-            reps: 10,
-          },
-          {
-            sett: 2,
-            setWeight: 12,
-            reps: 14,
-          },
-          {
-            sett: 1,
-            setWeight: 12,
-            reps: 12,
-          },
-        ],
-      },
-      cardio: {
-        name: '운동B',
-        cardioId: 1,
-        duration: 2,
-      },
-      diet: {
-        dietId: 1,
-        name: '식단A',
-        foodList: [
-          {
-            name: '연어샐러드',
-            calorie: 1000,
-            weight: 100,
-          },
-          {
-            name: '닭가슴살',
-            calorie: 1000,
-            weight: 100,
-          },
-        ],
-      },
+      weightList: [
+        {
+          name: '운동A',
+          weightSetDtoList: [
+            {
+              sett: 3,
+              setWeight: 100,
+              reps: 10,
+            },
+            {
+              sett: 2,
+              setWeight: 12,
+              reps: 14,
+            },
+            {
+              sett: 1,
+              setWeight: 12,
+              reps: 12,
+            },
+          ],
+        },
+        {
+          name: '운동A',
+          weightSetDtoList: [
+            {
+              sett: 3,
+              setWeight: 100,
+              reps: 10,
+            },
+            {
+              sett: 2,
+              setWeight: 12,
+              reps: 14,
+            },
+            {
+              sett: 1,
+              setWeight: 12,
+              reps: 12,
+            },
+          ],
+        },
+      ],
+      cardioList: [
+        {
+          name: '운동B',
+          cardioId: 1,
+          duration: 2,
+        },
+      ],
+      dietList: [
+        {
+          dietId: 1,
+          name: '식단A',
+          foodDtoList: [
+            {
+              name: '연어샐러드',
+              calorie: 1000,
+              weight: 100,
+            },
+            {
+              name: '닭가슴살',
+              calorie: 1000,
+              weight: 100,
+            },
+          ],
+        },
+      ],
     },
   },
 ];

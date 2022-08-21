@@ -7,8 +7,14 @@ import { GlobalStyle } from 'global.style';
 import store from 'store';
 import { Provider } from 'react-redux';
 
-
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions:{
+    queries:{
+      refetchOnMount:false,
+      refetchOnWindowFocus:false,
+    }
+  }
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

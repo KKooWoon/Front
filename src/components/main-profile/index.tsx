@@ -4,12 +4,17 @@ import character from '@assets/images/character.png';
 import EXPBar from './progress';
 import { ReactComponent as ListIcon } from '@assets/icons/list.svg';
 import {ReactComponent as AlertIcon} from '@assets/icons/alert.svg';
-
-const MainProfile = () => {
+import dayjs from 'dayjs';
+interface Props {
+  nickname:string;
+  level:number;
+  exp:number;
+}
+const MainProfile = ({nickname, level, exp}:Props) => {
   return (
     <Wrapper>
       <Balloon>
-        <h1>6월 30일</h1>
+        <h1>{`${dayjs().get('month')+1}월 ${dayjs().get('date')}일`}</h1>
         <span>다양한 레이스에 참여해 보세요!</span>
       </Balloon>
       <AlertWrapper>
@@ -19,9 +24,9 @@ const MainProfile = () => {
         <img src={character} alt='character' />
       </ImageWrapper>
       <UserInfo>
-        <h1>LV.1</h1>
-        <EXPBar exp={50.3} />
-        <p>달리는 닉네임</p>
+        <h1>LV.{level}</h1>
+        <EXPBar exp={exp} />
+        <p>{nickname}</p>
       </UserInfo>
       <Button>
         <ListIcon />
