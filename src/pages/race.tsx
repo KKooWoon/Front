@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import MyRace from '@components/my-race';
+import SearchRace from '@components/search-race';
 
 const RacePage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,7 +10,8 @@ const RacePage = () => {
     setActiveIndex(index);
   };
 
-  const menuArr = { 0: <MyRace />, 1: 'Tab menu Two' };
+  //index으로 화면 이동 (component 참조)
+  const menuArr = { 0: <MyRace />, 1: <SearchRace /> };
 
   return (
     <div>

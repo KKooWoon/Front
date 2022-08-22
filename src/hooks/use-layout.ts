@@ -27,6 +27,8 @@ const useLayout = (): pageLayout => {
     return { ...layout, noNav: true, header: { title: '사용자 검색' }, hasBack: true };
   } else if (pathname === '/race') {
     return { ...layout, header: { title: '레이스' } };
+  } else if (pathname === '/create-race') {
+    return { ...layout, header: { title: '레이스 생성하기' }, noNav: true, hasBack: true };
   }
 
   return layout;
