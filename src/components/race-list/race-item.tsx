@@ -16,16 +16,20 @@ const RaceItem = ({
     return (
       <DetailWrapper active={isActive}>
         <p>D-{item.Dday}</p>
-        <h3>{item.raceName}</h3>
-        <div>#{item.hashTag}</div>
+        <section className='wrapper'>
+          <h3>{item.raceName}</h3>
+          <div>#{item.hashTag}</div>
+        </section>
       </DetailWrapper>
     );
   } else if (styleType === 'profile') {
     return (
       <ProfileWrapper>
         <p>D-{item.Dday}</p>
-        <h3>{item.raceName}</h3>
-        <div>#{item.hashTag}</div>
+        <section className='wrapper'>
+          <h3>{item.raceName}</h3>
+          <div>#{item.hashTag}</div>
+        </section>
       </ProfileWrapper>
     );
   } else if (styleType === 'myrace') {
@@ -42,8 +46,10 @@ const RaceItem = ({
     <ItemWrapper active={isActive}>
       <CompleteIcon />
       <p>D-{item.Dday}</p>
-      <h3>{item.raceName}</h3>
-      <div>#{item.hashTag}</div>
+      <section className='wrapper'>
+        <h3>{item.raceName}</h3>
+        <div>#{item.hashTag}</div>
+      </section>
     </ItemWrapper>
   );
 };

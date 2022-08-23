@@ -50,7 +50,7 @@ export const MyRaceWrapper = styled.div`
     padding-top: 67px;
   }
   & h3 {
-    max-width: 95%;
+    width:100%;
     font-weight: 500;
     font-size: 18px;
     color: #6732ff;

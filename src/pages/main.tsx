@@ -60,8 +60,8 @@ const MainPage = () => {
       <UserCarousel myData={userInfo!} data={followList!} now={carouselSelected} setNow={setCarouselSelected} />
       {/*RaceList에서도 Selected Item 필요, 레이스 클릭 시 WorkOutList 바꿔서 보여 줌 */}
       <UserInfoWrapper>
-        {raceList.allList.length !== 0 ? (
-          <RaceList data={RaceData} height={115} now={raceSelected} setNow={raceHandler} styleType='main' />
+        {RaceData.length !== 0 ? (
+          <RaceList data={RaceData} height={130} now={raceSelected} setNow={raceHandler} styleType='main' />
         ) : (
           <NoResultWrapper>
             <NoResult>{`참여 중인 레이스가 없습니다.\n\n레이스탭에서 새로운 레이스를 생성하거나\n참여해 보세요`}</NoResult>
