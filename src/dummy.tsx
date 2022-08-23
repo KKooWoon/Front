@@ -60,11 +60,11 @@ export const userDummy: Array<Partial<User>> = [
 ];
 
 export const RaceListDummy: Array<raceType> = [
-  { raceId: 1, raceName: '레이스A', Dday: 134, hashTag: '다이어트' },
-  { raceId: 2, raceName: '레이스B', Dday: 134, hashTag: '다이어트' },
-  { raceId: 3, raceName: '레이스C', Dday: 134, hashTag: '다이어트' },
-  { raceId: 4, raceName: '레이스D', Dday: 134, hashTag: '다이어트' },
-  { raceId: 5, raceName: '레이스E', Dday: 134, hashTag: '다이어트' },
+  { raceId: 1, raceName: '레이스 가나다라마사아자차카타파하아랑강', Dday: 134, hashTag: '다이어트', isPrivate:true },
+  { raceId: 2, raceName: '레이스B', Dday: 134, hashTag: '다이어트', isPrivate:true },
+  { raceId: 3, raceName: '레이스 가나다라마사아자차카타파하아랑강', Dday: 134, hashTag: '다이어트', isPrivate:false },
+  { raceId: 4, raceName: '레이스D', Dday: 134, hashTag: '다이어트', isPrivate:false },
+  { raceId: 5, raceName: '레이스E', Dday: 134, hashTag: '다이어트', isPrivate:false },
 ];
 export const WorkOutListDummy: Array<WorkOut> = [
   { workOutId: 1, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자1', img_Url: WorkoutSample },

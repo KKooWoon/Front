@@ -41,6 +41,9 @@ const CustomCalendar = ({ raceId }: Props) => {
     setNowMonth(dayjs(value).get('month')+1);
     setNowActiveStartDate(value);
   }
+  /* raceId 값이 바뀌면 useEffect로 날짜 관련 state를 초기화 해줘야 할 것 같은데?
+    데이터 없어서 테스트가 어려움, 벡엔드 연동 후 수정 해야되면 하기
+  */
   if(CalLoading || !CalData) return <Spinner/>
   return (
     <CalendarWrapper>

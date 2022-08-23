@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   position: relative;
   margin-left: 20px;
+  width:100%;
   & span {
     display: inline-block;
     padding-top: 30px;
@@ -43,20 +44,37 @@ export const SearchWrapper = styled.div`
 export const MyRaceWrapper = styled.div`
   padding: 17px 12px 15px 12px;
   width: 160px;
+  height:172px;
   background-color: var(--purple-sub01);
   border-radius: 20px;
+  position: relative;
+  & .wrapper {
+    position:absolute;
+    bottom:16px;
+  }
+  & span {
+    margin-right:5px;
+    & svg {
+      position:relative;
+      transform:translate(0px, 2px);
+    }
+  }
   & p {
     font-size: 16px;
     font-weight: 500;
     color: #ac8eff;
     text-align: left;
-    padding-bottom: 91px;
   }
   & h3 {
+    display:-webkit-box;
     font-weight: 500;
     font-size: 18px;
     color: #6732ff;
     padding-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   & div {
     display: inline-block;

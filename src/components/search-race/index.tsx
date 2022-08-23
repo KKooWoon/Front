@@ -5,6 +5,7 @@ import { raceType } from '@typings/race';
 import { RaceListDummy } from 'dummy';
 import ImageSlider from '@components/image-slider/inedx';
 import { ReactComponent as SearchIcon } from '@assets/icons/search.svg';
+import { ReactComponent as LockIcon } from '@assets/icons/lock.svg';
 
 const SearchRace = () => {
   const RaceData: Array<raceType> = RaceListDummy;
@@ -22,39 +23,49 @@ const SearchRace = () => {
         <SearchIcon />
         <input placeholder='초대 코드 및 레이스 명을 검색해보세요' onChange={e => setSearch(e.target.value)} />
       </SearchWrapper>
-      {search ? (
-        <div>
-          <span></span>
-          <span>검색결과({result})</span>
-          <ImageSlider SliderHeight={224}>
-            {RaceData.filter((v, i) => v.raceName.includes(search)).map((v, i) => (
-              <MyRaceWrapper key={i}>
-                <p>D-{v.Dday}</p>
-                <h3>{v.raceName}</h3>
-                <div>#{v.hashTag}</div>
-              </MyRaceWrapper>
-            ))}
-          </ImageSlider>
-        </div>
-      ) : (
-        <div>
-          <span>#다이어트</span>
-          <span style={{ padding: '4px' }}> 관련 레이스입니다.</span>
-          <ImageSlider SliderHeight={224}>
-            {RaceData.filter((v, i) => v.hashTag == '다이어트').map((v, i) => (
-              <MyRaceWrapper key={i}>
-                <p>D-{v.Dday}</p>
-                <h3>{v.raceName}</h3>
-                <div>#{v.hashTag}</div>
-              </MyRaceWrapper>
-            ))}
-          </ImageSlider>
 
-          <span>{name} 님</span>
-          <span>이 참여하시는 레이스입니다.</span>
-          <RaceList data={RaceData} height={224} styleType='myrace' />
-        </div>
-      )}
+      <div>
+        <span>#다이어트</span>
+        <span style={{ padding: '4px' }}> 관련 레이스입니다.</span>
+        <ImageSlider SliderHeight={172}>
+          {RaceData.filter((v, i) => v.hashTag == '다이어트').map((v, i) => (
+            <MyRaceWrapper key={i}>
+              <p>D-{v.Dday}</p>
+              <section className='wrapper'>
+                <h3>
+                  {v.isPrivate && (
+                    <span>
+                      <LockIcon />
+                    </span>
+                  )}
+                  {v.raceName}
+                </h3>
+                <div>#{v.hashTag}</div>
+              </section>
+            </MyRaceWrapper>
+          ))}
+        </ImageSlider>
+        <span>{name} 님</span>
+        <span>이 참여하시는 레이스입니다.</span>
+        <ImageSlider SliderHeight={172}>
+          {RaceData.filter((v, i) => v.hashTag == '다이어트').map((v, i) => (
+            <MyRaceWrapper key={i}>
+              <p>D-{v.Dday}</p>
+              <section className='wrapper'>
+                <h3>
+                  {v.isPrivate && (
+                    <span>
+                      <LockIcon />
+                    </span>
+                  )}
+                  {v.raceName}
+                </h3>
+                <div>#{v.hashTag}</div>
+              </section>
+            </MyRaceWrapper>
+          ))}
+        </ImageSlider>
+      </div>
     </Wrapper>
   );
 };

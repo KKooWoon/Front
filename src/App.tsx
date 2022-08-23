@@ -20,6 +20,7 @@ const ExerciseDetail = React.lazy(() => import('@pages/exercise-detail'));
 const Search = React.lazy(() => import('@pages/search'));
 const FollowList = React.lazy(() => import('@pages/follow'));
 const KaKaoRedirect = React.lazy(() => import('@pages/kakao-redirect'));
+const RaceDetail = React.lazy(()=> import('@pages/race-detail'));
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='main' element={<Main />} />
         <Route path='calendar' element={<Calendar />} />
         <Route path='race' element={<Race />} />
+        <Route path='race/:raceId' element={<RaceDetail/>}/>
         <Route path='create-race' element={<CreateRace />} />
         <Route path='profile' element={<Profile />} />
         <Route path='profile/:id' element={<ProfileDetail />} />
