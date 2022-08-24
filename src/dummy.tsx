@@ -1,4 +1,4 @@
-import { raceType } from '@typings/race';
+import { Gallery, raceType, Ranking } from '@typings/race';
 import { User } from '@typings/user';
 import WorkoutSample from '@assets/images/workout-sample.png';
 import { weight, WorkOut, WorkOutList } from '@typings/workout';
@@ -60,19 +60,38 @@ export const userDummy: Array<Partial<User>> = [
 ];
 
 export const RaceListDummy: Array<raceType> = [
-  { raceId: 1, raceName: '레이스 가나다라마사아자차카타파하아랑강', Dday: 134, hashTag: '다이어트', isPrivate:true },
-  { raceId: 2, raceName: '레이스B', Dday: 134, hashTag: '다이어트', isPrivate:true },
-  { raceId: 3, raceName: '레이스 가나다라마사아자차카타파하아랑강', Dday: 134, hashTag: '다이어트', isPrivate:false },
-  { raceId: 4, raceName: '레이스D', Dday: 134, hashTag: '다이어트', isPrivate:false },
-  { raceId: 5, raceName: '레이스E', Dday: 134, hashTag: '다이어트', isPrivate:false },
+  {
+    raceId: 1,
+    memberCount: 4,
+    raceName: '레이스 가나다라마사아자차카타파하아랑강',
+    Dday: 134,
+    hashTag: '다이어트',
+    isPrivate: true,
+  },
+  { raceId: 2, memberCount: 4, raceName: '레이스B', Dday: 134, hashTag: '다이어트', isPrivate: true },
+  {
+    raceId: 3,
+    memberCount: 4,
+    raceName: '레이스 가나다라마사아자차카타파하아랑강',
+    Dday: 134,
+    hashTag: '다이어트',
+    isPrivate: false,
+  },
+  { raceId: 4, memberCount: 4, raceName: '레이스D', Dday: 134, hashTag: '다이어트', isPrivate: false },
+  { raceId: 5, memberCount: 4, raceName: '레이스E', Dday: 134, hashTag: '다이어트', isPrivate: false },
 ];
 export const WorkOutListDummy: Array<WorkOut> = [
   { workOutId: 1, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자1', img_Url: WorkoutSample },
-  { workOutId: 1, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자2', img_Url: WorkoutSample },
-  { workOutId: 1, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자3', img_Url: WorkoutSample },
-  { workOutId: 1, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자4', img_Url: WorkoutSample },
+  { workOutId: 2, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자2', img_Url: WorkoutSample },
+  { workOutId: 3, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자3', img_Url: WorkoutSample },
+  { workOutId: 4, message: '운동 완료 동해물과 백두산이 마르고 닳도록', nick_name: '사용자4', img_Url: WorkoutSample },
 ];
-
+export const SingleWorkout: WorkOut = {
+  workOutId: 4,
+  message: '운동 완료 동해물과 백두산이 마르고 닳도록',
+  nick_name: '사용자4',
+  img_Url: WorkoutSample,
+};
 export const MyInfo: User = {
   id: 1,
   nick_name: 'my_Nick',
@@ -247,5 +266,58 @@ export const dummyCalendarData: Array<calendar> = [
         },
       ],
     },
+  },
+];
+
+export const dummyRankingList: Array<Ranking> = [
+  {
+    id: 1,
+    nickName: 'user1',
+    score: 1200,
+    accDay: 23,
+    profileImgaeUrl: null,
+  },
+  {
+    id: 2,
+    nickName: 'user2',
+    score: 1200,
+    accDay: 23,
+    profileImgaeUrl: null,
+  },
+  {
+    id: 3,
+    nickName: 'user3',
+    score: 1200,
+    accDay: 23,
+    profileImgaeUrl: null,
+  },
+  {
+    id: 4,
+    nickName: 'user4',
+    score: 1200,
+    accDay: 23,
+    profileImgaeUrl: null,
+  },
+  {
+    id: 5,
+    nickName: 'user5',
+    score: 1200,
+    accDay: 23,
+    profileImgaeUrl: null,
+  },
+];
+
+export const dummyGallery: Array<Gallery> = [
+  {
+    date: '2022.07.30',
+    workoutList: WorkOutListDummy,
+  },
+  {
+    date: '2022.07.29',
+    workoutList: WorkOutListDummy,
+  },
+  {
+    date: '2022.07.27',
+    workoutList: WorkOutListDummy,
   },
 ];

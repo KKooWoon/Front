@@ -1,7 +1,7 @@
 import React, { MouseEvent, useCallback, useState } from 'react';
 import { Wrapper, AddRaceBtn, MyRaceWrapper } from './my-race.style';
 import RaceList from '@components/race-list';
-import { raceType } from '@typings/race';
+import { race, raceType } from '@typings/race';
 import { RaceListDummy } from 'dummy';
 import { ReactComponent as MyRaceBtn } from '@assets/icons/my-race.svg';
 import { ReactComponent as AddRaceIcon } from '@assets/icons/add-race.svg';
@@ -40,6 +40,17 @@ const MyRace = () => {
     },
     [menuOpen, deleteRace]
   );
+  const navigateHandler = (isPrivate: boolean, v: raceType) => {
+    if (isPrivate) {
+      navigate('/join', {
+        state: {
+          ...v,
+        } as raceType,
+      });
+    } else {
+      navigate(`/race/${v.raceId}`, { state: { ...v } });
+    }
+  };
   if (raceLoading || !raceList) return <Spinner />;
   return (
     <Wrapper>
@@ -52,8 +63,8 @@ const MyRace = () => {
         }}
       >
         {RaceData.map((v, i) => (
-          <MyRaceWrapper key={v.raceId} onClick={() => navigate(`/race/${v.raceId}`)}>
-            <MyRaceBtn onClick={modalHandler} />
+          <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
+            <MyRaceBtn onClick={modalHandler} fill='#AC8EFF' />
             <p>D-{v.Dday}</p>
             <section className='wrapper'>
               <h3>
@@ -83,7 +94,7 @@ const MyRace = () => {
         }}
       >
         {RaceData.map((v, i) => (
-          <MyRaceWrapper key={v.raceId}>
+          <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
             <p>{startDate}</p>
             <p>~ {finishDate}</p>
             <section className='wrapper'>

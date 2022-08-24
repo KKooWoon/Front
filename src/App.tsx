@@ -20,8 +20,10 @@ const ExerciseDetail = React.lazy(() => import('@pages/exercise-detail'));
 const Search = React.lazy(() => import('@pages/search'));
 const FollowList = React.lazy(() => import('@pages/follow'));
 const KaKaoRedirect = React.lazy(() => import('@pages/kakao-redirect'));
-const RaceDetail = React.lazy(()=> import('@pages/race-detail'));
-
+const RaceDetail = React.lazy(() => import('@pages/race-detail'));
+const RaceJoin = React.lazy(() => import('@pages/race-join'));
+const UserList = React.lazy(()=> import('@pages/user-list'));
+const WorkoutDetail = React.lazy(()=> import('@pages/workout-detail'));
 const App = () => {
   return (
     <Routes>
@@ -31,8 +33,11 @@ const App = () => {
         <Route path='user-info' element={<UserInfo />} />
         <Route path='main' element={<Main />} />
         <Route path='calendar' element={<Calendar />} />
+        <Route path='join' element={<RaceJoin />} />
         <Route path='race' element={<Race />} />
-        <Route path='race/:raceId' element={<RaceDetail/>}/>
+        <Route path='race/:raceId' element={<RaceDetail />} />
+        <Route path='workout-detail/:workoutId' element={<WorkoutDetail />}/>
+        <Route path='user-list' element={<UserList />}/>
         <Route path='create-race' element={<CreateRace />} />
         <Route path='profile' element={<Profile />} />
         <Route path='profile/:id' element={<ProfileDetail />} />

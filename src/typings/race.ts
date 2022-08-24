@@ -1,9 +1,11 @@
+import { WorkOut } from '@typings/workout';
 export type raceType = {
   raceId:number;
   raceName:string;
   Dday:number;
   hashTag:string;
   isPrivate:boolean;
+  memberCount:number;
 } // 옛날꺼(지워야함)
 
 export type race = {
@@ -22,4 +24,17 @@ export type RaceListType = {
   nowList:Array<race>;
   completeList:Array<race>;
   
+}
+
+export type Ranking = {
+  profileImgaeUrl:string |null;
+  nickName:string;
+  id:number;
+  score:number;
+  accDay:number;
+}
+
+export type Gallery = {
+  date:string;
+  workoutList:Array<WorkOut>;
 }

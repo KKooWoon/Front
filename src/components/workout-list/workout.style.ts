@@ -6,6 +6,7 @@ export const ImageBackround = styled.div<{img_url:string}>`
   height:180px;
   border-radius:20px;
   background: ${props => `url(${props.img_url}) no-repeat top center`};
+  background-size:cover;
 `
 
 export const Description = styled.section`

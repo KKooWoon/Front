@@ -6,7 +6,7 @@ interface Props {
   data: Array<WorkOut>;
 
 }
-const PreviewItem = ({item}:{item:WorkOut}) =>{
+export const PreviewItem = ({item}:{item:WorkOut}) =>{
   return (
     <ImageBackround img_url={item.img_Url}>
       <Description>
