@@ -23,7 +23,7 @@ const RacePage = () => {
           레이스 둘러보기
         </button>
       </TabMenu>
-      <div>{menuArr[activeIndex]}</div>
+      <div style={{display:'flex', justifyContent:'center'}}>{menuArr[activeIndex]}</div>
     </div>
   );
 };

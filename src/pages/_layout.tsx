@@ -11,7 +11,7 @@ const {header, noNav, hasBack} = useLayout();
     <AppLayout {...{header, noNav, hasBack}}>
       <Suspense fallback={<div>로딩 중....</div>}>
         <Outlet />
-        <ReactQueryDevtools initialIsOpen={false} position={'top-right'} />
+        <ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
       </Suspense>
     </AppLayout>
   );

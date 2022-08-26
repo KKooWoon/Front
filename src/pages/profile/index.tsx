@@ -49,7 +49,7 @@ const ProfilePage = () => {
         <h2>최근 운동 기록</h2>
         <PreViewWorkOut data={WorkOutData} />
         <h2 style={{marginTop:"18px"}}>참여 중인 챌린지</h2>
-        <RaceList data={RaceData} height={115} styleType='profile'/>
+        <RaceList data={RaceData} height={153} styleType='profile'/>
       </SlideSection>
     </PageWrapper>
   );

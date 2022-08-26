@@ -6,7 +6,7 @@ interface Props {
   close: () => void;
   raceCode:string;
   onChangeRaceCode:(e:any)=>void;
-  onClickHandler:()=>void;
+  onClickHandler?:()=>void;
 }
 
 const RaceModal = ({ show, close,raceCode, onChangeRaceCode }: Props) => {
@@ -20,11 +20,11 @@ const RaceModal = ({ show, close,raceCode, onChangeRaceCode }: Props) => {
     <ModalLayout show={show}>
       <div className='input'>
         <div style={{padding:"22px 16px"}}>
-          <h4>전달받은 코드를 입력해 주세요.</h4>
+          <h4>비밀번호를 입력해 주세요.</h4>
           <input className={isError ? 'error':''} value={raceCode} onChange={onChangeRaceCode} />
-          <span>{isError ?'코드 입력이 잘못되었습니다. 다시 입력해 주세요':''}</span>
+          <span>{isError ?'비밀번호 입력이 잘못되었습니다. 다시 입력해 주세요':''}</span>
         </div>
-        <section onClick={() => close()}>레이스 참여하기</section>
+        <section onClick={() => close()}>참여하기</section>
       </div>
     </ModalLayout>
   );

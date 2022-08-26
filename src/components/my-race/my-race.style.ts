@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: inline-block;
-  margin-top: 12px;
-  margin-left: 20px;
+  padding: 0px 20px 20px 20px;
+  width:100%;
   & h1 {
     padding-top: 18px;
     padding-bottom: 18px;
@@ -20,13 +19,26 @@ export const Wrapper = styled.div`
 export const MyRaceWrapper = styled.div`
   display: inline-block;
   padding: 17px 12px 15px 12px;
-  width: 160px;
+  width: 100%;
+  height:209px;
   background-color: var(--purple-sub01);
   border-radius: 20px;
   position: relative;
+  & .wrapper {
+    position:absolute;
+    bottom:16px;
+  }
   & svg {
     position: absolute;
-    transform: translate(126px, 0px);
+    right:0;
+    transform: translate(-15px, 0px);
+  }
+  & span {
+    margin-right:5px;
+    & svg {
+      position:relative;
+      transform:translate(0px, 2px);
+    }
   }
   & p {
     font-size: 16px;
@@ -37,14 +49,18 @@ export const MyRaceWrapper = styled.div`
   p + p + h3 {
     padding-top: 67px;
   }
-  p + h3 {
-    padding-top: 91px;
-  }
   & h3 {
+    width:100%;
     font-weight: 500;
     font-size: 18px;
     color: #6732ff;
     padding-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   & div {
     display: inline-block;
@@ -58,7 +74,7 @@ export const MyRaceWrapper = styled.div`
 `;
 
 export const AddRaceBtn = styled.button`
-  width: 160px;
+  width:  100%;
   height: 209px;
   background-color: #f3f2f4;
   border-radius: 20px;

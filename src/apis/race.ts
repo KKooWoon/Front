@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 import request from './client';
 import dayjs from 'dayjs';
 
-
 const allRaceListAPI = async (id: string) => {
   return await request({
     method: 'get',
@@ -15,36 +14,38 @@ const allRaceListAPI = async (id: string) => {
   }).then(res => {
     console.log('raceList :', res);
     const { currentRaceListDto, pastRaceListDto } = res;
-    const returnNowList:Array<race> = currentRaceListDto.currentInfoDtoList.map((v)=>{
-      const {endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt} = v;
+    const returnNowList: Array<race> = currentRaceListDto.currentInfoDtoList.map(v => {
+      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt } = v;
       const endTime = dayjs(endedAt);
       const startTime = dayjs(startedAt);
       return {
         raceId,
-        raceName:name,
+        raceName: name,
         raceTag,
         raceCode,
         memberCount,
-        Dday: endTime.diff(startTime,"d"),
+        Dday: endTime.diff(startTime, 'd'),
       };
     });
-    const returnPastList:Array<race> = pastRaceListDto.pastInfoDtoList.map((v)=>{
-      const {endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt} = v;
+    const returnPastList: Array<race> = pastRaceListDto.pastInfoDtoList.map(v => {
+      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt } = v;
       const endTime = dayjs(endedAt);
       const startTime = dayjs(startedAt);
       return {
         raceId,
-        raceName:name,
+        raceName: name,
         raceTag,
         raceCode,
         memberCount,
-        Dday: endTime.diff(startTime,"d"),
+        Dday: endTime.diff(startTime, 'd'),
+        startedAt: startTime.format('YYYY-MM-DD'),
+        endedAt: endTime.format('YYYY-MM-DD'),
       };
-    })
+    });
     return {
       allList: [...returnNowList, ...returnPastList],
       nowList: returnNowList,
-      completeList: returnPastList
+      completeList: returnPastList,
     };
   });
 };

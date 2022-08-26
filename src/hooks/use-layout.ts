@@ -1,8 +1,10 @@
 import { pageLayout } from '@typings/layout';
+import { Gallery } from '@typings/race';
 import { useLocation, useParams } from 'react-router-dom';
 
 const useLayout = (): pageLayout => {
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
+  const { id } = useParams();
   const layout: pageLayout = { header: false, noNav: false, hasBack: false };
   if (pathname === '/') {
     return { ...layout, noNav: true };
@@ -12,7 +14,6 @@ const useLayout = (): pageLayout => {
     if (pathname.length === 8) {
       return { ...layout, header: { title: '마이페이지' }, hasBack: true };
     } else {
-      const { id } = useParams();
       return { ...layout, header: { title: `사용자${id}` }, noNav: true, hasBack: true };
     }
   } else if (pathname === '/user-info') {
@@ -25,10 +26,22 @@ const useLayout = (): pageLayout => {
     return { ...layout, noNav: true, header: { title: '친구 찾기' }, hasBack: true };
   } else if (pathname === '/follow') {
     return { ...layout, noNav: true, header: { title: '사용자 검색' }, hasBack: true };
-  } else if (pathname === '/race') {
-    return { ...layout, header: { title: '레이스' } };
+  } else if (pathname.startsWith('/race')) {
+    if (pathname === '/race') {
+      return { ...layout, header: { title: '레이스' } };
+    } else {
+      return { ...layout, noNav: true, hasBack: true };
+    }
   } else if (pathname === '/create-race') {
     return { ...layout, header: { title: '레이스 생성하기' }, noNav: true, hasBack: true };
+  } else if (pathname === '/oauth') {
+    return { ...layout, noNav: true };
+  } else if (pathname === '/join') {
+    return { ...layout, noNav: true, hasBack: true };
+  } else if (pathname === '/user-list') {
+    return { ...layout, noNav: true, hasBack: true, header: { title: '친구 목록 보기' } };
+  } else if (pathname.startsWith('/workout-detail')) {
+    return { ...layout, noNav: true, hasBack: true, header: { title: state as string } };
   }
 
   return layout;

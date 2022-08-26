@@ -46,6 +46,7 @@ export type OnBoading ={
 }
 
 export type raceUser = {
+  id:number;
   profileImageUrl:string |null;
   nickName:string;
   description:string|null;

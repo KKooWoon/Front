@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useCallback, useState } from 'react';
 import { Wrapper, AddRaceBtn, MyRaceWrapper } from './my-race.style';
 import RaceList from '@components/race-list';
-import { raceType } from '@typings/race';
+import { race, raceType } from '@typings/race';
 import { RaceListDummy } from 'dummy';
 import { ReactComponent as MyRaceBtn } from '@assets/icons/my-race.svg';
 import { ReactComponent as AddRaceIcon } from '@assets/icons/add-race.svg';
 import { AlertModal, MenuModal } from '@components/modal';
 import useModal from '@hooks/use-modal';
 import { useNavigate } from 'react-router-dom';
+import { getRaceList } from '@apis/race';
+import { Spinner } from '@components/loading';
+import { ReactComponent as LockIcon } from '@assets/icons/lock.svg';
 
 const MyRace = () => {
+  const myId = localStorage.getItem('myId');
+  const { data: raceList, isLoading: raceLoading } = getRaceList(myId!);
   const RaceData: Array<raceType> = RaceListDummy;
   const [startDate, setStartDate] = useState('22.03.02');
   const [finishDate, setFinishDate] = useState('22.06.30');
@@ -28,7 +33,25 @@ const MyRace = () => {
       handler: () => setDeleteRace(true),
     },
   ];
-
+  const modalHandler = useCallback(
+    (e: MouseEvent<SVGSVGElement>) => {
+      setMenuOpen(true);
+      e.stopPropagation();
+    },
+    [menuOpen, deleteRace]
+  );
+  const navigateHandler = (isPrivate: boolean, v: raceType) => {
+    if (isPrivate) {
+      navigate('/join', {
+        state: {
+          ...v,
+        } as raceType,
+      });
+    } else {
+      navigate(`/race/${v.raceId}`, { state: { ...v } });
+    }
+  };
+  if (raceLoading || !raceList) return <Spinner />;
   return (
     <Wrapper>
       <h1>진행 중인 레이스</h1>
@@ -40,11 +63,20 @@ const MyRace = () => {
         }}
       >
         {RaceData.map((v, i) => (
-          <MyRaceWrapper key={i}>
-            <MyRaceBtn onClick={() => setMenuOpen(true)} />
+          <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
+            <MyRaceBtn onClick={modalHandler} fill='#AC8EFF' />
             <p>D-{v.Dday}</p>
-            <h3>{v.raceName}</h3>
-            <div>#{v.hashTag}</div>
+            <section className='wrapper'>
+              <h3>
+                {v.isPrivate && (
+                  <span>
+                    <LockIcon />
+                  </span>
+                )}
+                {v.raceName}
+              </h3>
+              <div>#{v.hashTag}</div>
+            </section>
           </MyRaceWrapper>
         ))}
 
@@ -62,11 +94,20 @@ const MyRace = () => {
         }}
       >
         {RaceData.map((v, i) => (
-          <MyRaceWrapper key={i}>
+          <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
             <p>{startDate}</p>
             <p>~ {finishDate}</p>
-            <h3>{v.raceName}</h3>
-            <div>#{v.hashTag}</div>
+            <section className='wrapper'>
+              <h3>
+                {v.isPrivate && (
+                  <span>
+                    <LockIcon />
+                  </span>
+                )}
+                {v.raceName}
+              </h3>
+              <div>#{v.hashTag}</div>
+            </section>
           </MyRaceWrapper>
         ))}
       </div>
