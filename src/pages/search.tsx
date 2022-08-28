@@ -1,4 +1,4 @@
-import { getUserSearch } from '@apis/user';
+import { getUserSearch, userSearchAPI } from '@apis/user';
 import SearchBar from '@components/search-bar';
 import SearchResult from '@components/search-result';
 import useInput from '@hooks/use-input';
@@ -8,9 +8,10 @@ import React, { useCallback, useState } from 'react';
 const SearchPage = () => {
   const [searchValue, onChangeSearchValue, setSearchValue] = useInput('');
   const [searchResult, setSearchResult] = useState<null | Array<resultType>>(null);
-  const searchHandler = useCallback(() => {
-    const {data:result, isLoading} = getUserSearch(searchValue);
-    setSearchResult(result ? result : null);
+  const searchHandler = useCallback(async () => {
+    if(!searchValue) return;
+    const result = await userSearchAPI(searchValue);
+    setSearchResult(result);
     setSearchValue('');
   }, [searchValue]);
   // todo : 로딩 에러 안나는지 체크

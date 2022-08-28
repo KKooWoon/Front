@@ -1,3 +1,6 @@
+import { getRankingList } from '@apis/race';
+import { getGalleryList } from '@apis/workout';
+import { Spinner } from '@components/loading';
 import { GalleryList, RaceHeader, RankingList } from '@components/race-detail';
 import TabLayout from '@components/tab-layout';
 import { raceType } from '@typings/race';
@@ -15,8 +18,11 @@ const RaceDetailPage = () => {
   console.log(state);
 
   /* 벡엔드 에서 데이터 받아옴 */
-  const RankingData = dummyRankingList;
-  const GalleryData = dummyGallery;
+  const {data:rankingList, isLoading:rankLoading} = getRankingList(raceId);
+  const {data:galleryList, isLoading:galleryLoading} = getGalleryList(raceId);
+
+  if(rankLoading || galleryLoading || !rankingList || !galleryList) return <Spinner />
+
   return (
     <div>
       <RaceHeader
@@ -28,7 +34,7 @@ const RaceDetailPage = () => {
       />
       <TabLayout items={['랭킹', '갤러리']} now={now} onClickHandler={nowHandler}>
         {
-          now === '랭킹' ? <RankingList  data={RankingData}/> : <GalleryList data={GalleryData}/>
+          now === '랭킹' ? <RankingList  data={rankingList}/> : <GalleryList data={galleryList}/>
         }
       </TabLayout>
     </div>
