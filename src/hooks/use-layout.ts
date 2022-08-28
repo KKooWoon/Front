@@ -1,5 +1,6 @@
 import { pageLayout } from '@typings/layout';
 import { Gallery } from '@typings/race';
+import { WorkOut } from '@typings/workout';
 import { useLocation, useParams } from 'react-router-dom';
 
 const useLayout = (): pageLayout => {
@@ -43,7 +44,8 @@ const useLayout = (): pageLayout => {
   } else if (pathname === '/user-list') {
     return { ...layout, noNav: true, hasBack: true, header: { title: '친구 목록 보기' } };
   } else if (pathname.startsWith('/workout-detail')) {
-    return { ...layout, noNav: true, hasBack: true, header: { title: state as string } };
+    const obj = state as unknown as {date:string, workout:WorkOut}
+    return { ...layout, noNav: true, hasBack: true, header: { title: obj.date as string } };
   }
 
   return layout;

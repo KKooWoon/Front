@@ -15,7 +15,7 @@ const GalleryList = ({ data }: Props) => {
           <h3>{val.date}</h3>
           <article>
             {val.workoutList.map(v => (
-              <Link key={v.workOutId} to={`/workout-detail/${v.workOutId}`} state={val.date}>
+              <Link key={v.workOutId} to={`/workout-detail/${v.workOutId}`} state={{date:val.date, workout:v}}>
                 <PreviewItem item={v} />
               </Link>
             ))}

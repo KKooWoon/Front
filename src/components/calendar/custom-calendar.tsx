@@ -15,8 +15,9 @@ const CustomCalendar = ({ raceId }: Props) => {
   const myId = localStorage.getItem('myId');
   const [selectedDate, setSelectdDate] = useState(new Date());
   const [nowActiveStartDate, setNowActiveStartDate] = useState(new Date());
-  const [nowMonth, setNowMonth] = useState<number>(dayjs(new Date()).get('month')+1);
+  const [nowMonth, setNowMonth] = useState<number>(dayjs(new Date()).get('month') + 1);
   const [selectedData, setSelectedData] = useState<null | WorkOutList>(null);
+
   /* 벡엔드에서 캘린더 데이터 받아옴 */
   const { data: CalData, isLoading: CalLoading } = getCalendarData(
     myId!,
@@ -24,27 +25,30 @@ const CustomCalendar = ({ raceId }: Props) => {
     nowMonth,
     raceId
   );
-  const calendarData = dummyCalendarData;
-  const customClickDay = useCallback(
-    (value: Date) => {
-      const filter = calendarData.filter(v => v.date === dayjs(value).format('YYYY-MM-DD'));
-      if (filter.length === 0) {
-        setSelectedData(null);
-      } else {
-        setSelectedData(filter[0].data);
-      }
-      setSelectdDate(value);
-    },
-    [selectedDate]
-  );
-  const monthChange = (value:Date) =>{
-    setNowMonth(dayjs(value).get('month')+1);
+
+  const monthChange = (value: Date) => {
+    setNowMonth(dayjs(value).get('month') + 1);
     setNowActiveStartDate(value);
-  }
-  /* raceId 값이 바뀌면 useEffect로 날짜 관련 state를 초기화 해줘야 할 것 같은데?
+  };
+  /* 
+    raceId 값이 바뀌면 useEffect로 날짜 관련 state를 초기화 해줘야 할 것 같은데?
     데이터 없어서 테스트가 어려움, 벡엔드 연동 후 수정 해야되면 하기
   */
-  if(CalLoading || !CalData) return <Spinner/>
+  // const customClickDay = useCallback(
+  //   (value: Date) => {
+  //     const filter = CalData.filter(v => v.date === dayjs(value).format('YYYY-MM-DD'));
+  //     if (filter.length === 0) {
+  //       setSelectedData(null);
+  //     } else {
+  //       setSelectedData(filter[0].data);
+  //     }
+  //     setSelectdDate(value);
+  //   },
+  //   [selectedDate]
+  // );
+  console.log(CalData);
+  if (CalLoading || !CalData) return <Spinner />;
+
   return (
     <CalendarWrapper>
       <Calendar
@@ -57,9 +61,17 @@ const CustomCalendar = ({ raceId }: Props) => {
         next2Label={null!}
         onActiveStartDateChange={v => monthChange(v.activeStartDate)}
         activeStartDate={nowActiveStartDate}
-        onClickDay={value => customClickDay(value)}
+        onClickDay={value => {
+          const filter = CalData?.filter(v => v.date === dayjs(value).format('YYYY-MM-DD'));
+          if (filter.length === 0) {
+            setSelectedData(null);
+          } else {
+            setSelectedData(filter[0].data);
+          }
+          setSelectdDate(value);
+        }}
         tileContent={({ date, view }) => {
-          const filter = calendarData.filter(v => v.date === dayjs(date).format('YYYY-MM-DD'));
+          const filter = CalData?.filter(v => v.date === dayjs(date).format('YYYY-MM-DD'));
           if (filter.length === 0) {
             return <TileWrapper />;
           } else {
@@ -75,7 +87,7 @@ const CustomCalendar = ({ raceId }: Props) => {
         }}
       />
       <hr />
-      {!selectedData ? <div>결과 없음</div> : <DatedWorkOut data={selectedData!} />}
+      {!selectedData ? <h2 style={{textAlign:'center', marginTop:'20px'}}>등록된 운동이 없습니다.</h2> : <DatedWorkOut data={selectedData!} />}
     </CalendarWrapper>
   );
 };

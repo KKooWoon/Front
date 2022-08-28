@@ -13,7 +13,7 @@ export function signUpAPI(userData: {
   skeletalMuscleMass: number;
   weight: number;
   keyword: string;
-  profilePhotoUrl:string;
+  profilePhotoUrl: string;
 }) {
   return request({
     method: 'post',
@@ -47,12 +47,12 @@ const myinfoAPI = async (id: string) => {
 };
 
 export const getMyInfo = (id: string) => {
-  return useQuery<UserType, AxiosError>(['my-info',id], () => myinfoAPI(id), {
+  return useQuery<UserType, AxiosError>(['my-info', id], () => myinfoAPI(id), {
     staleTime: Infinity,
   });
 };
 
-const userSearchAPI = async (nickname: string) => {
+export const userSearchAPI = async (nickname: string) => {
   return await request({
     method: 'get',
     url: '/user/user-list',
@@ -70,6 +70,6 @@ const userSearchAPI = async (nickname: string) => {
   });
 };
 
-export const getUserSearch = (nickname:string) => {
+export const getUserSearch = (nickname: string) => {
   return useQuery<Array<resultType>>(['search', nickname], () => userSearchAPI(nickname));
-}
+};

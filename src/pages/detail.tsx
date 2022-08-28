@@ -1,4 +1,4 @@
-import { isFollowAPI } from '@apis/follow';
+import { isFollowAPI, setFollowAPI, setUnFollowAPI } from '@apis/follow';
 import { getRaceList } from '@apis/race';
 import { getMyInfo } from '@apis/user';
 import { getWorkoutPreviewList } from '@apis/workout';
@@ -9,13 +9,16 @@ import RaceList from '@components/race-list';
 import PreviewWorkOut from '@components/workout-list/workout-preview';
 import { MyInfo, RaceListDummy, WorkOutListDummy } from 'dummy';
 import React, { useCallback, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { PageWrapper, SlideSection, UserInfoSection } from './profile/profile.style';
 
 const ProfileDetail = () => {
   const myId = localStorage.getItem('myId');
+  const queryClient = useQueryClient();
   const { id } = useParams();
+  const [isFollow, setIsFollow] = useState(false);
+
   /* 벡엔드에서 불러와야 하는 데이터 */
   const { data: userInfo, isLoading: infoLoading } = getMyInfo(id!);
   const { data: raceList, isLoading: raceLoading } = getRaceList(id!);
@@ -28,10 +31,35 @@ const ProfileDetail = () => {
     },
   });
 
-  const [isFollow, setIsFollow] = useState(false);
+  const { mutate: postFollow } = useMutation(() => setFollowAPI(id!), {
+    onMutate: () => {
+      setIsFollow(true);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['isFollow', id!]);
+    },
+    onError: () => {
+      setIsFollow(false);
+    },
+  });
+  const { mutate: deleteFollow } = useMutation(() => setUnFollowAPI(id!), {
+    onMutate: () => {
+      setIsFollow(false);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['isFollow', id!]);
+    },
+    onError: () => {
+      setIsFollow(true);
+    },
+  });
+
   const followHandler = useCallback(() => {
-    // 벡엔드에 포스트 요청 하게 수정
-    setIsFollow(prev => !prev);
+    if(isFollow){
+      postFollow();
+    }else{
+      deleteFollow();
+    }
   }, []);
   if (isFollowLoading || infoLoading || raceLoading || workoutLoading || !workoutList || !raceList || !userInfo)
     return <Spinner />;
