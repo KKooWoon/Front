@@ -33,10 +33,12 @@ const UserInfo = () => {
       weight:parseInt(onBoadingState.body_spec.weight as string),
       skeletalMuscleMass: parseInt(onBoadingState.body_spec.muscle as string),
       keyword:onBoadingState.interest,
+      profilePhotoUrl:onBoadingState.profilePhotoUrl,
     });
-    const {accessToken, refreshToken} = result;
+    const {accessToken, refreshToken, userInfoDto} = result;
     try{
       localStorage.setItem('token', accessToken);
+      localStorage.setItem('myId', userInfoDto.accountId);
       navigator('/main');
     }catch(e){
       console.log('token Error');

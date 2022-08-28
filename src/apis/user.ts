@@ -13,6 +13,7 @@ export function signUpAPI(userData: {
   skeletalMuscleMass: number;
   weight: number;
   keyword: string;
+  profilePhotoUrl:string;
 }) {
   return request({
     method: 'post',
@@ -46,7 +47,7 @@ const myinfoAPI = async (id: string) => {
 };
 
 export const getMyInfo = (id: string) => {
-  return useQuery<UserType, AxiosError>('my-info', () => myinfoAPI(id), {
+  return useQuery<UserType, AxiosError>(['my-info',id], () => myinfoAPI(id), {
     staleTime: Infinity,
   });
 };

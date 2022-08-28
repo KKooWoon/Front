@@ -43,6 +43,7 @@ export type OnBoading ={
   isActive:boolean;
   inputFocus:boolean;
   kakaoId:string;
+  profilePhotoUrl:string;
 }
 
 export type raceUser = {
