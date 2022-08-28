@@ -34,6 +34,8 @@ const useLayout = (): pageLayout => {
     }
   } else if (pathname === '/create-race') {
     return { ...layout, header: { title: '레이스 생성하기' }, noNav: true, hasBack: true };
+  } else if (pathname === '/complete-race') {
+    return { ...layout, header: false, noNav: true, hasBack: false };
   } else if (pathname === '/oauth') {
     return { ...layout, noNav: true };
   } else if (pathname === '/join') {
