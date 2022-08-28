@@ -17,7 +17,7 @@ const allRaceListAPI = async (id: string) => {
     const { currentRaceWithConfirmListDto, pastRaceListDto } = res;
     const returnNowList: Array<race> = currentRaceWithConfirmListDto.currentRaceInfoWithConfirmDto.map(v => {
       const { complete } = v;
-      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt,description, isPrivate } = v.raceInfoDto;
+      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt,description, privateOrNot } = v.raceInfoDto;
       const endTime = dayjs(endedAt);
       const startTime = dayjs(startedAt);
       return {
@@ -27,13 +27,13 @@ const allRaceListAPI = async (id: string) => {
         raceCode,
         memberCount,
         Dday: endTime.diff(startTime, 'd'),
-        isPrivate,
+        isPrivate:privateOrNot,
         isComplete:complete,
         description,
       };
     });
     const returnPastList: Array<race> = pastRaceListDto.pastInfoDtoList.map(v => {
-      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt, isPrivate,description } = v;
+      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt,  privateOrNot,description } = v;
       const endTime = dayjs(endedAt);
       const startTime = dayjs(startedAt);
       return {
@@ -45,7 +45,7 @@ const allRaceListAPI = async (id: string) => {
         Dday: endTime.diff(startTime, 'd'),
         startedAt: startTime.format('YYYY-MM-DD'),
         endedAt: endTime.format('YYYY-MM-DD'),
-        isPrivate,
+        isPrivate: privateOrNot,
         description,
       };
     });
@@ -61,3 +61,40 @@ export const getRaceList = (id: string) => {
   return useQuery<RaceListType, AxiosError>(['raceList', id], () => allRaceListAPI(id));
 };
 
+
+const tagRaceListAPI =async (tag:string|undefined) => {
+  return await request({
+    method:'get',
+    url:'/race/tag-search',
+    params:{
+      tag,
+    }
+  }).then(res => {
+    const {currentInfoDtoList} = res;
+    const returnArray:Array<race> = currentInfoDtoList.map(v => {
+      const { endedAt, memberCount, name, raceCode, raceId, raceTag, startedAt,  privateOrNot,description } = v;
+      const endTime = dayjs(endedAt);
+      const startTime = dayjs(startedAt);
+      return {
+        raceId,
+        raceName: name,
+        raceTag,
+        raceCode,
+        memberCount,
+        Dday: endTime.diff(startTime, 'd'),
+        startedAt: startTime.format('YYYY-MM-DD'),
+        endedAt: endTime.format('YYYY-MM-DD'),
+        isPrivate: privateOrNot,
+        description,
+      };
+    });
+    return returnArray;
+  })
+}
+
+export const getTagRaceList = (tag:string |undefined) =>{
+  return useQuery<Array<race>>(['tagList', tag], ()=> tagRaceListAPI(tag), {
+    enabled:!!tag
+  });
+
+}

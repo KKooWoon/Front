@@ -1,48 +1,65 @@
+import { isFollowAPI } from '@apis/follow';
+import { getRaceList } from '@apis/race';
+import { getMyInfo } from '@apis/user';
+import { getWorkoutPreviewList } from '@apis/workout';
 import FollowButton from '@components/follow-button';
+import { Spinner } from '@components/loading';
 import { BodySpec, MyProfile } from '@components/profile';
 import RaceList from '@components/race-list';
 import PreviewWorkOut from '@components/workout-list/workout-preview';
 import { MyInfo, RaceListDummy, WorkOutListDummy } from 'dummy';
 import React, { useCallback, useState } from 'react';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 import { PageWrapper, SlideSection, UserInfoSection } from './profile/profile.style';
 
 const ProfileDetail = () => {
+  const myId = localStorage.getItem('myId');
+  const { id } = useParams();
   /* 벡엔드에서 불러와야 하는 데이터 */
-  const UserData = MyInfo;
-  const RaceData = RaceListDummy;
-  const WorkOutData = WorkOutListDummy;
+  const { data: userInfo, isLoading: infoLoading } = getMyInfo(id!);
+  const { data: raceList, isLoading: raceLoading } = getRaceList(id!);
+  const { data: workoutList, isLoading: workoutLoading } = getWorkoutPreviewList(id!);
 
-  /* UserData에 isFollow 속성 들어 있도록 수정 해야함*/
+  // isFollow 요청
+  const { isLoading: isFollowLoading } = useQuery(['isFollow', id], () => isFollowAPI(myId!, id!), {
+    onSuccess: data => {
+      setIsFollow(data);
+    },
+  });
+
   const [isFollow, setIsFollow] = useState(false);
   const followHandler = useCallback(() => {
+    // 벡엔드에 포스트 요청 하게 수정
     setIsFollow(prev => !prev);
   }, []);
-
+  if (isFollowLoading || infoLoading || raceLoading || workoutLoading || !workoutList || !raceList || !userInfo)
+    return <Spinner />;
   return (
     <PageWrapper>
       <UserInfoSection>
         <MyProfile
-          nickname={UserData.nick_name}
-          imgUrl={UserData.profile_img}
-          message={UserData.status_message}
-          tag={UserData.interest}
+          nickname={userInfo.nickname}
+          imgUrl={userInfo.profileImageUrl!}
+          message={userInfo.description}
+          tag={userInfo.keyword!}
         />
         <div style={{ marginTop: '20px' }} />
         <BodySpec
-          age={UserData.age}
-          fat={UserData.bodyfat_pct}
-          height={UserData.height}
-          weight={UserData.weight}
-          muscle={UserData.skeletal_muscle_mass}
+          age={userInfo.age}
+          fat={userInfo.bodyFat}
+          height={userInfo.height}
+          weight={userInfo.weight}
+          muscle={userInfo.skeletalMuscleMass}
         />
-        <div style={{marginTop:20}} />
+        <div style={{ marginTop: 20 }} />
         <FollowButton width='100%' padding='15px 0px' isFollow={isFollow} onClickHandler={followHandler} />
       </UserInfoSection>
       <SlideSection>
         <h2>최근 운동 기록</h2>
-        <PreviewWorkOut data={WorkOutData} />
+        <PreviewWorkOut data={workoutList} />
         <h2 style={{ marginTop: '18px' }}>참영 중인 챌린지</h2>
-        <RaceList data={[]} height={115} styleType='profile' />
+        <RaceList data={raceList?.nowList} height={115} styleType='profile' />
       </SlideSection>
     </PageWrapper>
   );

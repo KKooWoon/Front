@@ -1,3 +1,5 @@
+import { getFollowerList, getFollowList } from '@apis/follow';
+import { Spinner } from '@components/loading';
 import SearchBar from '@components/search-bar';
 import TabLayout from '@components/tab-layout';
 import UserList from '@components/user-list/inedx';
@@ -7,35 +9,36 @@ import { FollowerList } from 'dummy';
 import React, { useCallback, useEffect, useState } from 'react';
 
 const FollowListPage = () => {
+  const myId = localStorage.getItem('myId');
   const [searchValue, onChangeSearchValue, setSearchValue] = useInput('');
   const [now, setNow] = useState<string>('팔로워');
   const [followList, setFollowList] = useState<Array<follow>>([]);
-  /* 팔로잉 리스트 벡엔드에서 불러옴 */
-  const follower = FollowerList;
-  /* 팔로잉 리스트 벡엔드에서 불러옴 */
-  const following = FollowerList;
+
+  const { data: followingList, isLoading: followLoading } = getFollowList(myId!);
+  const { data: followerList, isLoading: followerLoading } = getFollowerList(myId!);
+  
   const nowHandler = useCallback(
     (v: string) => {
       setNow(v);
     },
     [now]
   );
-
+  if (followLoading || followerLoading || !followingList || !followerList) return <Spinner />;
   const searchHandler = useCallback(() => {
-    if(searchValue === '') return; 
+    if (searchValue === '') return;
     // ToDo
-    if(now === '팔로워'){
-      setFollowList(follower.filter(v => v.nickName.includes(searchValue)))
-    }else {
-      setFollowList(following.filter(v => v.nickName.includes(searchValue)))
+    if (now === '팔로워') {
+      setFollowList(followerList.filter(v => v.nickName.includes(searchValue)));
+    } else {
+      setFollowList(followingList.filter(v => v.nickName.includes(searchValue)));
     }
     setSearchValue('');
   }, [followList, searchValue]);
   useEffect(() => {
     if (now === '팔로워') {
-      setFollowList(follower);
+      setFollowList(followerList);
     } else {
-      setFollowList(following);
+      setFollowList(followingList);
     }
   }, [now]);
 

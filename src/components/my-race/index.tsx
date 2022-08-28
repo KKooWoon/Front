@@ -15,7 +15,6 @@ import { ReactComponent as LockIcon } from '@assets/icons/lock.svg';
 const MyRace = () => {
   const myId = localStorage.getItem('myId');
   const { data: raceList, isLoading: raceLoading } = getRaceList(myId!);
-  const RaceData: Array<raceType> = RaceListDummy;
   const [startDate, setStartDate] = useState('22.03.02');
   const [finishDate, setFinishDate] = useState('22.06.30');
   /*백엔드 레이스 리스트 요청 
@@ -40,12 +39,12 @@ const MyRace = () => {
     },
     [menuOpen, deleteRace]
   );
-  const navigateHandler = (isPrivate: boolean, v: raceType) => {
+  const navigateHandler = (isPrivate: boolean, v: race) => {
     if (isPrivate) {
       navigate('/join', {
         state: {
           ...v,
-        } as raceType,
+        } as race,
       });
     } else {
       navigate(`/race/${v.raceId}`, { state: { ...v } });
@@ -62,7 +61,7 @@ const MyRace = () => {
           gridTemplateColumns: '1fr 1fr',
         }}
       >
-        {RaceData.map((v, i) => (
+        {raceList.nowList.map((v, i) => (
           <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
             <MyRaceBtn onClick={modalHandler} fill='#AC8EFF' />
             <p>D-{v.Dday}</p>
@@ -75,7 +74,7 @@ const MyRace = () => {
                 )}
                 {v.raceName}
               </h3>
-              <div>#{v.hashTag}</div>
+              <div>#{v.raceTag}</div>
             </section>
           </MyRaceWrapper>
         ))}
@@ -93,7 +92,7 @@ const MyRace = () => {
           gridTemplateColumns: '1fr 1fr',
         }}
       >
-        {RaceData.map((v, i) => (
+        {raceList.completeList.map((v, i) => (
           <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
             <p>{startDate}</p>
             <p>~ {finishDate}</p>
@@ -106,7 +105,7 @@ const MyRace = () => {
                 )}
                 {v.raceName}
               </h3>
-              <div>#{v.hashTag}</div>
+              <div>#{v.raceTag}</div>
             </section>
           </MyRaceWrapper>
         ))}

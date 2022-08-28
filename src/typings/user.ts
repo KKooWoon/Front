@@ -26,7 +26,7 @@ export type UserType= {
   skeletalMuscleMass?:number;
   interest:string;
   level:number;
-  keyword:null|string;
+  keyword:string;
   profileImageUrl?:string|null;
 }
 

@@ -10,6 +10,8 @@ import { PreViewWorkOut } from '@components/workout-list';
 import { getMyInfo } from '@apis/user';
 import { getFollowerList, getFollowList } from '@apis/follow';
 import { getRaceList } from '@apis/race';
+import { getWorkoutPreviewList } from '@apis/workout';
+import { Spinner } from '@components/loading';
 
 const ProfilePage = () => {
   const myId = localStorage.getItem('myId');
@@ -19,25 +21,26 @@ const ProfilePage = () => {
   const { data: followingList, isLoading: followLoading } = getFollowList(myId!);
   const { data: followerList, isLoading: followerLoading } = getFollowerList(myId!);
   const { data: raceList, isLoading: raceLoading } = getRaceList(myId!); // 캐러셀 selected
-  const RaceData = RaceListDummy;
-  const WorkOutData = WorkOutListDummy;
+  const {data : workoutList, isLoading:workoutLoading} = getWorkoutPreviewList(myId!);
 
   if (
     infoLoading ||
     followLoading ||
     followerLoading ||
     raceLoading ||
+    workoutLoading ||
     !followerList ||
     !followingList ||
     !userInfo ||
-    !raceList
+    !raceList ||
+    !workoutList
   )
-    return null;
+    return <Spinner />;
   return (
     <PageWrapper>
       <AddPeople className='icon' onClick={() => navigate('/search')} />
       <UserInfoSection>
-        <MyProfile nickname={userInfo.nickname} imgUrl={null} message={userInfo.description} tag={userInfo.keyword!} />
+        <MyProfile nickname={userInfo.nickname} imgUrl={userInfo.profileImageUrl!} message={userInfo.description} tag={userInfo.keyword!} />
         <GridWrapper onClick={() => navigate('/follow')}>
           <h3>캐릭터</h3>
           <h3>팔로워</h3>
@@ -56,7 +59,7 @@ const ProfilePage = () => {
       </UserInfoSection>
       <SlideSection>
         <h2>최근 운동 기록</h2>
-        <PreViewWorkOut data={WorkOutData} />
+        <PreViewWorkOut data={workoutList} />
         <h2 style={{ marginTop: '18px' }}>참여 중인 챌린지</h2>
         <RaceList data={raceList?.nowList} height={153} styleType='profile' />
       </SlideSection>
