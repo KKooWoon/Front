@@ -108,17 +108,20 @@ export const MyInfo: User = {
 };
 
 export const userSearch: Array<resultType> = [
-  {
+  { 
+    accountId:1,
     profileImg: null,
     nickName: '사용자1',
     isFollow: true,
   },
   {
+    accountId:1,
     profileImg: null,
     nickName: '사용자2',
     isFollow: true,
   },
   {
+    accountId:1,
     profileImg: null,
     nickName: '사용자3',
     isFollow: false,

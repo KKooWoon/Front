@@ -29,5 +29,34 @@ const followListAPI = async (id: string) => {
 };
 
 export const getFollowList = (id: string) => {
-  return useQuery<Array<follow>, AxiosError>('followList', () => followListAPI(id));
+  return useQuery<Array<follow>, AxiosError>('followingList', () => followListAPI(id));
 };
+
+const followerListAPI = async (id: string) => {
+  return request({
+    method: 'get',
+    url: 'follow/followerList',
+    params: {
+      accountId: id,
+    },
+  }).then(res => {
+    if (res.followerList.length !== 0) {
+      const returnArray: Array<follow> = res.followerList.map(v => {
+        const { description, profileImageUrl, targetId, targetNickname } = v;
+        return {
+          id: targetId,
+          nickName: targetNickname,
+          profileImageUrl,
+          description,
+        };
+      });
+      return returnArray;
+    } else {
+      return res.followerList;
+    }
+  });
+};
+
+export const getFollowerList = (id:string) => {
+  return useQuery<Array<follow>, AxiosError>('followerList', () => followerListAPI(id));
+}

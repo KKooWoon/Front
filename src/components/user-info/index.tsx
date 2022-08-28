@@ -32,10 +32,11 @@ const UserInfo = () => {
       kakaoId: onBoadingState.kakaoId,
       weight:parseInt(onBoadingState.body_spec.weight as string),
       skeletalMuscleMass: parseInt(onBoadingState.body_spec.muscle as string),
+      keyword:onBoadingState.interest,
     });
-    const {aceesToken, refreshToken} = result;
+    const {accessToken, refreshToken} = result;
     try{
-      localStorage.setItem('token', refreshToken);
+      localStorage.setItem('token', accessToken);
       navigator('/main');
     }catch(e){
       console.log('token Error');

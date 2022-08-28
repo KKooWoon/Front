@@ -42,7 +42,7 @@ const ProfileDetail = () => {
         <h2>최근 운동 기록</h2>
         <PreviewWorkOut data={WorkOutData} />
         <h2 style={{ marginTop: '18px' }}>참영 중인 챌린지</h2>
-        <RaceList data={RaceData} height={115} styleType='profile' />
+        <RaceList data={[]} height={115} styleType='profile' />
       </SlideSection>
     </PageWrapper>
   );

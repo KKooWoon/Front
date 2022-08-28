@@ -1,11 +1,11 @@
 import ImageSlider from '@components/image-slider/inedx';
-import { raceType } from '@typings/race';
+import { race, raceType } from '@typings/race';
 import React, { Dispatch, SetStateAction } from 'react';
 import RaceItem from './race-item';
 import { NoResult, Wrapper } from './race-list.style';
 
 interface Props {
-  data: Array<raceType>;
+  data: Array<race>;
   height: number;
   now?: number;
   setNow?: (v:number) => void;

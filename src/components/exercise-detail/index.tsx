@@ -16,7 +16,7 @@ const ExerciseDetail = () => {
         <button style={{ marginLeft: '13' }}>전체 운동 삭제하기</button>
       </ButtonWrapper>
       <h1>인증할 레이스</h1>
-      <RaceList data={RaceData} height={115} now={raceSelected} setNow={setRaceSelected} styleType='detail' />
+      <RaceList data={[]} height={115} now={raceSelected} setNow={setRaceSelected} styleType='detail' />
       <PeriodSetting />
     </Wrapper>
   );

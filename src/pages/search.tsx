@@ -1,20 +1,19 @@
+import { getUserSearch } from '@apis/user';
 import SearchBar from '@components/search-bar';
 import SearchResult from '@components/search-result';
 import useInput from '@hooks/use-input';
 import { resultType } from '@typings/search';
-import { userSearch } from 'dummy';
 import React, { useCallback, useState } from 'react';
 
 const SearchPage = () => {
   const [searchValue, onChangeSearchValue, setSearchValue] = useInput('');
   const [searchResult, setSearchResult] = useState<null | Array<resultType>>(null);
   const searchHandler = useCallback(() => {
-    console.log(searchValue, ' 로 친구 찾기');
-    /* 서치 아이콘 누르면 searchResult 불러옴 */
-    const result = userSearch;
-    setSearchResult(result);
+    const {data:result, isLoading} = getUserSearch(searchValue);
+    setSearchResult(result ? result : null);
     setSearchValue('');
   }, [searchValue]);
+  // todo : 로딩 에러 안나는지 체크
   return (
     <div style={{ padding: '30px 20px' }}>
       <SearchBar
