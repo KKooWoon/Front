@@ -6,7 +6,7 @@ import request from './client';
 const followListAPI = async (id: string) => {
   return await request({
     method: 'get',
-    url: 'follow/followingList',
+    url: '/follow/followingList',
     params: {
       accountId: id,
     },
@@ -33,9 +33,9 @@ export const getFollowList = (id: string) => {
 };
 
 const followerListAPI = async (id: string) => {
-  return request({
+  return await request({
     method: 'get',
-    url: 'follow/followerList',
+    url: '/follow/followerList',
     params: {
       accountId: id,
     },
@@ -59,4 +59,18 @@ const followerListAPI = async (id: string) => {
 
 export const getFollowerList = (id:string) => {
   return useQuery<Array<follow>, AxiosError>('followerList', () => followerListAPI(id));
+}
+
+
+export const isFollowAPI =async (sourceId:string, targetId:string) => {
+    return await request({
+      method:'get',
+      url:'/follow',
+      params:{
+        sourceId,
+        targetId,
+      }
+    }).then(res =>{
+      return res.following;
+    })
 }

@@ -30,7 +30,7 @@ const MainPage = () => {
   /* 벡엔드에서 follow data 가져옴 */
   const { data: followList, isLoading: followLoading } = getFollowList(myId!);
   const userData = userDummy;
-  /* 벡엔드에서 my-info 가져옴 */
+/* 벡엔드에서 my-info 가져옴 */
   const { data: userInfo, isLoading: infoLoading } = getMyInfo(myId!);
   const myInfo = MyInfo;
   /* workout data -> raceselected 가 undefined가 아닐 때 가져와야함 */

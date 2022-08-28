@@ -44,7 +44,7 @@ const RaceItem = ({
 
   return (
     <ItemWrapper active={isActive}>
-      <CompleteIcon />
+      {item.isComplete && <CompleteIcon />}
       <p>D-{item.Dday}</p>
       <section className='wrapper'>
         <h3>{item.raceName}</h3>
