@@ -13,7 +13,7 @@ export type User= {
   follower_list:Array<{id: number}>;
   following_list:Array<{id: number}>;
   profile_img:string|null;
-}
+} // 지워야함
 export type UserType= {
   accountId:number,
   age:number;
@@ -26,7 +26,7 @@ export type UserType= {
   skeletalMuscleMass?:number;
   interest:string;
   level:number;
-  key:null|string;
+  keyword:null|string;
   profileImageUrl?:string|null;
 }
 

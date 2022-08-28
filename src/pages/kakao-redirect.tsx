@@ -24,8 +24,8 @@ const KaKaoRedirect = () => {
         const rst = await client.get('/user/oauth/kakao', { params: { code } }).then(res => {
           return res.data;
         });
-        const {refreshToken, userInfoDto } =rst;
-        localStorage.setItem('token', refreshToken);
+        const {accessToken, userInfoDto } = rst;
+        localStorage.setItem('token',  accessToken);
         localStorage.setItem('myId', userInfoDto.accountId);
         navigate('/main');
       } catch (e) {

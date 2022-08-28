@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 import { UserType } from '@typings/user';
 import { useQuery } from 'react-query';
 import request, { client } from './client';
+import { resultType } from '@typings/search';
 
 export function signUpAPI(userData: {
   age: number;
@@ -11,6 +12,7 @@ export function signUpAPI(userData: {
   nickname: string;
   skeletalMuscleMass: number;
   weight: number;
+  keyword: string;
 }) {
   return request({
     method: 'post',
@@ -36,11 +38,37 @@ const myinfoAPI = async (id: string) => {
     method: 'get',
     url: '/user/info',
     params: { accountId: id },
+  }).then(res => {
+    res.profileImageUrl = res.photoUrl;
+    delete res.photoUrl;
+    return res;
   });
 };
 
 export const getMyInfo = (id: string) => {
-  return  useQuery<UserType, AxiosError>('my-info', () => myinfoAPI(id), {
+  return useQuery<UserType, AxiosError>('my-info', () => myinfoAPI(id), {
     staleTime: Infinity,
   });
 };
+
+const userSearchAPI = async (nickname: string) => {
+  return await request({
+    method: 'get',
+    url: '/user/user-list',
+    params: {
+      nickname,
+    },
+  }).then(res => {
+    const returnArray: Array<resultType> = res.userInfoWithFollowList.map(v => ({
+      accountId: v.accountId,
+      profileImg: v.photoUrl,
+      nickName: v.nickname,
+      isFollow: v.follow,
+    }));
+    return returnArray;
+  });
+};
+
+export const getUserSearch = (nickname:string) => {
+  return useQuery<Array<resultType>>(['search', nickname], () => userSearchAPI(nickname));
+}

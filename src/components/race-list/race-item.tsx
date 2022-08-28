@@ -1,4 +1,4 @@
-import { raceType } from '@typings/race';
+import { race, raceType } from '@typings/race';
 import React, { useState } from 'react';
 import { ItemWrapper, ProfileWrapper, DetailWrapper, MyRaceWrapper } from './race-list.style';
 import { ReactComponent as CompleteIcon } from '@assets/icons/complete.svg';
@@ -8,7 +8,7 @@ const RaceItem = ({
   isActive,
   styleType,
 }: {
-  item: raceType;
+  item: race;
   isActive?: boolean;
   styleType: 'main' | 'detail' | 'profile' | 'myrace';
 }) => {
@@ -18,7 +18,7 @@ const RaceItem = ({
         <p>D-{item.Dday}</p>
         <section className='wrapper'>
           <h3>{item.raceName}</h3>
-          <div>#{item.hashTag}</div>
+          <div>#{item.raceTag}</div>
         </section>
       </DetailWrapper>
     );
@@ -28,7 +28,7 @@ const RaceItem = ({
         <p>D-{item.Dday}</p>
         <section className='wrapper'>
           <h3>{item.raceName}</h3>
-          <div>#{item.hashTag}</div>
+          <div>#{item.raceTag}</div>
         </section>
       </ProfileWrapper>
     );
@@ -37,7 +37,7 @@ const RaceItem = ({
       <MyRaceWrapper>
         <p>D-{item.Dday}</p>
         <h3>{item.raceName}</h3>
-        <div>#{item.hashTag}</div>
+        <div>#{item.raceTag}</div>
       </MyRaceWrapper>
     );
   }
@@ -48,7 +48,7 @@ const RaceItem = ({
       <p>D-{item.Dday}</p>
       <section className='wrapper'>
         <h3>{item.raceName}</h3>
-        <div>#{item.hashTag}</div>
+        <div>#{item.raceTag}</div>
       </section>
     </ItemWrapper>
   );

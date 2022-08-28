@@ -15,9 +15,11 @@ export type race = {
   raceTag:string;
   raceCode:string;
   memberCount:number;
-  startedAt:string;
-  endedAt:string;
-  isPrivate:boolean
+  startedAt?:string;
+  endedAt?:string;
+  isPrivate:boolean;
+  isComplete?:boolean;
+  description:string;
 }
 export type RaceListType = {
   allList:Array<race>;
