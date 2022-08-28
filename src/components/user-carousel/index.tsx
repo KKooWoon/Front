@@ -35,7 +35,7 @@ const UserCarousel = ({ data, now, setNow, myData }: Props) => {
           }}
         >
           <SwiperSlide onClick={() => setNow && setNow(myData.accountId)}>
-            <CarouselItem nickname={myData.nickname} url={null} isActive={now === myData.accountId} />
+            <CarouselItem nickname={myData.nickname} url={myData.profileImageUrl ? myData.profileImageUrl: null } isActive={now === myData.accountId} />
           </SwiperSlide>
           {data.map(v => (
             <SwiperSlide key={v.id} onClick={() => setNow && setNow(v.id as number)}>

@@ -14,6 +14,7 @@ const initialState: OnBoading = {
   isActive: false,
   inputFocus: false,
   kakaoId:'',
+  profilePhotoUrl:"",
 };
 
 const onBoadingSlice = createSlice({
@@ -59,6 +60,9 @@ const onBoadingSlice = createSlice({
     },
     setKakaoId(state,action) {
       state.kakaoId = action.payload;
+    },
+    setProfileImgae(state,action) {
+      state.profilePhotoUrl = action.payload;
     }
   },
 });

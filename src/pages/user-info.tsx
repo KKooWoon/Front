@@ -6,9 +6,13 @@ import onBoadingSlice from 'reducer/onboading';
 
 const UserInfoPage = () => {
   const { state } = useLocation();
-  console.log(state);
+  const {kakaoId, profilePhotoUrl} = state as unknown as {
+    kakaoId: string,
+    profilePhotoUrl:string
+  };
   const dispatch = useAppDispatch();
-  dispatch(onBoadingSlice.actions.setKakaoId(state));
+  dispatch(onBoadingSlice.actions.setKakaoId(kakaoId));
+  dispatch(onBoadingSlice.actions.setProfileImgae(profilePhotoUrl));
   return <UserInfo />;
 };
 
