@@ -57,20 +57,39 @@ const followerListAPI = async (id: string) => {
   });
 };
 
-export const getFollowerList = (id:string) => {
+export const getFollowerList = (id: string) => {
   return useQuery<Array<follow>, AxiosError>('followerList', () => followerListAPI(id));
+};
+
+export const isFollowAPI = async (sourceId: string, targetId: string) => {
+  return await request({
+    method: 'get',
+    url: '/follow',
+    params: {
+      sourceId,
+      targetId,
+    },
+  }).then(res => {
+    return res.following;
+  });
+};
+
+export const setFollowAPI =async (targetId:string) => {
+  return await request({
+    method:'post',
+    url:'/follow',
+    params:{
+      targetId
+    }
+  })
 }
 
-
-export const isFollowAPI =async (sourceId:string, targetId:string) => {
-    return await request({
-      method:'get',
-      url:'/follow',
-      params:{
-        sourceId,
-        targetId,
-      }
-    }).then(res =>{
-      return res.following;
-    })
+export const setUnFollowAPI =async (targetId:string) => {
+  return await request({
+    method:'delete',
+    url:'/follow',
+    params:{
+      targetId,
+    }
+  })
 }

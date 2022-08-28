@@ -11,12 +11,11 @@ import { useNavigate } from 'react-router-dom';
 import { getRaceList } from '@apis/race';
 import { Spinner } from '@components/loading';
 import { ReactComponent as LockIcon } from '@assets/icons/lock.svg';
+import { useQueryClient } from 'react-query';
 
 const MyRace = () => {
-  const myId = localStorage.getItem('myId');
+  const myId = localStorage.getItem('myId');  
   const { data: raceList, isLoading: raceLoading } = getRaceList(myId!);
-  const [startDate, setStartDate] = useState('22.03.02');
-  const [finishDate, setFinishDate] = useState('22.06.30');
   /*백엔드 레이스 리스트 요청 
     완료한 레이스의 경우 시작일과 종료일을 받아와야 함*/
   const navigate = useNavigate();
@@ -94,8 +93,8 @@ const MyRace = () => {
       >
         {raceList.completeList.map((v, i) => (
           <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
-            <p>{startDate}</p>
-            <p>~ {finishDate}</p>
+            <p>{v.startedAt}</p>
+            <p>~ {v.endedAt}</p>
             <section className='wrapper'>
               <h3>
                 {v.isPrivate && (

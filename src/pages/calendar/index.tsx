@@ -11,7 +11,6 @@ const CalendarPage = () => {
   const { data: raceList, isLoading: raceLoading } = getRaceList(myId!); // 캐러셀 selected
   console.log('tttt : ',raceList)
   const nowRaceHandler = useCallback((v:'ALL' | number)=>{
-    /* 벡엔드 api 설계되는 것 보고 id 값으로 바뀔 수 도 있음 */
     if(nowSelected === v) return;
     setNowSelected(v)
   },[nowSelected]);
