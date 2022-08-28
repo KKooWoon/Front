@@ -61,4 +61,3 @@ export const getRaceList = (id: string) => {
   return useQuery<RaceListType, AxiosError>(['raceList', id], () => allRaceListAPI(id));
 };
 
-
