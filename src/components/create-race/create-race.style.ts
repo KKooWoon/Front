@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin-top: 40px;
+  margin: 40px 20px 0px;
   & h1 {
     font-weight: 700;
     font-size: 20px;
@@ -104,11 +104,24 @@ export const PeriodWrapper = styled.div`
   }
 `;
 
+export const PeriodInput = styled.input`
+  text-align: center;
+  width: 50%;
+  height: 50px;
+  border: 2px solid #6732ff;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #101010;
+  :focus {
+    outline: none;
+  }
+`;
+
 export const OpenWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 18px;
-  margin-bottom: 50px;
   & button {
     font-weight: 400;
     font-size: 16px;
@@ -117,10 +130,6 @@ export const OpenWrapper = styled.div`
     border-radius: 20px;
     background-color: #f3f2f4;
     color: #adacb1;
-    :active {
-      background-color: #6732ff;
-      color: #ffffff;
-    }
   }
   button + button {
     margin-left: 17px;
