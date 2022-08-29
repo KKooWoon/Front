@@ -75,13 +75,13 @@ const CardioItem = ({ data, isMe }: { data: cardio; isMe: boolean }) => {
   return (
     <ItemContainer type='cardio' isMe={isMe} title={data.name}>
       <DetailItem >
-        <span>{data.name}</span>
+        <div></div>
         {data.duration && (
           <span>
             {data.duration} <span>시간</span>
           </span>
         )}
-        {data.calorie && (
+        {data.calorie  || data.calorie !== 0&& (
           <span>
             {data.calorie} <span>kcal</span>
           </span>

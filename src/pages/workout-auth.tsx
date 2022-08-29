@@ -14,6 +14,7 @@ const WorkoutAuth = () => {
   const [memo, onChangeMemo] = useInput('');
   console.log('form:', imageData);
   console.log('state: ', state);
+  
   const work = state as unknown as WorkOutList;
   const ImageUploadHandler = useCallback(() => {
     inputRef.current!.click();
@@ -29,8 +30,6 @@ const WorkoutAuth = () => {
       };
     }
 
-    console.log('e:', e.target);
-    console.log('img : ', Image[0]);
     const imageFormData = new FormData();
     imageFormData.append('file', Image[0]);
     imageFormData.append('recordId', work.recordId ? work.recordId!.toString() : '12');
@@ -38,6 +37,7 @@ const WorkoutAuth = () => {
   };
   const submitHandler = async () => {
     try {
+      imageData!.append('description',memo);
       await confirmAPI(imageData!);
     } catch (e) {
       console.error(e);

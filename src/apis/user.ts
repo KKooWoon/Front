@@ -62,7 +62,7 @@ export const userSearchAPI = async (nickname: string) => {
   }).then(res => {
     const returnArray: Array<resultType> = res.userInfoWithFollowList.map(v => ({
       accountId: v.accountId,
-      profileImg: v.photoUrl,
+      profileImg: v.profilePhotoUrl,
       nickName: v.nickname,
       isFollow: v.follow,
     }));
