@@ -55,12 +55,12 @@ const ProfileDetail = () => {
   });
 
   const followHandler = useCallback(() => {
-    if(isFollow){
+    if(!isFollow){
       postFollow();
     }else{
       deleteFollow();
     }
-  }, []);
+  }, [isFollow]);
   if (isFollowLoading || infoLoading || raceLoading || workoutLoading || !workoutList || !raceList || !userInfo)
     return <Spinner />;
   return (
