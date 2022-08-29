@@ -5,6 +5,11 @@ import request from '@apis/client';
 import moment from 'moment';
 
 const RegisterPage = () => {
+  const [diet, setDiet] = useState({
+    foodList: [''],
+    name: '',
+  });
+
   const [cardio, setCardio] = useState({
     calorie: 0,
     name: '',
@@ -34,7 +39,7 @@ const RegisterPage = () => {
   return (
     <Wrapper>
       <span>챌린지에서 진행할 운동을 등록해보세요.</span>
-      <Register cardio={cardio} setCardio={setCardio} />
+      <Register cardio={cardio} setCardio={setCardio} diet={diet} setDiet={setDiet} />
       <RegisterBtn onClick={postData}>등록하기</RegisterBtn>
     </Wrapper>
   );
