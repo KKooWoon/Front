@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import request from '@apis/client';
 import moment from 'moment';
 import { useQueryClient } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const RegisterPage = () => {
+  const location = useLocation();
+  const raceid = location.state as number;
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const myId = localStorage.getItem('myId');
@@ -28,14 +30,14 @@ const RegisterPage = () => {
     try {
       const response = await request({
         method: 'post',
-        url: '/record/cardio?raceId=10&date=' + `${now}`,
+        url: '/record/cardio?raceId=' + `${raceid}` + '&date=' + `${now}`,
         body: {
           calorie: cardio.calorie,
           name: cardio.name,
           time: cardio.hour * 60 + cardio.minute,
         },
       }).then(res => {
-        queryClient.invalidateQueries(['raceList', myId!])
+        queryClient.invalidateQueries(['raceList', myId!]);
         navigate('/race');
       });
       console.log(response);
