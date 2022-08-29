@@ -1,9 +1,9 @@
 import React from 'react';
 import { LayoutHeader } from './layout.style';
 
-const Header = () => {
+const Header = ({title}:{title?:string}) => {
   return (
-    <LayoutHeader>헤더</LayoutHeader>
+    <LayoutHeader>{title}</LayoutHeader>
   )
 }
 

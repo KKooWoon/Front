@@ -10,8 +10,8 @@ export const LayoutHeader = styled.header`
   max-width: 480px;
   top: 0;
   width: 100%;
-  height: 60px;
-  box-shadow: 0px 2px 4px rgba(203, 203, 203, 0.25);
+  height: 67px;
+  border-bottom: 1px solid var(--gray-02);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,13 +19,46 @@ export const LayoutHeader = styled.header`
   position: fixed;
   z-index: 1000;
   background: white;
+  font-weight: 700;
+  font-size:20px;
+  color: var(--black);
 `;
 export const LayoutNavbar = styled.nav`
   position: fixed;
   max-width: 480px;
   width: 100%;
   bottom: 0;
-  height: 60px;
-  background-color: white;
-  box-shadow: 0px -2px 4px rgba(203, 203, 203, 0.25);
+  height: 67px;
+  background-color: var(--gray-00);
+  & ul {
+    padding: 11px 26px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+  }
 `;
+
+export const NavBarItem = styled.div`
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span {
+    text-align: center;
+    font-weight: 400;
+    font-size: 11px;
+    color:#676767;
+  }
+`;
+
+export const BackButtonWrapper = styled.div`
+  margin: 0;
+  width: 16px;
+  height: 7px;
+  position: fixed;
+  top: 22px;
+  left: 16px;
+  z-index: 1001;
+  cursor: pointer;
+`
