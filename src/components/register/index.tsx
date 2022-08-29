@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, Dispatch } from 'react';
 import { ButtonWrapper, Wrapper } from './register.style';
 import Weight from '@components/weight-category';
-import Aerobic from '@components/aerobic-category';
-import Food from '@components/food-category';
+import Cardio from '@components/cardio-category';
+import Food from '@components/diet-category';
 import styled from 'styled-components';
 import PeriodSetting from '@components/period-setting';
 
-const Register = () => {
+interface CardioProps {
+  cardio: {
+    calorie: number;
+    name: string;
+    hour: number;
+    minute: number;
+  };
+  setCardio: Dispatch<
+    React.SetStateAction<{
+      calorie: number;
+      name: string;
+      hour: number;
+      minute: number;
+    }>
+  >;
+}
+
+const Register: React.FunctionComponent<CardioProps> = ({ cardio, setCardio }) => {
   const [content, setContent] = useState();
 
   const handleClickBtn = e => {
@@ -16,7 +33,7 @@ const Register = () => {
 
   const selectComponent = {
     weight: <Weight />,
-    aerobic: <Aerobic />,
+    cardio: <Cardio cardio={cardio} setCardio={setCardio} />,
     food: <Food />,
   };
   return (
@@ -25,7 +42,7 @@ const Register = () => {
       <ButtonWrapper>
         <button onClick={handleClickBtn} name='weight' />
         <p>웨이트 트레이닝</p>
-        <button onClick={handleClickBtn} name='aerobic' />
+        <button onClick={handleClickBtn} name='cardio' />
         <p>유산소 운동</p>
         <button onClick={handleClickBtn} name='food' />
         <p>식단</p>
