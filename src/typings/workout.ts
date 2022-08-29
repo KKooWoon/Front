@@ -34,6 +34,7 @@ export type weight = {
 };
 
 export type WorkOutList = {
+  recordId?:number;
   weightList: Array<weight>;
   cardioList: Array<cardio>;
   dietList: Array<diet>;

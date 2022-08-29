@@ -16,8 +16,10 @@ import { follow } from '@typings/follow';
 import { getRaceList } from '@apis/race';
 import { getWorkoutList } from '@apis/workout';
 import { Spinner } from '@components/loading';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const myId = localStorage.getItem('myId');
   const today = dayjs().format('YYYY-MM-DD');
   console.log('data객체 : ', today);
@@ -26,16 +28,12 @@ const MainPage = () => {
 
   /* 벡엔드에서 레이스 데이터 가져옴 */
   const { data: raceList, isLoading: raceLoading } = getRaceList(carouselSelected.toString()); // 캐러셀 selected
-  const RaceData: Array<raceType> = RaceListDummy;
   /* 벡엔드에서 follow data 가져옴 */
   const { data: followList, isLoading: followLoading } = getFollowList(myId!);
-  const userData = userDummy;
-/* 벡엔드에서 my-info 가져옴 */
+  /* 벡엔드에서 my-info 가져옴 */
   const { data: userInfo, isLoading: infoLoading } = getMyInfo(myId!);
-  const myInfo = MyInfo;
   /* workout data -> raceselected 가 undefined가 아닐 때 가져와야함 */
-  const {data:workoutList, isLoading: workoutLoading} = getWorkoutList(carouselSelected, raceSelected!, today);
-  const workOutData = WorkoutData;
+  const { data: workoutList, isLoading: workoutLoading } = getWorkoutList(carouselSelected, raceSelected!, today);
   console.log('my: ', userInfo);
   console.log('follow : ', followList);
   console.log('race:', raceList?.allList);
@@ -45,13 +43,13 @@ const MainPage = () => {
       console.log('여기 실행');
       setRaceSelected(raceList?.allList[0].raceId);
     }
-  }, [carouselSelected]);
-
+  }, [carouselSelected, raceList]);
   const raceHandler = (v: number) => {
     setRaceSelected(v);
   };
 
-  if (infoLoading || followLoading || raceLoading || !userInfo || !followList || !raceList) return <Spinner />;
+  if (infoLoading || followLoading || raceLoading || workoutLoading || !userInfo || !followList || !raceList)
+    return <Spinner />;
   return (
     <Wrapper>
       {/*MainProfile 에서는 MyProfile 정보만 필요 */}
@@ -67,8 +65,10 @@ const MainPage = () => {
             <NoResult>{`참여 중인 레이스가 없습니다.\n\n레이스탭에서 새로운 레이스를 생성하거나\n참여해 보세요`}</NoResult>
           </NoResultWrapper>
         )}
-        {raceList.allList.length !== 0 && carouselSelected === myInfo.id && (
-          <CustomButton>
+        {raceList.allList.length !== 0 && carouselSelected === userInfo.accountId && !!workoutList && (
+          <CustomButton
+            onClick={() => navigate('/workout-auth', { state: workoutList })}
+          >
             <span>이 레이스에 운동 인증하기</span>
           </CustomButton>
         )}
@@ -77,7 +77,7 @@ const MainPage = () => {
             <hr style={{ margin: '30px 0px' }} />
             <DateSection>
               <h3>{today}</h3>
-              {carouselSelected === myInfo.id && (
+              {carouselSelected === userInfo.accountId && (
                 <button>
                   <PlusIcon />
                   <span>운동 등록하기</span>
@@ -86,9 +86,9 @@ const MainPage = () => {
             </DateSection>
           </>
         )}
-        {raceList.allList.length !== 0 && (
+        {raceList.allList.length !== 0 && !!workoutList && (
           <WorkOutSection>
-            <DetailWorkOut data={WorkoutData} isMe={carouselSelected === myInfo.id} />
+            <DetailWorkOut data={workoutList!} isMe={carouselSelected === userInfo.accountId} />
           </WorkOutSection>
         )}
       </UserInfoWrapper>

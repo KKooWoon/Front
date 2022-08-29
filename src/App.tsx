@@ -27,6 +27,8 @@ const RaceDetail = React.lazy(() => import('@pages/race-detail'));
 const RaceJoin = React.lazy(() => import('@pages/race-join'));
 const UserList = React.lazy(() => import('@pages/user-list'));
 const WorkoutDetail = React.lazy(() => import('@pages/workout-detail'));
+const WorkoutAuth = React.lazy(() => import('@pages/workout-auth'));
+
 
 const App = () => {
   const { pathname } = useLocation();
@@ -63,6 +65,7 @@ const App = () => {
         <Route path='exercise-detail' element={<ExerciseDetail />} />
         <Route path='search' element={<Search />} />
         <Route path='follow' element={<FollowList />} />
+        <Route path='workout-auth' element={<WorkoutAuth />} />
       </Route>
       <Route path='/mobile' element={<MobileError />} />
       <Route path='/*' element={<ErrorPage />} />
