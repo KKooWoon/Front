@@ -14,20 +14,30 @@ const workoutListAPI = async (accountId: number, raceId: number, date: string) =
       raceId,
       date,
     },
-  }).then(res => {
-    const { cardioDtoList, deitDtoList, weightDtoList } = res;
-    const returnWorkoutList: WorkOutList = {
-      cardioList: cardioDtoList,
-      dietList: deitDtoList,
-      weightList: weightDtoList,
-    };
-    return returnWorkoutList;
-  });
+  })
+    .then(res => {
+      const { cardioDtoList, dietDtoList, weightDtoList, workoutRecordId } = res;
+      const returnWorkoutList: WorkOutList = {
+        recordId: workoutRecordId,
+        cardioList: cardioDtoList,
+        dietList: dietDtoList,
+        weightList: weightDtoList,
+      };
+      return returnWorkoutList;
+    })
+    .catch((e: any) => {
+      return {
+        cardioList: [],
+        dietList: [],
+        weightList: [],
+      };
+    });
 };
 
 export const getWorkoutList = (accountId: number, raceId: number, date: string) => {
   return useQuery<WorkOutList, AxiosError>('workoutList', () => workoutListAPI(accountId, raceId, date), {
     enabled: !!raceId,
+    retry: false,
   });
 };
 
@@ -62,6 +72,7 @@ const workoutDatedListAPI = async (raceId: number) => {
     },
   }).then(res => {
     const { oneDayRecords } = res;
+    if (oneDayRecords === null) return [];
     const returnArray: Array<Gallery> = oneDayRecords.map(v => {
       return {
         date: v.date,
@@ -80,6 +91,17 @@ const workoutDatedListAPI = async (raceId: number) => {
   });
 };
 
-export const getGalleryList = (raceId:number)=>{
-  return useQuery<Array<Gallery>>(['gallery', raceId],()=> workoutDatedListAPI(raceId));
-}
+export const getGalleryList = (raceId: number) => {
+  return useQuery<Array<Gallery>>(['gallery', raceId], () => workoutDatedListAPI(raceId));
+};
+
+export const confirmAPI = async (data: FormData) => {
+  return await request({
+    method: 'post',
+    url: '/confirm',
+    body: data,
+    header: {
+      'content-type': 'multipart/form-data',
+    },
+  });
+};

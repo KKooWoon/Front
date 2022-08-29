@@ -46,6 +46,8 @@ const useLayout = (): pageLayout => {
   } else if (pathname.startsWith('/workout-detail')) {
     const obj = state as unknown as {date:string, workout:WorkOut}
     return { ...layout, noNav: true, hasBack: true, header: { title: obj.date as string } };
+  }else if(pathname === '/workout-auth') {
+    return {...layout, noNav:true, hasBack: true, header:{title:'운동 인증하기'}}
   }
 
   return layout;

@@ -38,7 +38,7 @@ const raceCalendarAPI = async (accountId: string, year: number, month: number, r
       raceId,
     },
   }).then(res => {
-    const returnArray: Array<calendar> = res.oneMonthRecordDtoList.map(v => {
+    const returnArray: Array<calendar> = res.oneMonthRecordList.map(v => {
       const { recordDate, cardioDtoList, dietDtoList, weightDtoList } = v;
       return {
         date: recordDate,

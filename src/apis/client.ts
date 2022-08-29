@@ -10,6 +10,7 @@ const request = async ({
   url,
   params,
   body,
+  header,
 }: {
   method: 'get' | 'post' | 'put' | 'delete';
   url: string;
@@ -17,6 +18,8 @@ const request = async ({
   params?: {};
   // eslint-disable-next-line @typescript-eslint/ban-types
   body?: {};
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  header?: {};
 }) => {
   const token = localStorage.getItem('token');
   try {
@@ -28,6 +31,7 @@ const request = async ({
       method: method,
       params: params,
       data: body,
+      headers:header
     });
     return data;
   } catch (e) {
