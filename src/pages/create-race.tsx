@@ -4,13 +4,15 @@ import CreateRace from '@components/create-race';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import request from '@apis/client';
+import moment from 'moment';
 
 const CreateRacePage = () => {
   const navigate = useNavigate();
   const [raceInput, setRaceInput] = useState({
     description: '',
     endedAt: '',
-    ownerNickname: 'abcde',
+    ownerNickname: '',
     raceName: '',
     racePassword: '',
     raceTag: '',
@@ -36,16 +38,21 @@ const CreateRacePage = () => {
 
   async function postData() {
     try {
-      const response = await axios.post('http://3.22.172.144:8080/api/v1/race/create', {
-        description: raceInput.description,
-        endedAt: raceInput.endedAt,
-        ownerNickname: raceInput.ownerNickname,
-        raceName: raceInput.raceName,
-        racePassword: raceInput.racePassword,
-        raceTag: raceInput.raceTag,
-        startedAt: raceInput.startedAt,
+      const response = await request({
+        method: 'post',
+        url: '/race/create',
+        body: {
+          description: raceInput.description,
+          endedAt: moment(raceInput.endedAt, 'YYYY-MM-DD').format().split('T')[0],
+          ownerNickname: raceInput.ownerNickname,
+          raceName: raceInput.raceName,
+          racePassword: raceInput.racePassword,
+          raceTag: raceInput.raceTag,
+          startedAt: moment(raceInput.startedAt, 'YYYY-MM-DD').format().split('T')[0],
+        },
       });
       console.log(response);
+      navigate('/complete-race', { state: { raceCode: response.raceCode, racePassword: response.racePassword } });
     } catch (error) {
       console.log(error);
     }
@@ -80,4 +87,3 @@ const CreateBtn = styled.button`
   }
 `;
 export default CreateRacePage;
-//onClick={() => navigate(`/complete-race`)}

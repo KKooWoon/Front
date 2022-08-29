@@ -14,6 +14,7 @@ const Main = React.lazy(() => import('@pages/main'));
 const Calendar = React.lazy(() => import('@pages/calendar'));
 const Race = React.lazy(() => import('@pages/race'));
 const CreateRace = React.lazy(() => import('@pages/create-race'));
+const CompleteRace = React.lazy(() => import('@pages/complete-race'));
 const Profile = React.lazy(() => import('@pages/profile'));
 const ProfileDetail = React.lazy(() => import('@pages/detail'));
 const UserInfo = React.lazy(() => import('@pages/user-info'));
@@ -24,11 +25,11 @@ const FollowList = React.lazy(() => import('@pages/follow'));
 const KaKaoRedirect = React.lazy(() => import('@pages/kakao-redirect'));
 const RaceDetail = React.lazy(() => import('@pages/race-detail'));
 const RaceJoin = React.lazy(() => import('@pages/race-join'));
-const UserList = React.lazy(()=> import('@pages/user-list'));
-const WorkoutDetail = React.lazy(()=> import('@pages/workout-detail'));
+const UserList = React.lazy(() => import('@pages/user-list'));
+const WorkoutDetail = React.lazy(() => import('@pages/workout-detail'));
 
 const App = () => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
     const UserAgent = navigator.userAgent;
@@ -38,8 +39,8 @@ const App = () => {
       ) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null;
 
     //TODO: mobile error page
-    if (!isMobile && pathname !== "/mobile") navigate("/mobile");
-    if (isMobile && pathname === "/mobile") navigate("/");
+    if (!isMobile && pathname !== '/mobile') navigate('/mobile');
+    if (isMobile && pathname === '/mobile') navigate('/');
   }, []);
   return (
     <Routes>
@@ -52,9 +53,10 @@ const App = () => {
         <Route path='join' element={<RaceJoin />} />
         <Route path='race' element={<Race />} />
         <Route path='race/:raceId' element={<RaceDetail />} />
-        <Route path='workout-detail/:workoutId' element={<WorkoutDetail />}/>
-        <Route path='user-list' element={<UserList />}/>
+        <Route path='workout-detail/:workoutId' element={<WorkoutDetail />} />
+        <Route path='user-list' element={<UserList />} />
         <Route path='create-race' element={<CreateRace />} />
+        <Route path='complete-race' element={<CompleteRace />} />
         <Route path='profile' element={<Profile />} />
         <Route path='profile/:id' element={<ProfileDetail />} />
         <Route path='register' element={<Register />} />
@@ -62,8 +64,8 @@ const App = () => {
         <Route path='search' element={<Search />} />
         <Route path='follow' element={<FollowList />} />
       </Route>
-      <Route path="/mobile" element={<MobileError />}/>
-      <Route path='/*' element={<ErrorPage/>}/>
+      <Route path='/mobile' element={<MobileError />} />
+      <Route path='/*' element={<ErrorPage />} />
     </Routes>
   );
 };
