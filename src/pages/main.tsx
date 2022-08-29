@@ -66,24 +66,26 @@ const MainPage = () => {
           </NoResultWrapper>
         )}
         {raceList.allList.length !== 0 && carouselSelected === userInfo.accountId && !!workoutList?.recordId && (
-          <CustomButton
-            onClick={() => navigate('/workout-auth', { state: workoutList })}
-          >
+          <CustomButton onClick={() => navigate('/workout-auth', { state: workoutList })}>
             <span>이 레이스에 운동 인증하기</span>
           </CustomButton>
         )}
         {raceList.allList.length !== 0 && (
           <>
-            <hr style={{ margin: '30px 0px' }} />
-            <DateSection>
-              <h3>{today}</h3>
-              {carouselSelected === userInfo.accountId && (
-                <button onClick={() => navigate('/register')}>
-                  <PlusIcon />
-                  <span>운동 등록하기</span>
-                </button>
-              )}
-            </DateSection>
+            {raceList.allList.map((val, i) => (
+              <>
+                <hr style={{ margin: '30px 0px' }} />
+                <DateSection>
+                  <h3>{today}</h3>
+                  {carouselSelected === userInfo.accountId && (
+                    <button onClick={() => navigate('/register', { state: raceList.allList[i].raceId })}>
+                      <PlusIcon />
+                      <span>운동 등록하기</span>
+                    </button>
+                  )}
+                </DateSection>
+              </>
+            ))}
           </>
         )}
         {raceList.allList.length !== 0 && !!workoutList && (
