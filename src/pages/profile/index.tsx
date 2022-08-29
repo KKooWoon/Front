@@ -20,7 +20,7 @@ const ProfilePage = () => {
   /* 벡엔드에서 불러와야 하는 데이터 */
   const { data: followingList, isLoading: followLoading } = getFollowList(myId!);
   const { data: followerList, isLoading: followerLoading } = getFollowerList(myId!);
-  const { data: raceList, isLoading: raceLoading } = getRaceList(myId!); // 캐러셀 selected
+  const { data: raceList, isLoading: raceLoading } = getRaceList(myId!); 
   const {data : workoutList, isLoading:workoutLoading} = getWorkoutPreviewList(myId!);
 
   if (

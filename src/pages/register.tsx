@@ -3,8 +3,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import request from '@apis/client';
 import moment from 'moment';
+import { useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const myId = localStorage.getItem('myId');
   const [diet, setDiet] = useState({
     foodList: [''],
     name: '',
@@ -29,6 +34,9 @@ const RegisterPage = () => {
           name: cardio.name,
           time: cardio.hour * 60 + cardio.minute,
         },
+      }).then(res => {
+        queryClient.invalidateQueries(['raceList', myId!])
+        navigate('/race');
       });
       console.log(response);
     } catch (error) {

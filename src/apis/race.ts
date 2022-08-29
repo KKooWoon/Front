@@ -169,7 +169,7 @@ const raceUserListAPI =async (raceId:string) => {
       return {
         id:accountId,
         description,
-        ProfileImageUrl:photoUrl,
+        profileImageUrl:photoUrl,
         nickName:nickname,
       }
     })

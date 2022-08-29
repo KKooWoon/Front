@@ -29,11 +29,10 @@ const WorkoutAuth = () => {
       };
     }
 
-    console.log('e:', e.target);
-    console.log('img : ', Image[0]);
     const imageFormData = new FormData();
     imageFormData.append('file', Image[0]);
     imageFormData.append('recordId', work.recordId ? work.recordId!.toString() : '12');
+    imageFormData.append('description',memo);
     setImageData(imageFormData);
   };
   const submitHandler = async () => {

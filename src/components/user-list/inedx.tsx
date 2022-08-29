@@ -10,6 +10,7 @@ interface Props {
 }
 const UserItem = ({ item }: { item: follow | raceUser }) => {
   const navigate = useNavigate()
+  console.log(item.profileImageUrl);
   return (
     <UserBox onClick={() => navigate(`/profile/${item.id}`)}>
       <ProfileImage url={item.profileImageUrl} alt='profile' />
