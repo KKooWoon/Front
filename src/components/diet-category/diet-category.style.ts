@@ -12,20 +12,29 @@ export const Wrapper = styled.div`
     color: #101010;
   }
 `;
-
-export const FoodInput = styled.input`
-  font-family: 'SpoqaHanSansNeo';
-  font-weight: 400;
-  font-size: 16px;
-  outline: none;
-  display: flex;
-  color: #101010;
+export const CategoryInput = styled.input`
   width: 100%;
-  margin-top: 18px;
-  margin-bottom: 50px;
   border: none;
-  border-bottom: 2px solid #6732ff;
-  padding-bottom: 14px;
+  border-bottom: 2px solid var(--primary-purple);
+  height: 54px;
+  font-size: 16px;
+  font-weight: 400;
+  :focus {
+    outline: none;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  position: relative;
+  margin-bottom: 50px;
+  & span {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--gray-03);
+  }
 `;
 
 export const SelectWrapper = styled.div`

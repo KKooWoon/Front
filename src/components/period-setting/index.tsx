@@ -1,14 +1,14 @@
 import React from 'react';
-import { PeriodWrapper, Wrapper, ModifyDetailBtn, RepeatWrapper } from './period-setting.style';
+import { PeriodWrapper, Wrapper, ModifyDetailBtn, RepeatWrapper, PeriodInput } from './period-setting.style';
 
 const PeriodSetting = () => {
   return (
     <Wrapper>
       <h1>기간 및 반복 설정</h1>
       <PeriodWrapper>
-        <button>2022.07.01</button>
+        <PeriodInput placeholder='YY.MM.DD' />
         <p>~</p>
-        <button>2022.07.30</button>
+        <PeriodInput placeholder='YY.MM.DD' />
       </PeriodWrapper>
       <RepeatWrapper>
         <button>월</button>
@@ -19,7 +19,6 @@ const PeriodSetting = () => {
         <button>토</button>
         <button>일</button>
       </RepeatWrapper>
-      <ModifyDetailBtn>세부 수정하기</ModifyDetailBtn>
     </Wrapper>
   );
 };

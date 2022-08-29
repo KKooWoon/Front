@@ -1,13 +1,46 @@
 import Register from '@components/register';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import request from '@apis/client';
+import moment from 'moment';
 
 const RegisterPage = () => {
+  const [diet, setDiet] = useState({
+    foodList: [''],
+    name: '',
+  });
+
+  const [cardio, setCardio] = useState({
+    calorie: 0,
+    name: '',
+    hour: 0,
+    minute: 0,
+  });
+
+  const now = moment().format('YYYY-MM-DD');
+
+  async function postData() {
+    try {
+      const response = await request({
+        method: 'post',
+        url: '/record/cardio?raceId=12&date=' + `${now}`,
+        body: {
+          calorie: cardio.calorie,
+          name: cardio.name,
+          time: cardio.hour * 60 + cardio.minute,
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Wrapper>
       <span>챌린지에서 진행할 운동을 등록해보세요.</span>
-      <Register />
-      <RegisterBtn>등록하기</RegisterBtn>
+      <Register cardio={cardio} setCardio={setCardio} diet={diet} setDiet={setDiet} />
+      <RegisterBtn onClick={postData}>등록하기</RegisterBtn>
     </Wrapper>
   );
 };
@@ -30,13 +63,16 @@ const Wrapper = styled.div`
 export const RegisterBtn = styled.button`
   width: 100%;
   height: 93px;
-  background-color: #d4d2d9;
+  background-color: #6732ff;
   font-family: 'SpoqaHanSansNeo';
   font-weight: 700;
   font-size: 18px;
   color: #ffffff;
   padding-top: 19px;
   padding-bottom: 51px;
+  :disabled {
+    background-color: #d4d2d9;
+  }
 `;
 
 export default RegisterPage;

@@ -57,6 +57,20 @@ export const RepeatWrapper = styled.div`
   }
 `;
 
+export const PeriodInput = styled.input`
+  text-align: center;
+  width: 50%;
+  height: 50px;
+  border: 2px solid #6732ff;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #101010;
+  :focus {
+    outline: none;
+  }
+`;
+
 export const ModifyDetailBtn = styled.button`
   margin-top: 16px;
   background: #f1edff;
