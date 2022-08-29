@@ -38,6 +38,7 @@ const MainPage = () => {
   console.log('follow : ', followList);
   console.log('race:', raceList?.allList);
   console.log('workout: ', workoutList);
+
   useEffect(() => {
     if (raceList && raceList?.allList.length !== 0) {
       console.log('여기 실행');
@@ -72,20 +73,16 @@ const MainPage = () => {
         )}
         {raceList.allList.length !== 0 && (
           <>
-            {raceList.allList.map((val, i) => (
-              <>
-                <hr style={{ margin: '30px 0px' }} />
-                <DateSection>
-                  <h3>{today}</h3>
-                  {carouselSelected === userInfo.accountId && (
-                    <button onClick={() => navigate('/register', { state: raceList.allList[i].raceId })}>
-                      <PlusIcon />
-                      <span>운동 등록하기</span>
-                    </button>
-                  )}
-                </DateSection>
-              </>
-            ))}
+            <hr style={{ margin: '30px 0px' }} />
+            <DateSection>
+              <h3>{today}</h3>
+              {carouselSelected === userInfo.accountId && (
+                <button onClick={() => navigate('/register', { state: raceList?.allList[0].raceId })}>
+                  <PlusIcon />
+                  <span>운동 등록하기</span>
+                </button>
+              )}
+            </DateSection>
           </>
         )}
         {raceList.allList.length !== 0 && !!workoutList && (
