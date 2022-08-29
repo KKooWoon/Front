@@ -65,7 +65,7 @@ const MainPage = () => {
             <NoResult>{`참여 중인 레이스가 없습니다.\n\n레이스탭에서 새로운 레이스를 생성하거나\n참여해 보세요`}</NoResult>
           </NoResultWrapper>
         )}
-        {raceList.allList.length !== 0 && carouselSelected === userInfo.accountId && !!workoutList && (
+        {raceList.allList.length !== 0 && carouselSelected === userInfo.accountId && !!workoutList?.recordId && (
           <CustomButton
             onClick={() => navigate('/workout-auth', { state: workoutList })}
           >
