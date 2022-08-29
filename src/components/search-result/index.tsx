@@ -1,18 +1,49 @@
+import { setFollowAPI, setUnFollowAPI } from '@apis/follow';
 import FollowButton from '@components/follow-button';
 import ProfileImage from '@components/profile-imgae';
 import { resultType } from '@typings/search';
 import React, { useCallback, useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 import { ItemWrapper, ResultWrapper } from './result.style';
 interface Props {
   result:null | Array<resultType>;
 }
 
 const ResultItem = ({item}:{item:resultType}) =>{
+  const queryClient = useQueryClient();
+  const myId = localStorage.getItem('myId');
   const [isFollow, setIsFollow] = useState(item.isFollow);
+  const { mutate: postFollow } = useMutation(() => setFollowAPI(item.accountId.toString()), {
+    onMutate: () => {
+      setIsFollow(true);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['isFollow', item.accountId.toString()]);
+      queryClient.invalidateQueries(['my-info', myId!]);
+    },
+    onError: () => {
+      setIsFollow(false);
+    },
+  });
+  const { mutate: deleteFollow } = useMutation(() => setUnFollowAPI(item.accountId.toString()), {
+    onMutate: () => {
+      setIsFollow(false);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['isFollow', item.accountId.toString()]);
+      queryClient.invalidateQueries(['my-info', myId!]);
+    },
+    onError: () => {
+      setIsFollow(true);
+    },
+  });
   const followHandler = useCallback(()=>{
-    /* follow 요청 */
-    setIsFollow((prev)=> !prev);
-  },[]);
+    if(!isFollow){
+      postFollow();
+    }else{
+      deleteFollow();
+    }
+  },[isFollow]);
   return(
     <ItemWrapper>
       <section>

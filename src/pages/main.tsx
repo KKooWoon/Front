@@ -78,7 +78,7 @@ const MainPage = () => {
             <DateSection>
               <h3>{today}</h3>
               {carouselSelected === userInfo.accountId && (
-                <button>
+                <button onClick={() => navigate('/register')}>
                   <PlusIcon />
                   <span>운동 등록하기</span>
                 </button>

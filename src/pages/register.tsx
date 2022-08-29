@@ -28,7 +28,7 @@ const RegisterPage = () => {
     try {
       const response = await request({
         method: 'post',
-        url: '/record/cardio?raceId=12&date=' + `${now}`,
+        url: '/record/cardio?raceId=10&date=' + `${now}`,
         body: {
           calorie: cardio.calorie,
           name: cardio.name,

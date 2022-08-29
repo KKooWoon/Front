@@ -35,7 +35,7 @@ const workoutListAPI = async (accountId: number, raceId: number, date: string) =
 };
 
 export const getWorkoutList = (accountId: number, raceId: number, date: string) => {
-  return useQuery<WorkOutList, AxiosError>('workoutList', () => workoutListAPI(accountId, raceId, date), {
+  return useQuery<WorkOutList, AxiosError>(['workoutList', raceId], () => workoutListAPI(accountId, raceId, date), {
     enabled: !!raceId,
     retry: false,
   });
