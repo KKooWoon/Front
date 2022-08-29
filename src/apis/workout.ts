@@ -95,7 +95,7 @@ export const getGalleryList = (raceId: number) => {
   return useQuery<Array<Gallery>>(['gallery', raceId], () => workoutDatedListAPI(raceId));
 };
 
-export const confirmAPI = async (data: FormData) => {
+export const confirmAPI = async (data: FormData, raceId:number) => {
   return await request({
     method: 'post',
     url: '/confirm',
@@ -103,5 +103,8 @@ export const confirmAPI = async (data: FormData) => {
     header: {
       'content-type': 'multipart/form-data',
     },
+    params:{
+      raceId
+    }
   });
 };

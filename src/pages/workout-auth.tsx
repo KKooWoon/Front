@@ -32,13 +32,12 @@ const WorkoutAuth = () => {
 
     const imageFormData = new FormData();
     imageFormData.append('file', Image[0]);
-    imageFormData.append('recordId', work.recordId ? work.recordId!.toString() : '12');
     setImageData(imageFormData);
   };
   const submitHandler = async () => {
     try {
       imageData!.append('description',memo);
-      await confirmAPI(imageData!);
+      await confirmAPI(imageData!, work.recordId!);
     } catch (e) {
       console.error(e);
     }
