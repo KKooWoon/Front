@@ -14,7 +14,22 @@ const allCalendarAPI = async (accountId: string, year: number, month: number) =>
     },
   }).then(res => {
     const returnArray: Array<calendar> = res.oneMonthRecordDtoList.map(v => {
-      const { recordDate, cardioDtoList, dietDtoList, weightDtoList } = v;
+      const { recordDate, recordWithRaceDtoList } = v;
+      const { cardioDtoList, weightDtoList, dietDtoList } = recordWithRaceDtoList.reduce(
+        (acc, cur) => {
+          const { cardioDtoList, weightDtoList, dietDtoList } = cur;
+          return {
+            cardioDtoList:[...acc.cardioDtoList, ...cardioDtoList],
+            weightDtoList:[...acc.weightDtoList, ...weightDtoList],
+            dietDtoList:[...acc.dietDtoList, ...dietDtoList],
+          };
+        },
+        {
+          cardioDtoList: [],
+          weightDtoList: [],
+          dietDtoList: [],
+        }
+      );
       return {
         date: recordDate,
         data: {

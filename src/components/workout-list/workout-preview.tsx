@@ -7,8 +7,9 @@ interface Props {
 
 }
 export const PreviewItem = ({item}:{item:WorkOut}) =>{
+
   return (
-    <ImageBackround img_url={item.img_Url}>
+    <ImageBackround img_url={`${process.env.REACT_APP_IMAGE_BACK_URL}${item.img_Url}`}>
       <Description>
         <h2>{item.nick_name}</h2>
         <p>{item.message}</p>

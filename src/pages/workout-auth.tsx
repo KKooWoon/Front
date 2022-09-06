@@ -18,7 +18,7 @@ const WorkoutAuth = () => {
   const work = state as unknown as WorkOutList;
   const ImageUploadHandler = useCallback(() => {
     inputRef.current!.click();
-  }, [inputRef.current]);
+  }, [inputRef.current]); 
   const onChangeImage = (e: any) => {
     const Image = e.target.files;
 

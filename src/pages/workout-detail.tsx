@@ -19,7 +19,7 @@ const WorkOutDetailPage = () => {
         </div>
         <span>3분전</span>
       </section>
-      <img src={workout.img_Url} alt='workout_img' />
+      <img src={`${process.env.REACT_APP_IMAGE_BACK_URL}${workout.img_Url}`} alt='workout_img' />
       <p>{workout.message}</p>
     </WorkoutDetailWrapper>
   );

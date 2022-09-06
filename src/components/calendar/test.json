@@ -1,0 +1,35 @@
+{
+  "oneMonthRecordDtoList": [
+    {
+      "recordDate": "2022-09-04",
+      "recordWithRaceDtoList": [
+        {
+          "workoutRecordId": 4,
+          "currentWeight": 0.0,
+          "cardioDtoList": [
+            { "cardioId": 4, "name": "달리기", "duration": 72, "calorie": 0.0 },
+            { "cardioId": 8, "name": "", "duration": 0, "calorie": 0.0 },
+            { "cardioId": 9, "name": "달리기22", "duration": 122, "calorie": 0.0 }
+          ],
+          "weightDtoList": [],
+          "dietDtoList": [],
+          "raceId": 4,
+          "confirmed": true
+        },
+        {
+          "workoutRecordId": 5,
+          "currentWeight": 0.0,
+          "cardioDtoList": [
+            { "cardioId": 4, "name": "달리기", "duration": 72, "calorie": 0.0 },
+            { "cardioId": 8, "name": "", "duration": 0, "calorie": 0.0 },
+            { "cardioId": 9, "name": "달리기22", "duration": 122, "calorie": 0.0 }
+          ],
+          "weightDtoList": [],
+          "dietDtoList": [],
+          "raceId": 5,
+          "confirmed": true
+        }
+      ]
+    }
+  ]
+}

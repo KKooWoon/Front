@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 const queryClient = new QueryClient({
   defaultOptions:{
     queries:{
-      refetchOnMount:false,
       refetchOnWindowFocus:false,
     }
   }

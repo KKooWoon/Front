@@ -19,6 +19,7 @@ const SearchRace = () => {
   const navigate = useNavigate();
   const {isOpen, onClose, setIsOpen} = useModal();
   const [modalMessage, setModalMessage] = useState('')
+  const [searchTitle, setSearchTitle] = useState('');
 
 
   //사용자 정보 요청
@@ -47,10 +48,12 @@ const SearchRace = () => {
     const rst = await raceSearchAPI(search);
     if(rst.length === 0 ) {
       setIsOpen(true);
+      setSearchResult([]);
       setModalMessage(`${search} 레이스의 검색결과가 없습니다.`)
     }else{
       setSearchResult(rst);
     }
+    setSearchTitle(search);
     setSearch('');
   },[search]);
   if (infoLoading || raceLoading || tagLoading || !userInfo || !raceList || !tagList) return <Spinner />;
@@ -63,10 +66,10 @@ const SearchRace = () => {
       <div>
         {searchResult.length !== 0 && (
           <>
-            <span>#{search}</span>
+            <span>#{searchTitle}</span>
             <span style={{ padding: '4px' }}> 검색결과 입니다.</span>
             <ImageSlider SliderHeight={172}>
-              {tagList.map((v, i) => (
+              {searchResult.map((v, i) => (
                 <MyRaceWrapper key={v.raceId} onClick={() => navigateHandler(v.isPrivate, v)}>
                   <p>D-{v.Dday}</p>
                   <section className='wrapper'>
